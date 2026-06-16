@@ -29,7 +29,7 @@ export function Projects() {
                     alt={`Vista del proyecto ${project.name}`}
                     fill
                     sizes="(min-width: 1024px) 540px, 92vw"
-                    className={`project-preview-image ${project.featured ? "" : "contain"}`}
+                    className={`project-preview-image ${project.previewFit === "contain" ? "contain" : ""}`}
                   />
                 </div>
               )}

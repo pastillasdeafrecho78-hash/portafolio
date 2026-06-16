@@ -25,8 +25,8 @@ export function WorkScope() {
             </div>
           </div>
 
-          <div className="case-showcase-grid">
-            <div className="case-browser case-browser-panel">
+          <div className="case-showcase-duo">
+            <div className="case-browser case-duo-panel">
               <div className="case-topbar">
                 <div className="panel-dot-row">
                   <span />
@@ -35,28 +35,33 @@ export function WorkScope() {
                 </div>
                 <p>dashboard / reportes</p>
               </div>
-              <div className="case-image-wrap case-image-wrap-panel">
+              <div className="case-image-wrap-duo">
                 <Image
                   src="/servimos-reportes.png"
                   alt="Dashboard de reportes para operación de restaurante"
                   fill
-                  sizes="(min-width: 1024px) 520px, 46vw"
-                  className="case-image"
+                  sizes="(min-width: 1024px) 360px, 46vw"
+                  className="case-image-fit"
                 />
               </div>
             </div>
 
-            <div className="case-phone case-phone-panel">
+            <div className="case-browser case-duo-panel">
               <div className="case-topbar compact">
-                <p>menú móvil</p>
+                <div className="panel-dot-row">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <p>comandas</p>
               </div>
-              <div className="case-image-wrap case-image-wrap-panel phone">
+              <div className="case-image-wrap-duo">
                 <Image
-                  src="/pedimos-menu-mobile.png"
-                  alt="Menú móvil para experiencia de cliente"
+                  src="/servimos-comandas.png"
+                  alt="Interfaz de comandas y pedidos"
                   fill
-                  sizes="(min-width: 1024px) 320px, 46vw"
-                  className="case-image contain"
+                  sizes="(min-width: 1024px) 360px, 46vw"
+                  className="case-image-fit"
                 />
               </div>
             </div>

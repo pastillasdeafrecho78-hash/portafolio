@@ -101,23 +101,26 @@ export type Project = {
   logoWidth?: number;
   logoHeight?: number;
   preview?: string;
+  previewFit?: "cover" | "contain";
   featured?: boolean;
 };
 
 export const PROJECTS: readonly Project[] = [
   {
-    name: "Landing de conversión",
+    name: "ServimOS — Landing",
     description:
-      "Landing pages y sitios corporativos pensados para presentar servicios, generar confianza y convertir visitas en contacto real.",
-    role: "Estructura visual, copy de conversión, responsive, formularios y llamadas a la acción conectadas a WhatsApp o correo.",
-    capabilities: ["Landing page", "Formulario", "WhatsApp", "Mobile-first", "SEO básico"],
-    preview: "/images/project-agency.svg",
+      "Landing pública para presentar el producto, explicar el valor y convertir visitas en registros o contacto comercial.",
+    role: "Estructura visual, copy de conversión, responsive y llamadas a la acción conectadas al flujo de registro.",
+    capabilities: ["Landing page", "Conversión", "Responsive", "SEO", "Marca producto"],
+    preview: "/servimos-landing.jpg",
+    previewFit: "cover",
+    links: [{ label: "Ver landing", href: "https://servimos.online/" }],
   },
   {
-    name: "ServimOS",
+    name: "ServimOS — Plataforma",
     description:
-      "Plataforma completa para restaurantes en producción: landing pública, acceso operativo, pedidos digitales, cocina, menús y flujos internos de atención.",
-    role: "Frontend, arquitectura de interfaces, paneles administrativos, experiencia móvil para cliente y operación diaria del negocio.",
+      "Plataforma completa en producción: operación diaria, pedidos digitales, cocina, menús y flujos internos de atención.",
+    role: "Frontend, arquitectura de interfaces, paneles administrativos, experiencia móvil para cliente y operación del negocio.",
     capabilities: [
       "Plataforma en producción",
       "Dashboard operativo",
@@ -129,11 +132,9 @@ export const PROJECTS: readonly Project[] = [
     logoWidth: 190,
     logoHeight: 52,
     preview: "/servimos-reportes.png",
+    previewFit: "contain",
     featured: true,
-    links: [
-      { label: "Ver landing", href: "https://servimos.online/" },
-      { label: "Plataforma completa", href: "https://servimos.online/login" },
-    ],
+    links: [{ label: "Plataforma completa", href: "https://servimos.online/login" }],
   },
 ];
 
