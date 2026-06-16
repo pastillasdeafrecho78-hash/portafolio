@@ -1,76 +1,59 @@
 <template id="scene-06-outro-template">
-  <div data-composition-id="scene-06-outro" data-width="1920" data-height="1080" data-duration="8.5">
+  <div data-composition-id="scene-06-outro" data-width="1920" data-height="1080" data-duration="6.548">
     <div class="scene-content">
-      <div class="left-col">
-        <img class="avatar" src="assets/logo-salvador-barba.png" alt="" />
+      <div class="lang-bar"><span class="lang-code">ES</span><span class="lang-name">CIERRE · DEMO GRATUITA</span></div>
+      <div class="body-row">
         <div class="portrait-wrap"><img class="portrait" src="assets/salvador-barba.png" alt="" /></div>
-      </div>
-      <div class="right-col">
-        <div class="layers" data-layout-allow-overflow>
-          <div class="lang-col"><span>ES</span><p>Localización</p></div>
-          <div class="lang-col"><span>EN</span><p>Localization</p></div>
-          <div class="lang-col"><span>CA</span><p>Adaptació</p></div>
-          <div class="lang-col"><span>FR</span><p>Localisation</p></div>
-          <div class="lang-col"><span>IT</span><p>Localizzazione</p></div>
-        </div>
-        <h1 class="headline">Una idea. Cinco idiomas. Varias voces.</h1>
-        <p class="headline-sub">Una entrega lista para publicar.</p>
-        <div class="final-card">
+        <div class="copy-col">
+          <div class="caption-box">
+            <p class="caption-line">Puedo preparar una muestra gratuita de hasta 30 segundos para demostrar el flujo completo de localización audiovisual.</p>
+          </div>
+          <h1 class="headline">Una idea · Cinco idiomas · Una entrega lista</h1>
           <p class="name">Salvador Barba García</p>
-          <p class="role">Localización audiovisual multilingüe asistida por IA</p>
           <p class="services">Subtítulos · Traducción · Transcripción · Spotting · Voz IA natural</p>
         </div>
       </div>
     </div>
     <style>
       [data-composition-id="scene-06-outro"] .scene-content {
-        width: 100%; height: 100%; display: grid; grid-template-columns: 400px 1fr;
-        gap: 64px; align-items: center; padding: 80px 120px; box-sizing: border-box;
-        background: radial-gradient(ellipse at 30% 50%, #0c1820 0%, #07080C 65%);
+        width: 100%; height: 100%; display: flex; flex-direction: column;
+        padding: 48px 80px 64px; gap: 36px; box-sizing: border-box;
+        background: radial-gradient(ellipse at 40% 50%, #0c1820 0%, #07080C 65%);
       }
-      [data-composition-id="scene-06-outro"] .left-col {
-        display: flex; flex-direction: column; align-items: center; gap: 20px;
+      [data-composition-id="scene-06-outro"] .lang-bar {
+        display: flex; align-items: center; gap: 20px; padding: 20px 32px; border-radius: 16px;
+        background: rgba(34,211,238,0.12); border: 2px solid #22D3EE;
       }
-      [data-composition-id="scene-06-outro"] .avatar { width: 72px; height: 72px; border-radius: 16px; object-fit: cover; }
+      [data-composition-id="scene-06-outro"] .lang-code { font-size: 48px; font-weight: 900; color: #22D3EE; }
+      [data-composition-id="scene-06-outro"] .lang-name { font-size: 28px; font-weight: 800; color: #F4F4F5; letter-spacing: 0.08em; }
+      [data-composition-id="scene-06-outro"] .body-row {
+        flex: 1; display: grid; grid-template-columns: 460px 1fr; gap: 72px; align-items: center;
+      }
       [data-composition-id="scene-06-outro"] .portrait-wrap {
-        width: 280px; height: 280px; border-radius: 50%; overflow: hidden;
-        border: 3px solid rgba(34,211,238,0.4);
+        width: 440px; height: 440px; border-radius: 50%; overflow: hidden;
+        border: 5px solid #22D3EE;
       }
       [data-composition-id="scene-06-outro"] .portrait { width: 100%; height: 100%; object-fit: cover; }
-      [data-composition-id="scene-06-outro"] .right-col { display: flex; flex-direction: column; gap: 20px; }
-      [data-composition-id="scene-06-outro"] .layers {
-        display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+      [data-composition-id="scene-06-outro"] .caption-box {
+        padding: 28px 32px; border-radius: 16px; margin-bottom: 20px;
+        background: rgba(0,0,0,0.5); border-left: 6px solid #22D3EE;
       }
-      [data-composition-id="scene-06-outro"] .lang-col {
-        background: #111318; border: 1px solid rgba(34,211,238,0.2); border-radius: 8px;
-        padding: 14px 8px; text-align: center;
-      }
-      [data-composition-id="scene-06-outro"] .lang-col span { color: #22D3EE; font-weight: 800; font-size: 16px; }
-      [data-composition-id="scene-06-outro"] .lang-col p { color: #737373; font-size: 11px; margin-top: 4px; }
-      [data-composition-id="scene-06-outro"] .headline {
-        font-size: 44px; font-weight: 800; color: #F4F4F5; line-height: 1.15;
-      }
-      [data-composition-id="scene-06-outro"] .headline-sub {
-        font-size: 28px; font-weight: 600; color: #22D3EE;
-      }
-      [data-composition-id="scene-06-outro"] .final-card {
-        padding: 24px 28px; background: rgba(17,19,24,0.9);
-        border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;
-      }
-      [data-composition-id="scene-06-outro"] .name { font-size: 28px; font-weight: 800; color: #F4F4F5; }
-      [data-composition-id="scene-06-outro"] .role { font-size: 16px; color: #A1A1AA; margin-top: 6px; }
+      [data-composition-id="scene-06-outro"] .caption-line { font-size: 32px; font-weight: 600; color: #fff; line-height: 1.4; }
+      [data-composition-id="scene-06-outro"] .headline { font-size: 48px; font-weight: 900; color: #22D3EE; line-height: 1.12; }
+      [data-composition-id="scene-06-outro"] .name { font-size: 36px; font-weight: 800; color: #F4F4F5; margin-top: 20px; }
       [data-composition-id="scene-06-outro"] .services {
-        font-size: 13px; color: #737373; font-family: ui-monospace, monospace; margin-top: 10px;
+        font-size: 20px; color: #94A3B8; margin-top: 12px; font-family: ui-monospace, monospace;
       }
     </style>
     <script>
     (function(){
       const tl = gsap.timeline({ paused: true });
-      tl.from(".portrait-wrap", { scale: 0.8, opacity: 0, duration: 0.6 }, 0);
-      tl.from(".lang-col", { y: 30, opacity: 0, duration: 0.4, stagger: 0.08 }, 0.3);
-      tl.from(".headline", { y: 20, opacity: 0, duration: 0.5 }, 0.7);
-      tl.from(".headline-sub", { opacity: 0, duration: 0.4 }, 1.1);
-      tl.from(".final-card", { y: 40, opacity: 0, duration: 0.6 }, 1.8);
+      tl.from(".lang-bar", { opacity: 0, duration: 0.4 }, 0);
+      tl.from(".portrait-wrap", { scale: 0.9, opacity: 0, duration: 0.5 }, 0.15);
+      tl.from(".caption-box", { y: 24, opacity: 0, duration: 0.45 }, 0.35);
+      tl.from(".headline", { opacity: 0, duration: 0.4 }, 0.7);
+      tl.from(".name", { y: 16, opacity: 0, duration: 0.35 }, 1.1);
+      tl.from(".services", { opacity: 0, duration: 0.3 }, 1.4);
       window.__timelines = window.__timelines || {};
       window.__timelines["scene-06-outro"] = tl;
     })();

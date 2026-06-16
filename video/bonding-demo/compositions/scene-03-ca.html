@@ -1,57 +1,55 @@
 <template id="scene-03-ca-template">
-  <div data-composition-id="scene-03-ca" data-width="1920" data-height="1080" data-duration="6">
+  <div data-composition-id="scene-03-ca" data-width="1920" data-height="1080" data-duration="4.783">
     <div class="scene-content">
-      <div class="mosaic" data-layout-ignore></div>
-      <div class="left-col">
+      <div class="lang-bar"><span class="lang-code">CA</span><span class="lang-name">CATALÀ</span></div>
+      <div class="body-row">
         <div class="portrait-wrap"><img class="portrait" src="assets/salvador-barba.png" alt="" /></div>
-      </div>
-      <div class="right-col">
-        <div class="track-active">Pista activa: Sub CA</div>
-        <div class="subs">
-          <p class="sub-line">Puc adaptar contingut audiovisual al català</p>
-          <p class="sub-line">amb subtítols, veu i sincronització.</p>
+        <div class="copy-col">
+          <div class="caption-box">
+            <p class="caption-line">Puc adaptar contingut audiovisual al català amb subtítols, veu i sincronització.</p>
+          </div>
+          <h1 class="headline">Subtítols · Adaptació · Sincronització</h1>
         </div>
-        <h1 class="headline">Català • Subtítols • Adaptació audiovisual</h1>
       </div>
     </div>
     <style>
       [data-composition-id="scene-03-ca"] .scene-content {
-        width: 100%; height: 100%; display: grid; grid-template-columns: 380px 1fr;
-        gap: 72px; align-items: center; padding: 80px 120px; box-sizing: border-box;
-        background: #07080C; position: relative; overflow: hidden;
+        width: 100%; height: 100%; display: flex; flex-direction: column;
+        padding: 48px 80px 64px; gap: 36px; box-sizing: border-box;
+        background: linear-gradient(135deg, #1a0a10 0%, #07080C 50%);
       }
-      [data-composition-id="scene-03-ca"] .mosaic {
-        position: absolute; inset: 0; opacity: 0.12;
-        background: repeating-linear-gradient(45deg, #E11D48 0 2px, transparent 2px 24px),
-          repeating-linear-gradient(-45deg, #FACC15 0 2px, transparent 2px 32px);
+      [data-composition-id="scene-03-ca"] .lang-bar {
+        display: flex; align-items: center; gap: 20px; padding: 20px 32px; border-radius: 16px;
+        background: linear-gradient(90deg, rgba(225,29,72,0.2), rgba(250,204,21,0.15));
+        border: 2px solid #E11D48;
+      }
+      [data-composition-id="scene-03-ca"] .lang-code { font-size: 48px; font-weight: 900; color: #FACC15; }
+      [data-composition-id="scene-03-ca"] .lang-name { font-size: 32px; font-weight: 800; color: #F4F4F5; letter-spacing: 0.12em; }
+      [data-composition-id="scene-03-ca"] .body-row {
+        flex: 1; display: grid; grid-template-columns: 460px 1fr; gap: 72px; align-items: center;
       }
       [data-composition-id="scene-03-ca"] .portrait-wrap {
-        width: 300px; height: 300px; border-radius: 50%; overflow: hidden;
-        border: 3px solid transparent;
-        background: linear-gradient(#07080C, #07080C) padding-box,
+        width: 440px; height: 440px; border-radius: 50%; overflow: hidden;
+        border: 5px solid transparent;
+        background: linear-gradient(#07080C,#07080C) padding-box,
           linear-gradient(135deg, #E11D48, #FACC15) border-box;
       }
       [data-composition-id="scene-03-ca"] .portrait { width: 100%; height: 100%; object-fit: cover; }
-      [data-composition-id="scene-03-ca"] .right-col { display: flex; flex-direction: column; gap: 24px; }
-      [data-composition-id="scene-03-ca"] .track-active {
-        color: #FACC15; font-family: ui-monospace, monospace; font-size: 18px; font-weight: 600;
-        padding: 12px 20px; border: 1px solid rgba(250,204,21,0.3); border-radius: 8px; width: fit-content;
+      [data-composition-id="scene-03-ca"] .caption-box {
+        padding: 28px 32px; border-radius: 16px; margin-bottom: 24px;
+        background: rgba(0,0,0,0.55); border-left: 6px solid #E11D48;
       }
-      [data-composition-id="scene-03-ca"] .sub-line {
-        background: rgba(0,0,0,0.55); color: #F4F4F5; padding: 12px 18px; border-radius: 8px;
-        font-size: 22px; border-left: 4px solid #E11D48;
-      }
-      [data-composition-id="scene-03-ca"] .subs { display: flex; flex-direction: column; gap: 10px; }
-      [data-composition-id="scene-03-ca"] .headline { font-size: 46px; font-weight: 800; color: #F4F4F5; line-height: 1.15; }
+      [data-composition-id="scene-03-ca"] .caption-line { font-size: 36px; font-weight: 700; color: #fff; line-height: 1.35; }
+      [data-composition-id="scene-03-ca"] .headline { font-size: 52px; font-weight: 900; color: #F4F4F5; line-height: 1.1; }
     </style>
     <script>
     (function(){
       const tl = gsap.timeline({ paused: true });
-      tl.from(".portrait-wrap", { scale: 0.7, opacity: 0, duration: 0.6, ease: "back.out(1.2)" }, 0.1);
-      tl.from(".track-active", { y: 20, opacity: 0, duration: 0.4 }, 0.35);
-      tl.from(".sub-line", { x: -24, opacity: 0, duration: 0.4, stagger: 0.1 }, 0.5);
-      tl.from(".headline", { y: 20, opacity: 0, duration: 0.45 }, 0.75);
-      tl.to(".scene-content", { opacity: 0, duration: 0.4 }, 5.4);
+      tl.from(".lang-bar", { y: -40, opacity: 0, duration: 0.4 }, 0);
+      tl.from(".portrait-wrap", { scale: 0.8, opacity: 0, duration: 0.45, ease: "back.out(1.2)" }, 0.1);
+      tl.from(".caption-box", { x: 50, opacity: 0, duration: 0.4 }, 0.25);
+      tl.from(".headline", { opacity: 0, duration: 0.35 }, 0.5);
+      tl.to(".scene-content", { opacity: 0, duration: 0.3 }, 4.4);
       window.__timelines = window.__timelines || {};
       window.__timelines["scene-03-ca"] = tl;
     })();

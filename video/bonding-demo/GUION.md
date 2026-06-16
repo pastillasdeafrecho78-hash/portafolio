@@ -5,16 +5,18 @@
 
 ---
 
-## Mapa de timeline
+## Mapa de timeline (sincronizado a audio ElevenLabs)
 
-| # | Escena | Inicio | Fin | Dur. | Idioma VO | Headline on-screen |
-|---|--------|--------|-----|------|-----------|-------------------|
-| 1 | Presentación ES | 0.0 | 7.0 | 7.0 s | Español | Localización audiovisual asistida por IA |
-| 2 | Transición EN | 7.0 | 13.5 | 6.5 s | Inglés | Subtitles • Translation • Voice localization |
-| 3 | Transición CA | 13.5 | 19.5 | 6.0 s | Catalán | Català • Subtítols • Adaptació audiovisual |
-| 4 | Transición FR | 19.5 | 25.5 | 6.0 s | Francés | Français • Sous-titres • Voix IA naturelle |
-| 5 | Transición IT | 25.5 | 31.5 | 6.0 s | Italiano | Italiano • Localizzazione • Voce naturale |
-| 6 | Cierre multilingüe | 31.5 | 40.0 | 8.5 s | Español | Una idea. Cinco idiomas. Varias voces. |
+| # | Escena | Inicio | Fin | Dur. | Idioma VO |
+|---|--------|--------|-----|------|-----------|
+| 1 | Presentación ES | 0.000 | 7.802 | 7.802 s | Español |
+| 2 | Inglés | 7.802 | 16.718 | 8.916 s | Inglés |
+| 3 | Catalán | 16.718 | 21.502 | 4.783 s | Catalán |
+| 4 | Francés | 21.502 | 27.864 | 6.362 s | Francés |
+| 5 | Italiano | 27.864 | 33.715 | 5.851 s | Italiano |
+| 6 | Cierre ES | 33.715 | 40.263 | 6.548 s | Español |
+
+**Total:** 40.263 s · cada escena visual = duración exacta del clip de voz.
 
 ---
 

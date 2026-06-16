@@ -20,23 +20,22 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="40.5" data-width="1920" data-height="1080">
+    <!-- Timeline sincronizado a duración real de cada clip ElevenLabs -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="40.263" data-width="1920" data-height="1080">
 
-      <div class="scene" data-composition-id="scene-01-es" data-composition-src="compositions/scene-01-es.html" data-start="0" data-duration="7" data-track-index="1" data-width="1920" data-height="1080"></div>
-      <div class="scene" data-composition-id="scene-02-en" data-composition-src="compositions/scene-02-en.html" data-start="7" data-duration="6.5" data-track-index="1" data-width="1920" data-height="1080"></div>
-      <div class="scene" data-composition-id="scene-03-ca" data-composition-src="compositions/scene-03-ca.html" data-start="13.5" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
-      <div class="scene" data-composition-id="scene-04-fr" data-composition-src="compositions/scene-04-fr.html" data-start="19.5" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
-      <div class="scene" data-composition-id="scene-05-it" data-composition-src="compositions/scene-05-it.html" data-start="25.5" data-duration="6" data-track-index="1" data-width="1920" data-height="1080"></div>
-      <div class="scene" data-composition-id="scene-06-outro" data-composition-src="compositions/scene-06-outro.html" data-start="31.5" data-duration="8.5" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-01-es" data-composition-src="compositions/scene-01-es.html" data-start="0" data-duration="7.802" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-02-en" data-composition-src="compositions/scene-02-en.html" data-start="7.802" data-duration="8.916" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-03-ca" data-composition-src="compositions/scene-03-ca.html" data-start="16.718" data-duration="4.783" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-04-fr" data-composition-src="compositions/scene-04-fr.html" data-start="21.502" data-duration="6.362" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-05-it" data-composition-src="compositions/scene-05-it.html" data-start="27.864" data-duration="5.851" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-06-outro" data-composition-src="compositions/scene-06-outro.html" data-start="33.715" data-duration="6.548" data-track-index="1" data-width="1920" data-height="1080"></div>
 
-      <audio
-        id="narration"
-        data-start="0"
-        data-duration="40.5"
-        data-track-index="3"
-        src="audio/vo-full.wav"
-        preload="auto"
-      ></audio>
+      <audio data-start="0" data-duration="7.802" data-track-index="3" src="audio/01-es-intro.mp3" preload="auto"></audio>
+      <audio data-start="7.802" data-duration="8.916" data-track-index="3" src="audio/02-en.mp3" preload="auto"></audio>
+      <audio data-start="16.718" data-duration="4.783" data-track-index="3" src="audio/03-ca.mp3" preload="auto"></audio>
+      <audio data-start="21.502" data-duration="6.362" data-track-index="3" src="audio/04-fr.mp3" preload="auto"></audio>
+      <audio data-start="27.864" data-duration="5.851" data-track-index="3" src="audio/05-it.mp3" preload="auto"></audio>
+      <audio data-start="33.715" data-duration="6.548" data-track-index="3" src="audio/06-es-cierre.mp3" preload="auto"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
