@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SITE, WHATSAPP_URL } from "@/lib/constants";
+import { CONTACT_FORM_ENABLED, SITE, WHATSAPP_URL } from "@/lib/constants";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -45,7 +45,7 @@ export function Contact() {
     if (!accessKey || accessKey === "REEMPLAZAR_EN_VERCEL") {
       setStatus("error");
       setErrorMsg(
-        "El formulario no está configurado todavía. Escríbeme por WhatsApp mientras lo activamos.",
+        "Falta la API key de Web3Forms en Vercel (NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY o WEB3FORMS_ACCESS_KEY). Después de guardarla, haz redeploy.",
       );
       return;
     }
@@ -95,7 +95,13 @@ export function Contact() {
   return (
     <section id="contacto" className="section section-muted">
       <div className="container-page">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div
+          className={
+            CONTACT_FORM_ENABLED
+              ? "grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start"
+              : "max-w-2xl"
+          }
+        >
           <div>
             <p className="eyebrow">Contacto</p>
             <h2 className="section-title">¿Necesitas una página profesional para tu negocio?</h2>
@@ -134,7 +140,8 @@ export function Contact() {
             </a>
           </div>
 
-          {status === "success" ? (
+          {CONTACT_FORM_ENABLED &&
+            (status === "success" ? (
             <div className="contact-card flex min-h-[320px] flex-col items-center justify-center text-center">
               <p className="text-xl font-semibold text-white">Mensaje enviado.</p>
               <p className="mt-2 text-slate-400">Te respondo lo antes posible.</p>
@@ -224,7 +231,7 @@ export function Contact() {
                 {status === "loading" ? "Enviando..." : "Solicitar cotización"}
               </button>
             </form>
-          )}
+            ))}
         </div>
       </div>
     </section>

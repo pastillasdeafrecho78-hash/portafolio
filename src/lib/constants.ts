@@ -16,6 +16,9 @@ export const WHATSAPP_MESSAGE =
   "Hola Salvador, vi tu portafolio y me gustaría solicitar una cotización.";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
+/** Activar cuando Web3Forms esté configurado en Vercel. */
+export const CONTACT_FORM_ENABLED = false;
+
 export const NAV_LINKS = [
   { href: "#servicios", label: "Servicios" },
   { href: "#proyectos", label: "Proyectos" },
