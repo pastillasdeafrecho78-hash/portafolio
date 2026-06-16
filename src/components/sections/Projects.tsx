@@ -16,74 +16,65 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-          {PROJECTS.map((project, index) => (
-            <article
-              key={project.name}
-              className={`project-card ${project.featured ? "project-card-featured" : ""}`}
-            >
-              {project.preview && (
-                <div className="project-preview">
-                  <Image
-                    src={project.preview}
-                    alt={`Vista del proyecto ${project.name}`}
-                    fill
-                    sizes="(min-width: 1024px) 540px, 92vw"
-                    className={`project-preview-image ${project.previewFit === "contain" ? "contain" : ""}`}
-                  />
+        <div className="projects-grid">
+          {PROJECTS.map((project, index) => {
+            const primaryLink = project.links?.[0];
+
+            return (
+              <article
+                key={project.name}
+                className={`project-card ${project.featured ? "project-card-featured" : ""}`}
+              >
+                {project.preview && (
+                  <div className="project-preview">
+                    <Image
+                      src={project.preview}
+                      alt={`Vista del proyecto ${project.name}`}
+                      fill
+                      sizes="(min-width: 1024px) 540px, 92vw"
+                      className={`project-preview-image ${project.previewFit === "contain" ? "contain" : ""}`}
+                    />
+                    <div className="project-preview-shade" aria-hidden="true" />
+                  </div>
+                )}
+
+                <div className="project-card-content">
+                  <p className="project-index">Proyecto 0{index + 1}</p>
+                  <h3 className="project-title">{project.name}</h3>
+                  <p className="project-description">{project.description}</p>
+
+                  <div className="project-meta">
+                    <p className="project-meta-label">Rol</p>
+                    <p className="project-meta-copy">{project.role}</p>
+                  </div>
+
+                  <div className="project-tags">
+                    {project.capabilities.map((capability) => (
+                      <span key={capability} className="tag">
+                        {capability}
+                      </span>
+                    ))}
+                  </div>
+
+                  {primaryLink && (
+                    <div className="project-card-actions">
+                      <a
+                        href={primaryLink.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`project-cta ${project.featured ? "project-cta-featured" : ""}`}
+                      >
+                        {primaryLink.label}
+                        <span className="project-cta-icon" aria-hidden="true">
+                          ↗
+                        </span>
+                      </a>
+                    </div>
+                  )}
                 </div>
-              )}
-
-              {project.logo && (
-                <div className="project-brand">
-                  <Image
-                    src={project.logo}
-                    alt={project.name}
-                    width={project.logoWidth ?? 180}
-                    height={project.logoHeight ?? 48}
-                    className="project-brand-logo"
-                  />
-                </div>
-              )}
-
-              <p className="text-sm font-medium text-slate-500">
-                Proyecto 0{index + 1}
-              </p>
-              <h3 className="mt-4 text-2xl font-semibold text-white">{project.name}</h3>
-              <p className="mt-5 text-sm leading-7 text-slate-400">{project.description}</p>
-
-              {project.links && project.links.length > 0 && (
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {project.links.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-link"
-                    >
-                      {link.label}
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                  ))}
-                </div>
-              )}
-
-              <div className="mt-6 border-t border-white/10 pt-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                  Rol
-                </p>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{project.role}</p>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {project.capabilities.map((capability) => (
-                  <span key={capability} className="tag">
-                    {capability}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

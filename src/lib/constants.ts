@@ -97,9 +97,6 @@ export type Project = {
   role: string;
   capabilities: readonly string[];
   links?: readonly ProjectLink[];
-  logo?: string;
-  logoWidth?: number;
-  logoHeight?: number;
   preview?: string;
   previewFit?: "cover" | "contain";
   featured?: boolean;
@@ -128,13 +125,10 @@ export const PROJECTS: readonly Project[] = [
       "Flujo de pedidos",
       "Experiencia cliente",
     ],
-    logo: "/servimos-logo.png",
-    logoWidth: 190,
-    logoHeight: 52,
     preview: "/servimos-reportes.png",
     previewFit: "cover",
     featured: true,
-    links: [{ label: "Plataforma completa", href: "https://servimos.online/login" }],
+    links: [{ label: "Ver plataforma", href: "https://servimos.online/login" }],
   },
 ];
 
