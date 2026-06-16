@@ -23,7 +23,7 @@ Ruta: **`/bonding`** en el portafolio Next.js.
 
 Cuando el video esté renderizado:
 ```bash
-cp video/bonding-demo/out/bonding-demo-vertical.mp4 public/bonding/demo-vertical.mp4
+cp video/bonding-demo/out/bonding-demo.mp4 public/bonding/demo.mp4
 ```
 
 ## Workflow

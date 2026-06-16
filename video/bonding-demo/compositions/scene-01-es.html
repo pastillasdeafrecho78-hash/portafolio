@@ -1,86 +1,87 @@
 <template id="scene-01-es-template">
-  <div data-composition-id="scene-01-es" data-width="1080" data-height="1920" data-duration="7">
+  <div data-composition-id="scene-01-es" data-width="1920" data-height="1080" data-duration="7">
     <div class="scene-content">
       <div class="glow" data-layout-ignore></div>
-      <div class="portrait-wrap">
-        <img class="portrait" src="assets/salvador-barba.png" alt="Salvador Barba García" />
-      </div>
-      <div class="nle-panel">
-        <div class="nle-header">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="nle-title">NLE · Localización ES</span>
+      <div class="left-col">
+        <div class="portrait-wrap">
+          <img class="portrait" src="assets/salvador-barba.png" alt="Salvador Barba García" />
         </div>
-        <div class="timecode">00:00:00:00</div>
-        <div class="tracks">
-          <div class="track"><span>Video</span><div class="clip v"></div></div>
-          <div class="track"><span>Sub ES</span><div class="clip s"></div></div>
-          <div class="track"><span>Audio</span><div class="clip a"></div></div>
-        </div>
-        <div class="wave" data-layout-ignore>
-          <svg viewBox="0 0 400 40" preserveAspectRatio="none"><path d="M0 20 Q20 5 40 20 T80 20 T120 20 T160 20 T200 20 T240 20 T280 20 T320 20 T360 20 T400 20" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        </div>
+        <p class="presenter">Salvador Barba García</p>
       </div>
-      <div class="subs">
-        <p class="sub-line">Hola, soy Salvador Barba García.</p>
-        <p class="sub-line">Versiones localizadas, naturales y listas para publicar.</p>
+      <div class="right-col">
+        <div class="nle-panel">
+          <div class="nle-header">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="nle-title">NLE · Localización ES</span>
+          </div>
+          <div class="timecode">00:00:00:00</div>
+          <div class="tracks">
+            <div class="track"><span>Video</span><div class="clip v"></div></div>
+            <div class="track"><span>Sub ES</span><div class="clip s"></div></div>
+            <div class="track"><span>Audio</span><div class="clip a"></div></div>
+          </div>
+        </div>
+        <div class="subs">
+          <p class="sub-line">Hola, soy Salvador Barba García.</p>
+          <p class="sub-line">Versiones localizadas, naturales y listas para publicar.</p>
+        </div>
+        <h1 class="headline">Localización audiovisual asistida por IA</h1>
+        <p class="subhead">Subtítulos · Traducción · Transcripción · Spotting · Voz IA natural</p>
       </div>
-      <h1 class="headline">Localización audiovisual asistida por IA</h1>
-      <p class="subhead">Subtítulos · Traducción · Transcripción · Spotting · Voz IA natural</p>
     </div>
     <style>
       [data-composition-id="scene-01-es"] .scene-content {
-        width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;
-        gap: 28px; padding: 72px 48px 96px; box-sizing: border-box;
-        background: radial-gradient(ellipse at 50% 20%, #0f1a24 0%, #07080C 55%);
+        width: 100%; height: 100%; display: grid; grid-template-columns: 420px 1fr;
+        gap: 64px; align-items: center; padding: 80px 120px; box-sizing: border-box;
+        background: radial-gradient(ellipse at 30% 50%, #0f1a24 0%, #07080C 60%);
         position: relative; overflow: hidden;
       }
       [data-composition-id="scene-01-es"] .glow {
-        position: absolute; width: 600px; height: 600px; top: -120px; left: 50%;
-        transform: translateX(-50%); background: radial-gradient(circle, rgba(56,189,248,0.18), transparent 70%);
+        position: absolute; width: 700px; height: 700px; top: 50%; left: 18%;
+        transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(56,189,248,0.16), transparent 70%);
         pointer-events: none;
       }
+      [data-composition-id="scene-01-es"] .left-col { display: flex; flex-direction: column; align-items: center; gap: 20px; }
       [data-composition-id="scene-01-es"] .portrait-wrap {
-        width: 280px; height: 280px; border-radius: 50%; overflow: hidden;
-        border: 4px solid rgba(56,189,248,0.5); box-shadow: 0 24px 80px rgba(56,189,248,0.15);
+        width: 320px; height: 320px; border-radius: 50%; overflow: hidden;
+        border: 4px solid rgba(56,189,248,0.5); box-shadow: 0 24px 80px rgba(56,189,248,0.2);
       }
       [data-composition-id="scene-01-es"] .portrait { width: 100%; height: 100%; object-fit: cover; }
+      [data-composition-id="scene-01-es"] .presenter { color: #A1A1AA; font-size: 20px; font-weight: 600; }
+      [data-composition-id="scene-01-es"] .right-col { display: flex; flex-direction: column; gap: 20px; }
       [data-composition-id="scene-01-es"] .nle-panel {
-        width: 100%; background: #111318; border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px;
+        background: #111318; border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px;
       }
       [data-composition-id="scene-01-es"] .nle-header { display: flex; align-items: center; gap: 8px; }
       [data-composition-id="scene-01-es"] .dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
-      [data-composition-id="scene-01-es"] .nle-title { color: #A1A1AA; font-size: 13px; margin-left: 8px; font-family: ui-monospace, monospace; }
-      [data-composition-id="scene-01-es"] .timecode { color: #38BDF8; font-family: ui-monospace, monospace; font-size: 22px; font-weight: 600; }
-      [data-composition-id="scene-01-es"] .track { display: grid; grid-template-columns: 72px 1fr; gap: 12px; align-items: center; }
-      [data-composition-id="scene-01-es"] .track span { color: #737373; font-size: 12px; }
-      [data-composition-id="scene-01-es"] .clip { height: 28px; border-radius: 6px; }
+      [data-composition-id="scene-01-es"] .nle-title { color: #A1A1AA; font-size: 14px; margin-left: 8px; font-family: ui-monospace, monospace; }
+      [data-composition-id="scene-01-es"] .timecode { color: #38BDF8; font-family: ui-monospace, monospace; font-size: 28px; font-weight: 600; }
+      [data-composition-id="scene-01-es"] .track { display: grid; grid-template-columns: 80px 1fr; gap: 12px; align-items: center; }
+      [data-composition-id="scene-01-es"] .track span { color: #737373; font-size: 13px; }
+      [data-composition-id="scene-01-es"] .clip { height: 32px; border-radius: 6px; }
       [data-composition-id="scene-01-es"] .clip.v { background: linear-gradient(90deg, #6366F1, #38BDF8); width: 85%; }
       [data-composition-id="scene-01-es"] .clip.s { background: rgba(56,189,248,0.35); width: 70%; }
       [data-composition-id="scene-01-es"] .clip.a { background: rgba(34,211,238,0.25); width: 90%; }
-      [data-composition-id="scene-01-es"] .wave { color: #38BDF8; height: 40px; opacity: 0.7; }
-      [data-composition-id="scene-01-es"] .subs { width: 100%; display: flex; flex-direction: column; gap: 8px; }
       [data-composition-id="scene-01-es"] .sub-line {
-        background: rgba(0,0,0,0.55); color: #F4F4F5; padding: 10px 16px; border-radius: 8px;
-        font-size: 18px; text-align: center; border: 1px solid rgba(56,189,248,0.2);
+        background: rgba(0,0,0,0.55); color: #F4F4F5; padding: 12px 18px; border-radius: 8px;
+        font-size: 22px; border: 1px solid rgba(56,189,248,0.2);
       }
+      [data-composition-id="scene-01-es"] .subs { display: flex; flex-direction: column; gap: 10px; }
       [data-composition-id="scene-01-es"] .headline {
-        font-size: 36px; font-weight: 800; color: #F4F4F5; text-align: center; line-height: 1.15;
-        letter-spacing: -0.02em;
+        font-size: 52px; font-weight: 800; color: #F4F4F5; line-height: 1.1; letter-spacing: -0.02em;
       }
-      [data-composition-id="scene-01-es"] .subhead {
-        font-size: 14px; color: #A1A1AA; text-align: center; font-family: ui-monospace, monospace;
-      }
+      [data-composition-id="scene-01-es"] .subhead { font-size: 16px; color: #A1A1AA; font-family: ui-monospace, monospace; }
     </style>
     <script>
     (function(){
       const tl = gsap.timeline({ paused: true });
       tl.from(".portrait-wrap", { scale: 0.5, opacity: 0, duration: 0.7, ease: "back.out(1.4)" }, 0);
-      tl.from(".nle-panel", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.2);
-      tl.from(".sub-line", { y: 20, opacity: 0, duration: 0.45, stagger: 0.12, ease: "power2.out" }, 0.5);
+      tl.from(".nle-panel", { x: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.from(".sub-line", { y: 20, opacity: 0, duration: 0.45, stagger: 0.12 }, 0.5);
       tl.from(".headline", { y: 30, opacity: 0, duration: 0.55, ease: "power3.out" }, 0.7);
       tl.from(".subhead", { opacity: 0, duration: 0.4 }, 0.95);
-      tl.to(".scene-content", { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, 6.3);
+      tl.to(".scene-content", { opacity: 0, duration: 0.5, ease: "power2.in" }, 6.3);
       window.__timelines = window.__timelines || {};
       window.__timelines["scene-01-es"] = tl;
     })();

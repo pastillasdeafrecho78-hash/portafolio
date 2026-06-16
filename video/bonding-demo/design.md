@@ -28,8 +28,8 @@
 - **Mono:** ui-monospace (timestamps, código, .srt)
 
 ## Format
-- **Principal:** 1080 × 1920 (9:16) — WhatsApp / LinkedIn DM
-- **Alternativa:** 1920 × 1080 (16:9) — misma timeline, re-render con dimensiones landscape
+- **Principal:** 1920 × 1080 (16:9)
+- **Alternativa móvil:** re-render vertical si se requiere compartir por WhatsApp
 
 ## Duración
 - **Total:** 40.0 s

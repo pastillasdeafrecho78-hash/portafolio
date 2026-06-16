@@ -109,7 +109,7 @@ export function BondingVideoPlayer() {
           if (videoRef.current) setDuration(videoRef.current.duration);
         }}
       >
-        <source src="/bonding/demo-vertical.mp4" type="video/mp4" />
+        <source src="/bonding/demo.mp4" type="video/mp4" />
       </video>
 
       {!isPlaying && (

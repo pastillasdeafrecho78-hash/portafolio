@@ -1,59 +1,61 @@
 <template id="scene-02-en-template">
-  <div data-composition-id="scene-02-en" data-width="1080" data-height="1920" data-duration="6.5">
+  <div data-composition-id="scene-02-en" data-width="1920" data-height="1080" data-duration="6.5">
     <div class="scene-content">
       <div class="network" data-layout-ignore></div>
-      <div class="portrait-wrap"><img class="portrait" src="assets/salvador-barba.png" alt="" /></div>
-      <div class="ui-panel">
-        <div class="ui-row"><span class="label">Transcription</span><div class="bar on"></div></div>
-        <div class="ui-row"><span class="label">Subtitling</span><div class="bar on"></div></div>
-        <div class="ui-row"><span class="label">Sync</span><div class="bar"></div></div>
+      <div class="left-col">
+        <div class="portrait-wrap"><img class="portrait" src="assets/salvador-barba.png" alt="" /></div>
       </div>
-      <div class="subs en">
-        <p class="sub-line">I work with AI-assisted workflows</p>
-        <p class="sub-line">for transcription, subtitling and voice localization.</p>
+      <div class="right-col">
+        <div class="ui-panel">
+          <div class="ui-row"><span class="label">Transcription</span><div class="bar on"></div></div>
+          <div class="ui-row"><span class="label">Subtitling</span><div class="bar on"></div></div>
+          <div class="ui-row"><span class="label">Sync</span><div class="bar on"></div></div>
+        </div>
+        <div class="subs">
+          <p class="sub-line">I work with AI-assisted workflows</p>
+          <p class="sub-line">for transcription, subtitling and voice localization.</p>
+        </div>
+        <h1 class="headline">Subtitles • Translation • Voice localization</h1>
       </div>
-      <h1 class="headline">Subtitles • Translation • Voice localization</h1>
     </div>
     <style>
       [data-composition-id="scene-02-en"] .scene-content {
-        width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;
-        gap: 28px; padding: 72px 48px 96px; box-sizing: border-box;
-        background: radial-gradient(ellipse at 50% 15%, #12152a 0%, #07080C 60%);
+        width: 100%; height: 100%; display: grid; grid-template-columns: 380px 1fr;
+        gap: 72px; align-items: center; padding: 80px 120px; box-sizing: border-box;
+        background: radial-gradient(ellipse at 25% 50%, #12152a 0%, #07080C 65%);
         position: relative; overflow: hidden;
       }
       [data-composition-id="scene-02-en"] .network {
-        position: absolute; inset: 0; opacity: 0.12;
-        background-image: radial-gradient(circle at 20% 30%, #6366F1 1px, transparent 1px),
-          radial-gradient(circle at 80% 70%, #6366F1 1px, transparent 1px);
+        position: absolute; inset: 0; opacity: 0.1;
+        background-image: radial-gradient(circle at 20% 30%, #6366F1 1px, transparent 1px);
         background-size: 48px 48px;
       }
       [data-composition-id="scene-02-en"] .portrait-wrap {
-        width: 240px; height: 240px; border-radius: 50%; overflow: hidden;
-        border: 3px solid rgba(99,102,241,0.5); box-shadow: 0 0 40px rgba(99,102,241,0.25);
+        width: 300px; height: 300px; border-radius: 50%; overflow: hidden;
+        border: 3px solid rgba(99,102,241,0.55); box-shadow: 0 0 60px rgba(99,102,241,0.25);
       }
       [data-composition-id="scene-02-en"] .portrait { width: 100%; height: 100%; object-fit: cover; }
-      [data-composition-id="scene-02-en"] .ui-panel { width: 100%; display: flex; flex-direction: column; gap: 12px; }
-      [data-composition-id="scene-02-en"] .ui-row { display: grid; grid-template-columns: 120px 1fr; gap: 12px; align-items: center; }
-      [data-composition-id="scene-02-en"] .label { color: #A1A1AA; font-size: 14px; font-weight: 600; }
-      [data-composition-id="scene-02-en"] .bar { height: 8px; border-radius: 4px; background: #1A1D26; }
+      [data-composition-id="scene-02-en"] .right-col { display: flex; flex-direction: column; gap: 24px; }
+      [data-composition-id="scene-02-en"] .ui-panel { display: flex; flex-direction: column; gap: 14px; }
+      [data-composition-id="scene-02-en"] .ui-row { display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: center; }
+      [data-composition-id="scene-02-en"] .label { color: #A1A1AA; font-size: 18px; font-weight: 600; }
+      [data-composition-id="scene-02-en"] .bar { height: 10px; border-radius: 5px; background: #1A1D26; }
       [data-composition-id="scene-02-en"] .bar.on { background: linear-gradient(90deg, #6366F1, #818CF8); }
       [data-composition-id="scene-02-en"] .sub-line {
-        background: rgba(0,0,0,0.5); color: #F4F4F5; padding: 10px 16px; border-radius: 8px;
-        font-size: 17px; text-align: center; border: 1px solid rgba(99,102,241,0.25);
+        background: rgba(0,0,0,0.5); color: #F4F4F5; padding: 12px 18px; border-radius: 8px;
+        font-size: 22px; border: 1px solid rgba(99,102,241,0.25);
       }
-      [data-composition-id="scene-02-en"] .subs { width: 100%; display: flex; flex-direction: column; gap: 8px; }
-      [data-composition-id="scene-02-en"] .headline {
-        font-size: 32px; font-weight: 800; color: #F4F4F5; text-align: center; line-height: 1.2;
-      }
+      [data-composition-id="scene-02-en"] .subs { display: flex; flex-direction: column; gap: 10px; }
+      [data-composition-id="scene-02-en"] .headline { font-size: 48px; font-weight: 800; color: #F4F4F5; line-height: 1.15; }
     </style>
     <script>
     (function(){
       const tl = gsap.timeline({ paused: true });
-      tl.from(".portrait-wrap", { x: -40, opacity: 0, duration: 0.55, ease: "power3.out" }, 0);
-      tl.from(".ui-row", { x: 30, opacity: 0, duration: 0.4, stagger: 0.1, ease: "power2.out" }, 0.15);
+      tl.from(".portrait-wrap", { x: -50, opacity: 0, duration: 0.55, ease: "power3.out" }, 0);
+      tl.from(".ui-row", { x: 30, opacity: 0, duration: 0.4, stagger: 0.1 }, 0.15);
       tl.from(".sub-line", { opacity: 0, y: 16, duration: 0.4, stagger: 0.1 }, 0.45);
-      tl.from(".headline", { y: 24, opacity: 0, duration: 0.5, ease: "power3.out" }, 0.65);
-      tl.to(".scene-content", { opacity: 0, duration: 0.45, ease: "power2.in" }, 5.9);
+      tl.from(".headline", { y: 24, opacity: 0, duration: 0.5 }, 0.65);
+      tl.to(".scene-content", { opacity: 0, duration: 0.45 }, 5.9);
       window.__timelines = window.__timelines || {};
       window.__timelines["scene-02-en"] = tl;
     })();

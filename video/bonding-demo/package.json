@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "npx --yes hyperframes preview",
     "check": "npx --yes hyperframes lint && npx --yes hyperframes inspect",
-    "render": "npx --yes hyperframes render --output out/bonding-demo-vertical.mp4",
-    "render:landscape": "npx --yes hyperframes render --config index-landscape.html --output out/bonding-demo-horizontal.mp4",
-    "render:webm": "npx --yes hyperframes render --format webm --output out/bonding-demo-vertical.webm"
+    "render": "npx --yes hyperframes render --output out/bonding-demo.mp4",
+    "render:webm": "npx --yes hyperframes render --format webm --output out/bonding-demo.webm"
   }
 }
