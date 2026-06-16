@@ -60,11 +60,6 @@ function InsightsVisualLarge() {
               <span />
               <span className="pill" />
             </div>
-            <div className="insights-row">
-              <span />
-              <span />
-              <span className="pill muted" />
-            </div>
           </div>
         </div>
       </div>
@@ -75,24 +70,25 @@ function InsightsVisualLarge() {
 export function PlatformsInsights() {
   return (
     <section id="plataformas" className="section section-muted platforms-section">
-      <div className="container-page">
-        <div className="platforms-grid">
-          <div>
-            <p className="eyebrow">{PLATFORMS_INSIGHTS.eyebrow}</p>
-            <h2 className="section-title">{PLATFORMS_INSIGHTS.title}</h2>
-            <p className="section-copy mt-6">{PLATFORMS_INSIGHTS.description}</p>
+      <div className="container-page platforms-layout">
+        <div className="platforms-header">
+          <p className="eyebrow">{PLATFORMS_INSIGHTS.eyebrow}</p>
+          <h2 className="section-title max-w-4xl">{PLATFORMS_INSIGHTS.title}</h2>
+          <p className="section-copy mt-5 max-w-3xl">{PLATFORMS_INSIGHTS.description}</p>
+        </div>
 
-            <div className="mt-6 platforms-points-row">
-              {PLATFORMS_INSIGHTS.points.map((point) => (
-                <div key={point.title} className="platforms-point">
-                  <h3 className="text-sm font-semibold text-white">{point.title}</h3>
-                  <p className="mt-1.5 text-xs leading-5 text-slate-400">{point.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
+        <div className="platforms-visual-wrap">
           <InsightsVisualLarge />
+        </div>
+
+        <div className="platforms-cards">
+          {PLATFORMS_INSIGHTS.points.map((point) => (
+            <article key={point.title} className="platforms-card">
+              <span className="platforms-card-dot" aria-hidden="true" />
+              <h3 className="text-base font-semibold text-white">{point.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-400">{point.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
