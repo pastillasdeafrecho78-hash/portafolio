@@ -97,43 +97,77 @@ export type Project = {
   role: string;
   capabilities: readonly string[];
   links?: readonly ProjectLink[];
-  visual?: "insights";
+  logo?: string;
+  logoWidth?: number;
+  logoHeight?: number;
+  preview?: string;
+  featured?: boolean;
 };
 
 export const PROJECTS: readonly Project[] = [
   {
-    name: "Sitio corporativo para agencia",
+    name: "Landing de conversión",
     description:
-      "Diseño y desarrollo de un sitio corporativo para presentar servicios, generar confianza y recibir solicitudes de contacto.",
-    role: "Estructura de landing, jerarquía visual, responsive, formulario de contacto e integración con canales de atención.",
-    capabilities: ["Página corporativa", "Formulario", "WhatsApp", "Mobile-first"],
+      "Landing pages y sitios corporativos pensados para presentar servicios, generar confianza y convertir visitas en contacto real.",
+    role: "Estructura visual, copy de conversión, responsive, formularios y llamadas a la acción conectadas a WhatsApp o correo.",
+    capabilities: ["Landing page", "Formulario", "WhatsApp", "Mobile-first", "SEO básico"],
+    preview: "/images/project-agency.svg",
   },
   {
     name: "ServimOS",
     description:
-      "Participación en el desarrollo de una plataforma web para restaurantes: pedidos digitales, operación en cocina, menús y flujos internos de atención.",
-    role: "Frontend, arquitectura de interfaces, flujos operativos, paneles administrativos y experiencia móvil para cliente.",
+      "Plataforma completa para restaurantes en producción: landing pública, acceso operativo, pedidos digitales, cocina, menús y flujos internos de atención.",
+    role: "Frontend, arquitectura de interfaces, paneles administrativos, experiencia móvil para cliente y operación diaria del negocio.",
     capabilities: [
+      "Plataforma en producción",
       "Dashboard operativo",
       "Menús digitales",
       "Flujo de pedidos",
-      "KDS / cocina",
       "Experiencia cliente",
     ],
+    logo: "/servimos-logo.png",
+    logoWidth: 190,
+    logoHeight: 52,
+    preview: "/servimos-reportes.png",
+    featured: true,
     links: [
-      { label: "Landing", href: "https://servimos.online/" },
-      { label: "Login", href: "https://servimos.online/login" },
+      { label: "Ver landing", href: "https://servimos.online/" },
+      { label: "Plataforma completa", href: "https://servimos.online/login" },
     ],
   },
-  {
-    name: "Herramientas internas e insights",
-    description:
-      "Interfaces para administración operativa: tablas, filtros, estados y visualización de métricas para equipos que necesitan orden y visibilidad del negocio.",
-    role: "React, paneles administrativos, vistas de datos y componentes reutilizables para operación interna.",
-    capabilities: ["Paneles admin", "Reportes", "Tablas y filtros", "React", "Operación interna"],
-    visual: "insights",
-  },
 ];
+
+export const PLATFORMS_INSIGHTS = {
+  eyebrow: "Plataformas e insights",
+  title: "También construimos herramientas internas para operar y entender el negocio.",
+  description:
+    "Más allá de la landing, diseño y desarrollo interfaces para equipos que necesitan ordenar operación, administrar información y tomar decisiones con datos claros.",
+  points: [
+    {
+      title: "Paneles administrativos",
+      description: "Vistas para gestionar pedidos, usuarios, estados y procesos internos con interfaces claras.",
+    },
+    {
+      title: "Reportes y métricas",
+      description: "Dashboards para visualizar rendimiento, tendencias y señales útiles del negocio.",
+    },
+    {
+      title: "Tablas, filtros y flujos",
+      description: "Componentes reutilizables para consultar, filtrar y actuar sobre información operativa.",
+    },
+    {
+      title: "Escalabilidad con React",
+      description: "Bases sólidas para crecer de una página simple a una plataforma web completa.",
+    },
+  ],
+  tags: [
+    "Paneles admin",
+    "BI operativo",
+    "Tablas y filtros",
+    "React / Next.js",
+    "Operación interna",
+  ],
+} as const;
 
 export const PROCESS_STEPS = [
   {
@@ -160,14 +194,4 @@ export const PROCESS_STEPS = [
     description:
       "Ajustamos detalles finales y dejo el sitio listo para publicarse o conectarse a dominio.",
   },
-] as const;
-
-export const TRUST_POINTS = [
-  "Sitios optimizados para celular",
-  "Contacto directo por WhatsApp",
-  "Formularios funcionales",
-  "Diseño claro y profesional",
-  "Estructura pensada para conversión",
-  "Código ordenado y escalable",
-  "Despliegue en Vercel o plataforma equivalente",
 ] as const;

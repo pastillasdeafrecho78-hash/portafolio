@@ -1,58 +1,5 @@
+import Image from "next/image";
 import { PROJECTS } from "@/lib/constants";
-
-function InsightsVisual() {
-  return (
-    <div className="project-insights-visual" aria-hidden="true">
-      <div className="insights-topbar">
-        <span />
-        <span />
-        <span />
-        <p>panel / insights</p>
-      </div>
-      <div className="insights-body">
-        <div className="insights-metrics">
-          <div className="insights-metric">
-            <span className="insights-metric-label" />
-            <span className="insights-metric-value" />
-          </div>
-          <div className="insights-metric">
-            <span className="insights-metric-label" />
-            <span className="insights-metric-value accent" />
-          </div>
-          <div className="insights-metric">
-            <span className="insights-metric-label" />
-            <span className="insights-metric-value" />
-          </div>
-        </div>
-        <div className="insights-chart">
-          <span style={{ height: "42%" }} />
-          <span style={{ height: "68%" }} />
-          <span style={{ height: "55%" }} />
-          <span style={{ height: "82%" }} />
-          <span style={{ height: "61%" }} />
-          <span style={{ height: "74%" }} />
-        </div>
-        <div className="insights-table">
-          <div className="insights-row header">
-            <span />
-            <span />
-            <span />
-          </div>
-          <div className="insights-row">
-            <span />
-            <span />
-            <span className="pill" />
-          </div>
-          <div className="insights-row">
-            <span />
-            <span />
-            <span className="pill muted" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export function Projects() {
   return (
@@ -64,15 +11,40 @@ export function Projects() {
             Trabajo aplicado a sitios, plataformas y flujos reales.
           </h2>
           <p className="section-copy">
-            Una muestra de participaciones profesionales en desarrollo web, estructura visual e
-            interfaces para operación digital.
+            Proyectos tangibles donde se ve la landing, la plataforma y la operación digital
+            funcionando en producción.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
           {PROJECTS.map((project, index) => (
-            <article key={project.name} className="project-card">
-              {project.visual === "insights" && <InsightsVisual />}
+            <article
+              key={project.name}
+              className={`project-card ${project.featured ? "project-card-featured" : ""}`}
+            >
+              {project.preview && (
+                <div className="project-preview">
+                  <Image
+                    src={project.preview}
+                    alt={`Vista del proyecto ${project.name}`}
+                    fill
+                    sizes="(min-width: 1024px) 540px, 92vw"
+                    className={`project-preview-image ${project.featured ? "" : "contain"}`}
+                  />
+                </div>
+              )}
+
+              {project.logo && (
+                <div className="project-brand">
+                  <Image
+                    src={project.logo}
+                    alt={project.name}
+                    width={project.logoWidth ?? 180}
+                    height={project.logoHeight ?? 48}
+                    className="project-brand-logo"
+                  />
+                </div>
+              )}
 
               <p className="text-sm font-medium text-slate-500">
                 Proyecto 0{index + 1}

@@ -4,8 +4,8 @@ import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { WorkScope } from "@/components/sections/WorkScope";
 import { Projects } from "@/components/sections/Projects";
+import { PlatformsInsights } from "@/components/sections/PlatformsInsights";
 import { Process } from "@/components/sections/Process";
-import { Benefits } from "@/components/sections/Benefits";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
@@ -17,8 +17,8 @@ export default function Home() {
         <Services />
         <WorkScope />
         <Projects />
+        <PlatformsInsights />
         <Process />
-        <Benefits />
         <Contact />
       </main>
       <Footer />

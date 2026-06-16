@@ -16,7 +16,7 @@ export function WorkScope() {
               tenga caminos claros para que el visitante contacte, cotice o compre.
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-3">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {CAPABILITIES.map((capability) => (
                 <div key={capability} className="capability-pill">
                   {capability}
@@ -25,8 +25,8 @@ export function WorkScope() {
             </div>
           </div>
 
-          <div className="case-showcase">
-            <div className="case-browser case-browser-large">
+          <div className="case-showcase-grid">
+            <div className="case-browser case-browser-panel">
               <div className="case-topbar">
                 <div className="panel-dot-row">
                   <span />
@@ -35,40 +35,30 @@ export function WorkScope() {
                 </div>
                 <p>dashboard / reportes</p>
               </div>
-              <div className="case-image-wrap">
+              <div className="case-image-wrap case-image-wrap-panel">
                 <Image
                   src="/servimos-reportes.png"
                   alt="Dashboard de reportes para operación de restaurante"
                   fill
-                  sizes="(min-width: 1024px) 650px, 92vw"
+                  sizes="(min-width: 1024px) 520px, 46vw"
                   className="case-image"
                 />
               </div>
             </div>
 
-            <div className="case-browser case-browser-small case-comandas">
+            <div className="case-phone case-phone-panel">
               <div className="case-topbar compact">
-                <p>comandas</p>
+                <p>menú móvil</p>
               </div>
-              <div className="case-image-wrap small">
+              <div className="case-image-wrap case-image-wrap-panel phone">
                 <Image
-                  src="/servimos-comandas.png"
-                  alt="Interfaz de comandas y pedidos"
+                  src="/pedimos-menu-mobile.png"
+                  alt="Menú móvil para experiencia de cliente"
                   fill
-                  sizes="320px"
-                  className="case-image"
+                  sizes="(min-width: 1024px) 320px, 46vw"
+                  className="case-image contain"
                 />
               </div>
-            </div>
-
-            <div className="case-phone">
-              <Image
-                src="/pedimos-menu-mobile.png"
-                alt="Menú móvil para experiencia de cliente"
-                fill
-                sizes="210px"
-                className="case-image contain"
-              />
             </div>
           </div>
         </div>
