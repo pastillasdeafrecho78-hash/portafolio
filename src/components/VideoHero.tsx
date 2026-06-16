@@ -34,14 +34,41 @@ function SoundIcon() {
   );
 }
 
+function formatTime(seconds: number) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
+
+async function playWithSound(video: HTMLVideoElement) {
+  video.muted = false;
+  video.volume = 1;
+  try {
+    await video.play();
+    return { playing: true, muted: false };
+  } catch {
+    video.muted = true;
+    try {
+      await video.play();
+      return { playing: true, muted: true };
+    } catch {
+      return { playing: false, muted: true };
+    }
+  }
+}
+
 export function VideoHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const userPausedRef = useRef(false);
+  const seekingRef = useRef(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [inView, setInView] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -69,18 +96,17 @@ export function VideoHero() {
 
     if (inView) {
       if (!userPausedRef.current) {
-        video.muted = true;
-        setIsMuted(true);
-        void video.play().then(
-          () => setIsPlaying(true),
-          () => setIsPlaying(false),
-        );
+        void playWithSound(video).then(({ playing, muted }) => {
+          setIsPlaying(playing);
+          setIsMuted(muted);
+        });
       }
     } else {
       video.pause();
       video.currentTime = 0;
       userPausedRef.current = false;
       setIsPlaying(false);
+      setCurrentTime(0);
     }
   }, [inView, reduceMotion]);
 
@@ -90,11 +116,26 @@ export function VideoHero() {
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
+    const onTimeUpdate = () => {
+      if (!seekingRef.current) setCurrentTime(video.currentTime);
+    };
+    const onLoadedMetadata = () => setDuration(video.duration);
+    const onDurationChange = () => setDuration(video.duration);
+
     video.addEventListener("play", onPlay);
     video.addEventListener("pause", onPause);
+    video.addEventListener("timeupdate", onTimeUpdate);
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    video.addEventListener("durationchange", onDurationChange);
+
+    if (video.readyState >= 1) setDuration(video.duration);
+
     return () => {
       video.removeEventListener("play", onPlay);
       video.removeEventListener("pause", onPause);
+      video.removeEventListener("timeupdate", onTimeUpdate);
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      video.removeEventListener("durationchange", onDurationChange);
     };
   }, []);
 
@@ -104,7 +145,10 @@ export function VideoHero() {
 
     if (video.paused) {
       userPausedRef.current = false;
-      void video.play();
+      void playWithSound(video).then(({ playing, muted }) => {
+        setIsPlaying(playing);
+        setIsMuted(muted);
+      });
     } else {
       userPausedRef.current = true;
       video.pause();
@@ -115,14 +159,25 @@ export function VideoHero() {
     const video = videoRef.current;
     if (!video) return;
 
-    const nextMuted = !video.muted;
-    video.muted = nextMuted;
-    setIsMuted(nextMuted);
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
 
-    if (video.paused) {
-      void video.play();
+    if (video.paused && !userPausedRef.current) {
+      void video.play().then(
+        () => setIsPlaying(true),
+        () => setIsPlaying(false),
+      );
     }
   }, []);
+
+  const handleSeek = useCallback((value: number) => {
+    const video = videoRef.current;
+    if (!video || !Number.isFinite(value)) return;
+    video.currentTime = value;
+    setCurrentTime(value);
+  }, []);
+
+  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   if (reduceMotion) {
     return (
@@ -137,37 +192,71 @@ export function VideoHero() {
   }
 
   return (
-    <div ref={containerRef} className="video-showcase relative">
+    <div ref={containerRef} className="video-showcase relative" tabIndex={0}>
       <video
         ref={videoRef}
-        muted
         loop
         playsInline
         preload="metadata"
         poster="/video/hero-poster.svg"
         className="h-full w-full object-cover"
+        disablePictureInPicture
+        disableRemotePlayback
       >
         <source src="/video/hero-demo.webm" type="video/webm" />
         <source src="/video/hero-demo.mp4" type="video/mp4" />
       </video>
 
       <div className="video-controls">
-        <button
-          type="button"
-          onClick={togglePlay}
-          className="video-control-btn"
-          aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
-        >
-          {isPlaying ? <PauseIcon /> : <PlayIcon />}
-        </button>
-        <button
-          type="button"
-          onClick={toggleMute}
-          className="video-control-btn"
-          aria-label={isMuted ? "Activar audio" : "Silenciar video"}
-        >
-          {isMuted ? <MuteIcon /> : <SoundIcon />}
-        </button>
+        <div className="video-controls-bar">
+          <button
+            type="button"
+            onClick={togglePlay}
+            className="video-control-btn"
+            aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
+          >
+            {isPlaying ? <PauseIcon /> : <PlayIcon />}
+          </button>
+
+          <div className="video-seek-wrap">
+            <input
+              type="range"
+              min={0}
+              max={duration || 0}
+              step={0.1}
+              value={currentTime}
+              onChange={(e) => handleSeek(Number(e.target.value))}
+              onMouseDown={() => {
+                seekingRef.current = true;
+              }}
+              onMouseUp={() => {
+                seekingRef.current = false;
+              }}
+              onTouchStart={() => {
+                seekingRef.current = true;
+              }}
+              onTouchEnd={() => {
+                seekingRef.current = false;
+              }}
+              className="video-seek"
+              aria-label="Posición del video"
+              style={{ "--video-progress": `${progress}%` } as React.CSSProperties}
+            />
+          </div>
+
+          <span className="video-time">
+            {formatTime(currentTime)} / {formatTime(duration)}
+          </span>
+
+          <button
+            type="button"
+            onClick={toggleMute}
+            className="video-control-btn"
+            aria-label={isMuted ? "Activar audio" : "Silenciar video"}
+          >
+            {isMuted ? <MuteIcon /> : <SoundIcon />}
+          </button>
+        </div>
       </div>
     </div>
   );
