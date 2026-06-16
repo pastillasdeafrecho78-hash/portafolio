@@ -26,12 +26,21 @@ export function Contact() {
           email: data.get("email"),
           company: data.get("company"),
           message: data.get("message"),
-          website: data.get("website"),
+          website: data.get("website") ?? "",
         }),
       });
 
+      const raw = await res.text();
+      let body: { error?: string } = {};
+      if (raw) {
+        try {
+          body = JSON.parse(raw) as { error?: string };
+        } catch {
+          body = { error: "Respuesta inválida del servidor." };
+        }
+      }
+
       if (!res.ok) {
-        const body = await res.json();
         throw new Error(body.error ?? "No se pudo enviar el mensaje");
       }
 
@@ -155,6 +164,7 @@ export function Contact() {
                   className="form-field resize-none"
                   placeholder="Cuéntalo en pocas líneas: página corporativa, landing, formulario, dashboard, integración con WhatsApp..."
                   required
+                  minLength={5}
                 />
               </div>
               <input
