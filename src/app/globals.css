@@ -1330,3 +1330,56 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* —— Bonding: una pantalla, solo video (/bonding) —— */
+.bonding-screen {
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-background);
+}
+
+.bonding-screen-header {
+  flex-shrink: 0;
+  padding: 1.25rem 1rem 0.5rem;
+}
+
+.bonding-screen-logo {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.bonding-screen-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem 1.25rem;
+}
+
+.bonding-video-stage {
+  width: 100%;
+  max-width: min(100%, 22rem);
+  height: 100%;
+  max-height: calc(100dvh - 5.5rem);
+  aspect-ratio: 9 / 16;
+  margin-inline: auto;
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  background: #0c0e12;
+  overflow: hidden;
+}
+
+.bonding-video-stage video {
+  object-fit: contain;
+  background: #07080c;
+}
+
+@media (min-width: 768px) {
+  .bonding-video-stage {
+    max-width: 24rem;
+  }
+}
+

@@ -1,0 +1,55 @@
+<template id="scene-05-it-template">
+  <div data-composition-id="scene-05-it" data-width="1080" data-height="1920" data-duration="6">
+    <div class="scene-content">
+      <div class="warm-glow" data-layout-ignore></div>
+      <div class="portrait-wrap"><img class="portrait" src="assets/salvador-barba.png" alt="" /></div>
+      <div class="clapper" data-layout-ignore>▶ IT</div>
+      <div class="subs">
+        <p class="sub-line">Localizzazione audiovisiva in italiano</p>
+        <p class="sub-line">Ritmo, intenzione e naturalezza.</p>
+      </div>
+      <h1 class="headline">Italiano • Localizzazione • Voce naturale</h1>
+    </div>
+    <style>
+      [data-composition-id="scene-05-it"] .scene-content {
+        width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;
+        gap: 28px; padding: 72px 48px 96px; box-sizing: border-box;
+        background: radial-gradient(ellipse at 50% 80%, #1a1008 0%, #07080C 55%);
+        position: relative; overflow: hidden;
+      }
+      [data-composition-id="scene-05-it"] .warm-glow {
+        position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%);
+        width: 500px; height: 300px; background: radial-gradient(circle, rgba(234,88,12,0.2), transparent 70%);
+      }
+      [data-composition-id="scene-05-it"] .portrait-wrap {
+        width: 220px; height: 220px; border-radius: 50%; overflow: hidden;
+        border: 3px solid rgba(234,88,12,0.45);
+      }
+      [data-composition-id="scene-05-it"] .portrait { width: 100%; height: 100%; object-fit: cover; }
+      [data-composition-id="scene-05-it"] .clapper {
+        color: #EA580C; font-size: 14px; font-weight: 700; letter-spacing: 0.15em;
+        padding: 8px 16px; border: 2px solid #EA580C; border-radius: 4px;
+      }
+      [data-composition-id="scene-05-it"] .subs { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+      [data-composition-id="scene-05-it"] .sub-line {
+        background: rgba(234,88,12,0.12); color: #F4F4F5; padding: 10px 16px;
+        border-radius: 8px; font-size: 17px; text-align: center;
+      }
+      [data-composition-id="scene-05-it"] .headline {
+        font-size: 30px; font-weight: 800; color: #F4F4F5; text-align: center; line-height: 1.2;
+      }
+    </style>
+    <script>
+    (function(){
+      const tl = gsap.timeline({ paused: true });
+      tl.from(".portrait-wrap", { x: 50, opacity: 0, duration: 0.55, ease: "power3.out" }, 0);
+      tl.from(".clapper", { scale: 0, opacity: 0, duration: 0.4, ease: "back.out(2)" }, 0.2);
+      tl.from(".sub-line", { x: 30, opacity: 0, duration: 0.4, stagger: 0.1 }, 0.45);
+      tl.from(".headline", { y: 24, opacity: 0, duration: 0.5 }, 0.7);
+      tl.to(".scene-content", { opacity: 0, duration: 0.4 }, 5.4);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["scene-05-it"] = tl;
+    })();
+    </script>
+  </div>
+</template>

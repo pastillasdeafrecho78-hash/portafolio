@@ -1,0 +1,8 @@
+1
+00:00:19,600 --> 00:00:22,800
+Je peux adapter des vidéos en français
+avec une voix naturelle,
+
+2
+00:00:22,900 --> 00:00:25,400
+des sous-titres précis et une synchronisation claire.

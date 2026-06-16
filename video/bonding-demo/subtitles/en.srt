@@ -1,0 +1,8 @@
+1
+00:00:07,100 --> 00:00:10,500
+I work with AI-assisted workflows for
+transcription, subtitling, translation,
+
+2
+00:00:10,600 --> 00:00:13,400
+synchronization and voice localization.

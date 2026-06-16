@@ -1,0 +1,4 @@
+1
+00:00:13,600 --> 00:00:19,400
+Puc adaptar contingut audiovisual al català
+amb subtítols, veu i sincronització.

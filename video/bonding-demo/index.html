@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Bonding Demo — Salvador Barba García</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0; width: 1080px; height: 1920px;
+        overflow: hidden; background: #07080C;
+        font-family: "Inter", sans-serif;
+      }
+      .scene { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="40.5" data-width="1080" data-height="1920">
+
+      <div class="scene" data-composition-id="scene-01-es" data-composition-src="compositions/scene-01-es.html" data-start="0" data-duration="7" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div class="scene" data-composition-id="scene-02-en" data-composition-src="compositions/scene-02-en.html" data-start="7" data-duration="6.5" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div class="scene" data-composition-id="scene-03-ca" data-composition-src="compositions/scene-03-ca.html" data-start="13.5" data-duration="6" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div class="scene" data-composition-id="scene-04-fr" data-composition-src="compositions/scene-04-fr.html" data-start="19.5" data-duration="6" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div class="scene" data-composition-id="scene-05-it" data-composition-src="compositions/scene-05-it.html" data-start="25.5" data-duration="6" data-track-index="1" data-width="1080" data-height="1920"></div>
+      <div class="scene" data-composition-id="scene-06-outro" data-composition-src="compositions/scene-06-outro.html" data-start="31.5" data-duration="8.5" data-track-index="1" data-width="1080" data-height="1920"></div>
+
+      <!-- Generar con ElevenLabs → concatenar en audio/vo-full.wav -->
+      <audio
+        id="narration"
+        data-start="0"
+        data-duration="40.5"
+        data-track-index="3"
+        src="audio/vo-full.wav"
+        preload="auto"
+      ></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines.main = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

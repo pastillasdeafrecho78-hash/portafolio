@@ -1,0 +1,76 @@
+<template id="scene-06-outro-template">
+  <div data-composition-id="scene-06-outro" data-width="1080" data-height="1920" data-duration="8.5">
+    <div class="scene-content">
+      <div class="layers" data-layout-allow-overflow>
+        <div class="lang-col"><span>ES</span><p>Localización</p></div>
+        <div class="lang-col"><span>EN</span><p>Localization</p></div>
+        <div class="lang-col"><span>CA</span><p>Adaptació</p></div>
+        <div class="lang-col"><span>FR</span><p>Localisation</p></div>
+        <div class="lang-col"><span>IT</span><p>Localizzazione</p></div>
+      </div>
+      <div class="code-snippet" data-layout-ignore>
+        <code>1<br>00:00:01,000 --&gt; 00:00:04,000<br>Subtítulo localizado</code>
+      </div>
+      <h1 class="headline">Una idea. Cinco idiomas. Varias voces.</h1>
+      <p class="headline-sub">Una entrega lista para publicar.</p>
+      <div class="final-card">
+        <img class="avatar" src="assets/logo-salvador-barba.png" alt="" />
+        <p class="name">Salvador Barba García</p>
+        <p class="role">Localización audiovisual multilingüe asistida por IA</p>
+        <p class="services">Subtítulos · Traducción · Transcripción · Spotting · Voz IA natural</p>
+      </div>
+    </div>
+    <style>
+      [data-composition-id="scene-06-outro"] .scene-content {
+        width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;
+        justify-content: center; gap: 24px; padding: 64px 40px 80px; box-sizing: border-box;
+        background: radial-gradient(ellipse at 50% 40%, #0c1820 0%, #07080C 65%);
+        position: relative; overflow: hidden;
+      }
+      [data-composition-id="scene-06-outro"] .layers {
+        display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%;
+      }
+      [data-composition-id="scene-06-outro"] .lang-col {
+        background: #111318; border: 1px solid rgba(34,211,238,0.2); border-radius: 8px;
+        padding: 12px 6px; text-align: center;
+      }
+      [data-composition-id="scene-06-outro"] .lang-col span { color: #22D3EE; font-weight: 800; font-size: 14px; }
+      [data-composition-id="scene-06-outro"] .lang-col p { color: #737373; font-size: 10px; margin-top: 4px; }
+      [data-composition-id="scene-06-outro"] .code-snippet {
+        font-family: ui-monospace, monospace; font-size: 11px; color: #22D3EE;
+        background: rgba(0,0,0,0.4); padding: 12px 16px; border-radius: 8px;
+        border: 1px solid rgba(34,211,238,0.15); line-height: 1.5;
+      }
+      [data-composition-id="scene-06-outro"] .headline {
+        font-size: 30px; font-weight: 800; color: #F4F4F5; text-align: center; line-height: 1.2;
+      }
+      [data-composition-id="scene-06-outro"] .headline-sub {
+        font-size: 22px; font-weight: 600; color: #22D3EE; text-align: center;
+      }
+      [data-composition-id="scene-06-outro"] .final-card {
+        width: 100%; text-align: center; padding: 28px 20px;
+        background: rgba(17,19,24,0.9); border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px; display: flex; flex-direction: column; align-items: center; gap: 10px;
+      }
+      [data-composition-id="scene-06-outro"] .avatar { width: 72px; height: 72px; border-radius: 16px; object-fit: cover; }
+      [data-composition-id="scene-06-outro"] .name { font-size: 24px; font-weight: 800; color: #F4F4F5; }
+      [data-composition-id="scene-06-outro"] .role { font-size: 14px; color: #A1A1AA; }
+      [data-composition-id="scene-06-outro"] .services {
+        font-size: 11px; color: #737373; font-family: ui-monospace, monospace; margin-top: 4px;
+      }
+    </style>
+    <script>
+    (function(){
+      const tl = gsap.timeline({ paused: true });
+      tl.from(".lang-col", { y: 30, opacity: 0, duration: 0.4, stagger: 0.08, ease: "power2.out" }, 0);
+      tl.from(".code-snippet", { opacity: 0, scale: 0.9, duration: 0.4 }, 0.4);
+      tl.from(".headline", { y: 20, opacity: 0, duration: 0.5 }, 0.7);
+      tl.from(".headline-sub", { opacity: 0, duration: 0.4 }, 1.1);
+      tl.from(".final-card", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 1.8);
+      tl.to(".final-card", { scale: 1.02, duration: 4, ease: "none" }, 2.5);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["scene-06-outro"] = tl;
+    })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,28 @@
+1
+00:00:00,300 --> 00:00:03,200
+Hola, soy Salvador Barba García.
+
+2
+00:00:07,100 --> 00:00:13,400
+I work with AI-assisted workflows for transcription,
+subtitling, translation, synchronization
+
+3
+00:00:13,600 --> 00:00:19,400
+Puc adaptar contingut audiovisual al català
+amb subtítols, veu i sincronització.
+
+4
+00:00:19,600 --> 00:00:25,400
+Je peux adapter des vidéos en français
+avec une voix naturelle et des sous-titres précis.
+
+5
+00:00:25,600 --> 00:00:31,400
+Posso localizzare contenuti audiovisivi in italiano,
+mantenendo ritmo e naturalezza.
+
+6
+00:00:31,800 --> 00:00:38,500
+Puedo preparar una muestra gratuita de hasta 30 segundos
+para demostrar el flujo completo de localización audiovisual.

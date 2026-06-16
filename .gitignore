@@ -19,6 +19,7 @@
 # production
 /build
 /video/out
+/video/bonding-demo/out
 
 # misc
 .DS_Store

@@ -1,0 +1,6 @@
+file '01-es-intro.mp3'
+file '02-en.mp3'
+file '03-ca.mp3'
+file '04-fr.mp3'
+file '05-it.mp3'
+file '06-es-cierre.mp3'

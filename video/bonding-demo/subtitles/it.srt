@@ -1,0 +1,4 @@
+1
+00:00:25,600 --> 00:00:31,400
+Posso localizzare contenuti audiovisivi in italiano,
+mantenendo ritmo, intenzione e naturalezza.
