@@ -71,7 +71,6 @@ export function Hero() {
         </div>
 
         <div className="pb-20">
-          <p className="eyebrow mb-4">Demo en video</p>
           <VideoHero />
         </div>
       </div>

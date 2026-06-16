@@ -89,7 +89,18 @@ export const STACK_ITEMS = [
   },
 ] as const;
 
-export const PROJECTS = [
+export type ProjectLink = { label: string; href: string };
+
+export type Project = {
+  name: string;
+  description: string;
+  role: string;
+  capabilities: readonly string[];
+  links?: readonly ProjectLink[];
+  visual?: "insights";
+};
+
+export const PROJECTS: readonly Project[] = [
   {
     name: "Sitio corporativo para agencia",
     description:
@@ -98,10 +109,10 @@ export const PROJECTS = [
     capabilities: ["Página corporativa", "Formulario", "WhatsApp", "Mobile-first"],
   },
   {
-    name: "ServimOS / Pedimos",
+    name: "ServimOS",
     description:
-      "Participación en el desarrollo de una plataforma web para restaurantes, orientada a pedidos digitales, panel operativo, menús, experiencia de cliente y flujos internos de atención.",
-    role: "Frontend, arquitectura de interfaces, flujos operativos, experiencia de usuario, paneles administrativos, comandas, KDS y experiencia móvil para cliente.",
+      "Participación en el desarrollo de una plataforma web para restaurantes: pedidos digitales, operación en cocina, menús y flujos internos de atención.",
+    role: "Frontend, arquitectura de interfaces, flujos operativos, paneles administrativos y experiencia móvil para cliente.",
     capabilities: [
       "Dashboard operativo",
       "Menús digitales",
@@ -109,15 +120,20 @@ export const PROJECTS = [
       "KDS / cocina",
       "Experiencia cliente",
     ],
+    links: [
+      { label: "Landing", href: "https://servimos.online/" },
+      { label: "Login", href: "https://servimos.online/login" },
+    ],
   },
   {
-    name: "Panel de usuarios y BI",
+    name: "Herramientas internas e insights",
     description:
-      "Trabajo en interfaces internas para administrar usuarios, consultar información operativa y visualizar reportes útiles para toma de decisiones.",
-    role: "React, estructura de paneles, tablas, estados, filtros, vistas de datos y componentes para entornos administrativos.",
-    capabilities: ["Panel de usuarios", "Reportes BI", "Tablas y filtros", "React", "Operación interna"],
+      "Interfaces para administración operativa: tablas, filtros, estados y visualización de métricas para equipos que necesitan orden y visibilidad del negocio.",
+    role: "React, paneles administrativos, vistas de datos y componentes reutilizables para operación interna.",
+    capabilities: ["Paneles admin", "Reportes", "Tablas y filtros", "React", "Operación interna"],
+    visual: "insights",
   },
-] as const;
+];
 
 export const PROCESS_STEPS = [
   {
