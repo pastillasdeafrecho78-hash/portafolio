@@ -83,6 +83,16 @@ export function BondingVideoPlayer() {
     setCurrentTime(value);
   }, []);
 
+  const startSeek = useCallback(() => {
+    seekingRef.current = true;
+  }, []);
+
+  const endSeek = useCallback(() => {
+    seekingRef.current = false;
+    if (videoRef.current) setCurrentTime(videoRef.current.currentTime);
+  }, []);
+
+  const maxTime = duration > 0 ? duration : 0.01;
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
@@ -140,16 +150,14 @@ export function BondingVideoPlayer() {
             <input
               type="range"
               min={0}
-              max={duration || 0}
-              step={0.1}
-              value={currentTime}
-              onChange={(e) => handleSeek(Number(e.target.value))}
-              onMouseDown={() => {
-                seekingRef.current = true;
-              }}
-              onMouseUp={() => {
-                seekingRef.current = false;
-              }}
+              max={maxTime}
+              step={0.05}
+              value={Math.min(currentTime, maxTime)}
+              onInput={(e) => handleSeek(Number(e.currentTarget.value))}
+              onChange={(e) => handleSeek(Number(e.currentTarget.value))}
+              onPointerDown={startSeek}
+              onPointerUp={endSeek}
+              onPointerCancel={endSeek}
               className="video-seek"
               aria-label="Posición del video"
               style={{ "--video-progress": `${progress}%` } as React.CSSProperties}
