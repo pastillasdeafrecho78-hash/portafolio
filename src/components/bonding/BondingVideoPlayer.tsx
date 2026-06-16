@@ -86,13 +86,13 @@ export function BondingVideoPlayer() {
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div ref={containerRef} className="bonding-video-stage video-showcase relative" tabIndex={0}>
+    <div ref={containerRef} className="bonding-video-stage relative" tabIndex={0}>
       <video
         ref={videoRef}
         playsInline
         preload="metadata"
         poster="/bonding/poster.svg"
-        className="h-full w-full object-contain"
+        className="bonding-video-el"
         disablePictureInPicture
         disableRemotePlayback
         onPlay={() => setIsPlaying(true)}

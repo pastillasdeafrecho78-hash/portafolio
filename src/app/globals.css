@@ -1331,55 +1331,82 @@ body {
   }
 }
 
-/* —— Bonding: una pantalla, solo video (/bonding) —— */
 .bonding-screen {
+  position: relative;
   height: 100dvh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background: var(--color-background);
+  background: radial-gradient(ellipse at 50% 35%, #141820 0%, #08090b 62%);
 }
 
 .bonding-screen-header {
-  flex-shrink: 0;
-  padding: 1.25rem 1rem 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(180deg, rgba(8, 9, 11, 0.92) 0%, rgba(8, 9, 11, 0.45) 65%, transparent 100%);
+  pointer-events: none;
 }
 
 .bonding-screen-logo {
   display: inline-flex;
   text-decoration: none;
+  pointer-events: auto;
 }
 
 .bonding-screen-main {
-  flex: 1;
-  min-height: 0;
+  height: 100dvh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 1rem 1.25rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
 }
 
 .bonding-video-stage {
-  width: 100%;
-  max-width: min(100%, 22rem);
-  height: 100%;
-  max-height: calc(100dvh - 5.5rem);
-  aspect-ratio: 9 / 16;
+  position: relative;
+  width: min(calc(100vw - 1.5rem), calc((100dvh - 1.5rem) * 9 / 16));
+  height: min(calc(100dvh - 1.5rem), calc((100vw - 1.5rem) * 16 / 9));
   margin-inline: auto;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
+  border-radius: 1.125rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   background: #0c0e12;
   overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.08),
+    0 32px 80px rgba(0, 0, 0, 0.55);
 }
 
 .bonding-video-stage video {
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  display: block;
   background: #07080c;
 }
 
-@media (min-width: 768px) {
-  .bonding-video-stage {
-    max-width: 24rem;
-  }
+.bonding-video-stage .video-controls {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.bonding-video-stage .video-play-prompt {
+  background: rgba(7, 8, 12, 0.35);
+}
+
+.bonding-video-stage .video-play-prompt-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  font-size: 1.25rem;
+}
+
+.bonding-video-stage .video-play-prompt-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
 }
 
