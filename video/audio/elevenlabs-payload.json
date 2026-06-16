@@ -1,0 +1,11 @@
+{
+  "text": "Desarrollo sitios web y sistemas digitales para negocios que necesitan verse profesionales y operar mejor.\n\nConstruyo paginas corporativas y landings que convierten visitas en prospectos reales.\n\nFormularios conectados a tu correo para captar clientes las veinticuatro horas.\n\nIntegro WhatsApp para que puedas responder al instante desde el celular.\n\nTambien armo paneles y dashboards para ordenar pedidos, usuarios y reportes.\n\nSoy Salvador Barba. Escribeme y vemos tu proyecto.",
+  "model_id": "eleven_multilingual_v2",
+  "voice_settings": {
+    "stability": 0.52,
+    "similarity_boost": 0.78,
+    "style": 0.18,
+    "use_speaker_boost": true,
+    "speed": 1.2
+  }
+}

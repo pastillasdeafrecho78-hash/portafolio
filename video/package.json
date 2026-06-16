@@ -1,0 +1,12 @@
+{
+  "name": "video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes preview",
+    "check": "npx --yes hyperframes lint && npx --yes hyperframes inspect",
+    "render": "npx --yes hyperframes render --output out/hero-demo.mp4",
+    "render:webm": "npx --yes hyperframes render --format webm --output out/hero-demo.webm",
+    "publish": "npx --yes hyperframes publish"
+  }
+}

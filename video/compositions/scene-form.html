@@ -1,0 +1,51 @@
+<template id="scene-form-template">
+  <div data-composition-id="scene-form" data-width="1920" data-height="1080" data-duration="5">
+    <div class="scene-content">
+      <div class="form-card">
+        <h2 class="form-title">Contáctanos</h2>
+        <div class="field"><div class="field-fill name-fill"></div></div>
+        <div class="field"><div class="field-fill email-fill"></div></div>
+        <div class="field tall"><div class="field-fill msg-fill"></div></div>
+        <div class="submit-btn"><span class="btn-text">Enviar mensaje</span><span class="check">✓</span></div>
+      </div>
+    </div>
+    <style>
+      [data-composition-id="scene-form"] .scene-content {
+        width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0A0A0A;
+      }
+      [data-composition-id="scene-form"] .form-card {
+        width: 520px; padding: 48px; background: #141414; border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      [data-composition-id="scene-form"] .form-title { color: #F5F5F5; font-size: 32px; font-weight: 600; margin-bottom: 32px; }
+      [data-composition-id="scene-form"] .field { height: 52px; background: #1C1C1C; border-radius: 8px; margin-bottom: 16px; overflow: hidden; position: relative; }
+      [data-composition-id="scene-form"] .field.tall { height: 100px; }
+      [data-composition-id="scene-form"] .field-fill { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); height: 12px; background: #737373; border-radius: 4px; width: 0; }
+      [data-composition-id="scene-form"] .msg-fill { top: 24px; transform: none; height: 60px; }
+      [data-composition-id="scene-form"] .submit-btn {
+        margin-top: 24px; height: 52px; background: #E8E8E8; border-radius: 8px;
+        display: flex; align-items: center; justify-content: center; color: #0A0A0A; font-weight: 600; font-size: 16px;
+      }
+      [data-composition-id="scene-form"] .check { display: none; font-size: 24px; }
+      [data-composition-id="scene-form"] .name-fill { width: 180px; }
+      [data-composition-id="scene-form"] .email-fill { width: 220px; }
+      [data-composition-id="scene-form"] .msg-fill { width: 90%; }
+    </style>
+    <script>
+    (function(){
+      const tl = gsap.timeline({ paused: true });
+      tl.from(".form-card", { y: 60, opacity: 0, duration: 0.6, ease: "power3.out" }, 0);
+      tl.from(".name-fill", { width: 0, duration: 0.8, ease: "power2.out" }, 0.5);
+      tl.from(".email-fill", { width: 0, duration: 0.8, ease: "power2.out" }, 1.2);
+      tl.from(".msg-fill", { width: 0, duration: 1, ease: "power2.out" }, 1.9);
+      tl.to(".submit-btn", { scale: 0.95, duration: 0.15 }, 3.2);
+      tl.to(".submit-btn", { scale: 1, background: "#25D366", duration: 0.2 }, 3.35);
+      tl.set(".btn-text", { display: "none" }, 3.5);
+      tl.set(".check", { display: "block" }, 3.5);
+      tl.to(".scene-content", { opacity: 0, duration: 0.4 }, 4.4);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["scene-form"] = tl;
+    })();
+    </script>
+  </div>
+</template>

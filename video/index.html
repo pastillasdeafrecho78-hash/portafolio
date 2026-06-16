@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>SA Hero Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0; width: 1920px; height: 1080px;
+        overflow: hidden; background: #0A0A0A;
+        font-family: "Inter", sans-serif;
+      }
+      .scene { position: absolute; inset: 0; }
+      .caption-wrap {
+        position: absolute; bottom: 80px; left: 0; right: 0;
+        display: flex; justify-content: center; pointer-events: none; z-index: 20;
+      }
+      .caption {
+        color: #F5F5F5; font-size: 52px; font-weight: 600;
+        letter-spacing: -0.02em; text-align: center;
+        text-shadow: 0 4px 24px rgba(0,0,0,0.8);
+        opacity: 0; transform: translateY(40px);
+      }
+    </style>
+    <script>
+    window.__tailwindReady=new Promise(function(resolve){
+      var loaded=document.readyState==="complete"; var resolved=false; var observer;
+      function readTailwindCss(){var s=document.querySelectorAll("style");for(var i=s.length-1;i>=0;i--){var t=s[i].textContent||"";if(t.indexOf("tailwindcss v")!==-1)return t;}return "";}
+      function finish(){if(resolved||!loaded||!readTailwindCss())return;resolved=true;if(observer)observer.disconnect();resolve(true);}
+      observer=new MutationObserver(finish);
+      observer.observe(document.documentElement,{childList:true,subtree:true,characterData:true});
+      if(loaded){finish();}else{window.addEventListener("load",function(){loaded=true;finish();},{once:true});}
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js" integrity="sha384-v5YF9xS+gLRWdvrQ0u/WRbCkjSIH0NjHIPe8tBL1ZRrmI7PiSH6LLdzs0aAIMCuh" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1920" data-height="1080">
+
+      <div class="scene" data-composition-id="scene-hook" data-composition-src="compositions/scene-hook.html" data-start="0" data-duration="4" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-landing" data-composition-src="compositions/scene-landing.html" data-start="4" data-duration="5" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-form" data-composition-src="compositions/scene-form.html" data-start="9" data-duration="5" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-whatsapp" data-composition-src="compositions/scene-whatsapp.html" data-start="14" data-duration="4" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-dashboard" data-composition-src="compositions/scene-dashboard.html" data-start="18" data-duration="8" data-track-index="1" data-width="1920" data-height="1080"></div>
+      <div class="scene" data-composition-id="scene-cta" data-composition-src="compositions/scene-cta.html" data-start="26" data-duration="4" data-track-index="1" data-width="1920" data-height="1080"></div>
+
+      <audio
+        id="narration"
+        data-start="0"
+        data-duration="30"
+        data-track-index="3"
+        src="audio/vo-full.wav"
+        preload="auto"
+      ></audio>
+
+      <div data-composition-id="captions" data-start="0" data-duration="30" data-track-index="2" data-width="1920" data-height="1080">
+        <div class="caption-wrap"><div id="caption-text" class="caption"></div></div>
+        <script>
+        (function(){
+          const tl = gsap.timeline({ paused: true });
+          const el = document.querySelector("#caption-text");
+          const beats = [
+            { t: 0.15, text: "Sitios y sistemas para tu negocio", out: 3.85 },
+            { t: 4.05, text: "Webs que convierten", out: 8.85 },
+            { t: 9.05, text: "Captura clientes 24/7", out: 13.85 },
+            { t: 14.05, text: "Responde al instante", out: 17.85 },
+            { t: 18.05, text: "Todo bajo control", out: 25.85 },
+            { t: 26.05, text: "Salvador Barba — Escríbeme", out: 29.85 },
+          ];
+          beats.forEach((b, i) => {
+            tl.set(el, { innerText: b.text }, b.t);
+            tl.fromTo(el, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, b.t);
+            if (i < beats.length - 1) {
+              tl.to(el, { opacity: 0, y: -20, duration: 0.35, ease: "power3.in" }, b.out);
+            }
+          });
+          window.__timelines = window.__timelines || {};
+          window.__timelines["captions"] = tl;
+        })();
+        </script>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

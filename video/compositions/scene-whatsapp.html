@@ -1,0 +1,52 @@
+<template id="scene-whatsapp-template">
+  <div data-composition-id="scene-whatsapp" data-width="1920" data-height="1080" data-duration="4">
+    <div class="scene-content">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="wa-header">WhatsApp</div>
+          <div class="notif">
+            <div class="notif-icon">💬</div>
+            <div class="notif-body">
+              <div class="notif-title">Nuevo mensaje</div>
+              <div class="notif-text">Hola, vi tu página y me interesa...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      [data-composition-id="scene-whatsapp"] .scene-content {
+        width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0A0A0A;
+      }
+      [data-composition-id="scene-whatsapp"] .phone {
+        width: 360px; height: 720px; border-radius: 40px; background: #1C1C1C;
+        border: 3px solid #333; padding: 16px; box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+      }
+      [data-composition-id="scene-whatsapp"] .phone-screen {
+        width: 100%; height: 100%; border-radius: 28px; background: #0A0A0A; overflow: hidden;
+      }
+      [data-composition-id="scene-whatsapp"] .wa-header {
+        padding: 20px; background: #075E54; color: white; font-weight: 600; font-size: 18px;
+      }
+      [data-composition-id="scene-whatsapp"] .notif {
+        margin: 24px 16px; padding: 16px; background: #141414; border-radius: 12px;
+        display: flex; gap: 12px; border-left: 4px solid #25D366;
+        transform: translateX(120%); opacity: 0;
+      }
+      [data-composition-id="scene-whatsapp"] .notif-icon { font-size: 28px; }
+      [data-composition-id="scene-whatsapp"] .notif-title { color: #F5F5F5; font-weight: 600; font-size: 15px; }
+      [data-composition-id="scene-whatsapp"] .notif-text { color: #A3A3A3; font-size: 14px; margin-top: 4px; }
+    </style>
+    <script>
+    (function(){
+      const tl = gsap.timeline({ paused: true });
+      tl.from(".phone", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 0);
+      tl.to(".notif", { x: 0, opacity: 1, duration: 0.6, ease: "back.out(1.2)" }, 0.8);
+      tl.to(".notif", { boxShadow: "0 0 30px rgba(37,211,102,0.3)", duration: 0.3 }, 1.4);
+      tl.to(".scene-content", { opacity: 0, duration: 0.4 }, 3.4);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["scene-whatsapp"] = tl;
+    })();
+    </script>
+  </div>
+</template>
