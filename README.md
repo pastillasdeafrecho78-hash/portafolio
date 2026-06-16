@@ -24,7 +24,7 @@ Abre [http://localhost:3000](http://localhost:3000).
 ## Configuración
 
 1. Copia `.env.example` a `.env.local`
-2. Añade `WEB3FORMS_ACCESS_KEY` desde [web3forms.com](https://web3forms.com) para el formulario
+2. Añade `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` desde [web3forms.com](https://web3forms.com) (envío desde el navegador; el plan gratis no permite `/api/contact` en servidor)
 3. Actualiza en `src/lib/constants.ts`:
    - `WHATSAPP_NUMBER`
    - `SITE.email` / `SITE.phone`
@@ -46,4 +46,4 @@ public/video/      # Video renderizado para el hero
 npx vercel
 ```
 
-Variables de entorno en Vercel: `WEB3FORMS_ACCESS_KEY`.
+Variables de entorno en Vercel: `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (Production + Preview).

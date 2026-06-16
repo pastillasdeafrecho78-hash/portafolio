@@ -5,6 +5,12 @@ import { SITE, WHATSAPP_URL } from "@/lib/constants";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
+function getAccessKey() {
+  return process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY?.trim() ?? "";
+}
+
 export function Contact() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -17,31 +23,61 @@ export function Contact() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const company = String(data.get("company") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+    const website = String(data.get("website") ?? "").trim();
+
+    if (website) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    if (name.length < 2 || email.length < 5 || company.length < 2 || message.length < 5) {
+      setStatus("error");
+      setErrorMsg("Revisa los campos: nombre, email, empresa y mensaje (mínimo 5 caracteres).");
+      return;
+    }
+
+    const accessKey = getAccessKey();
+    if (!accessKey || accessKey === "REEMPLAZAR_EN_VERCEL") {
+      setStatus("error");
+      setErrorMsg(
+        "El formulario no está configurado todavía. Escríbeme por WhatsApp mientras lo activamos.",
+      );
+      return;
+    }
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          name: data.get("name"),
-          email: data.get("email"),
-          company: data.get("company"),
-          message: data.get("message"),
-          website: data.get("website") ?? "",
+          access_key: accessKey,
+          name,
+          email,
+          subject: `Cotización — ${name} (${company})`,
+          message: `Empresa o proyecto: ${company}\n\n${message}`,
         }),
       });
 
       const raw = await res.text();
-      let body: { error?: string } = {};
+      let body: { success?: boolean; message?: string } = {};
       if (raw) {
         try {
-          body = JSON.parse(raw) as { error?: string };
+          body = JSON.parse(raw) as { success?: boolean; message?: string };
         } catch {
-          body = { error: "Respuesta inválida del servidor." };
+          throw new Error("Respuesta inválida del servicio de correo.");
         }
       }
 
-      if (!res.ok) {
-        throw new Error(body.error ?? "No se pudo enviar el mensaje");
+      if (!res.ok || !body.success) {
+        throw new Error(
+          body.message ??
+            "No se pudo enviar el mensaje. Si persiste, escríbeme por WhatsApp.",
+        );
       }
 
       setStatus("success");
