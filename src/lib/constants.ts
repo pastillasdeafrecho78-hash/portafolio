@@ -132,7 +132,7 @@ export const PROJECTS: readonly Project[] = [
     logoWidth: 190,
     logoHeight: 52,
     preview: "/servimos-reportes.png",
-    previewFit: "contain",
+    previewFit: "cover",
     featured: true,
     links: [{ label: "Plataforma completa", href: "https://servimos.online/login" }],
   },

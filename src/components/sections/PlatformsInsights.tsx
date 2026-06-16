@@ -82,20 +82,12 @@ export function PlatformsInsights() {
             <h2 className="section-title">{PLATFORMS_INSIGHTS.title}</h2>
             <p className="section-copy mt-6">{PLATFORMS_INSIGHTS.description}</p>
 
-            <div className="mt-8 platforms-points-row">
+            <div className="mt-6 platforms-points-row">
               {PLATFORMS_INSIGHTS.points.map((point) => (
                 <div key={point.title} className="platforms-point">
-                  <h3 className="text-base font-semibold text-white">{point.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-400">{point.description}</p>
+                  <h3 className="text-sm font-semibold text-white">{point.title}</h3>
+                  <p className="mt-1.5 text-xs leading-5 text-slate-400">{point.description}</p>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-2">
-              {PLATFORMS_INSIGHTS.tags.map((tag) => (
-                <span key={tag} className="tag">
-                  {tag}
-                </span>
               ))}
             </div>
           </div>
