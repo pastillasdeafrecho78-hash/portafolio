@@ -17,9 +17,85 @@ html {
 }
 
 body {
-  background: var(--color-background);
+  background: transparent;
   color: var(--color-text);
   font-family: var(--font-body);
+}
+
+/* —— Fondo global: cuadrícula neón + spotlight al cursor —— */
+.site-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+}
+
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.site-bg__base {
+  position: absolute;
+  inset: 0;
+  background: #08090b;
+}
+
+.site-bg__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.09) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 120% 100% at 50% 0%, black 20%, transparent 100%);
+}
+
+.site-bg__grid-neon {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(121, 216, 196, 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(141, 162, 255, 0.5) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.85;
+  mask-image: radial-gradient(
+    520px circle at var(--cursor-x, 50%) var(--cursor-y, 35%),
+    black 0%,
+    rgba(0, 0, 0, 0.35) 42%,
+    transparent 72%
+  );
+  -webkit-mask-image: radial-gradient(
+    520px circle at var(--cursor-x, 50%) var(--cursor-y, 35%),
+    black 0%,
+    rgba(0, 0, 0, 0.35) 42%,
+    transparent 72%
+  );
+  transition: opacity 0.15s ease;
+}
+
+.site-bg__spotlight {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      420px circle at var(--cursor-x, 50%) var(--cursor-y, 35%),
+      rgba(141, 162, 255, 0.16) 0%,
+      rgba(121, 216, 196, 0.07) 38%,
+      transparent 68%
+    ),
+    radial-gradient(
+      680px circle at var(--cursor-x, 50%) var(--cursor-y, 35%),
+      rgba(56, 189, 248, 0.05) 0%,
+      transparent 62%
+    );
+}
+
+.site-footer {
+  background: rgba(8, 9, 11, 0.72);
+  backdrop-filter: blur(12px);
 }
 
 ::selection {
@@ -46,7 +122,7 @@ body {
 }
 
 .section-muted {
-  background: var(--color-surface-muted);
+  background: rgba(8, 9, 11, 0.58);
 }
 
 .section-heading {
@@ -121,24 +197,7 @@ body {
 .hero-section {
   position: relative;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(8, 9, 11, 0.28), #08090b 88%),
-    radial-gradient(circle at 18% 12%, rgba(246, 197, 111, 0.2), transparent 28%),
-    radial-gradient(circle at 72% 18%, rgba(141, 162, 255, 0.18), transparent 34%),
-    radial-gradient(circle at 56% 62%, rgba(121, 216, 196, 0.1), transparent 32%),
-    #08090b;
-}
-
-.hero-section::before {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  content: "";
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, black, transparent 76%);
+  background: transparent;
 }
 
 .hero-portrait-wrap {
@@ -847,10 +906,7 @@ body {
 .work-scope-section {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 80% 20%, rgba(121, 216, 196, 0.12), transparent 28%),
-    radial-gradient(circle at 18% 86%, rgba(246, 197, 111, 0.12), transparent 30%),
-    #08090b;
+  background: transparent;
 }
 
 .capability-pill {
@@ -1329,13 +1385,26 @@ body {
   html {
     scroll-behavior: auto;
   }
+
+  .site-bg__grid-neon {
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 0%, transparent 70%);
+  }
+
+  .site-bg__spotlight {
+    background: radial-gradient(
+      ellipse 70% 50% at 50% 40%,
+      rgba(141, 162, 255, 0.1) 0%,
+      transparent 70%
+    );
+  }
 }
 
 .bonding-screen {
   position: relative;
   height: 100dvh;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 35%, #141820 0%, #08090b 62%);
+  background: transparent;
 }
 
 .bonding-screen-header {

@@ -18,7 +18,7 @@ export function Header() {
     <nav
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-[#08090b]/90 py-3 backdrop-blur-xl"
+          ? "border-b border-white/10 bg-[#08090b]/75 py-3 backdrop-blur-xl"
           : "py-5"
       }`}
     >
