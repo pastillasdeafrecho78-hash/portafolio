@@ -1,6 +1,8 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { SubtitleLang } from "@/lib/bonding-subtitles";
+import { BondingKaraokeSubtitle, BondingLangSwitch } from "@/components/bonding/BondingKaraokeSubtitle";
 
 function PlayIcon() {
   return (
@@ -49,6 +51,7 @@ export function BondingVideoPlayer() {
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [subtitleLang, setSubtitleLang] = useState<SubtitleLang>("es");
 
   const startPlayback = useCallback(() => {
     const video = videoRef.current;
@@ -92,90 +95,111 @@ export function BondingVideoPlayer() {
     if (videoRef.current) setCurrentTime(videoRef.current.currentTime);
   }, []);
 
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    let frame = 0;
+    const tick = () => {
+      const video = videoRef.current;
+      if (video && !seekingRef.current) {
+        setCurrentTime(video.currentTime);
+      }
+      frame = requestAnimationFrame(tick);
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [isPlaying]);
+
   const maxTime = duration > 0 ? duration : 0.01;
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div ref={containerRef} className="bonding-video-stage relative" tabIndex={0}>
-      <video
-        ref={videoRef}
-        playsInline
-        preload="metadata"
-        poster="/bonding/poster.svg"
-        className="bonding-video-el"
-        disablePictureInPicture
-        disableRemotePlayback
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-        onTimeUpdate={() => {
-          if (!seekingRef.current && videoRef.current) {
-            setCurrentTime(videoRef.current.currentTime);
-          }
-        }}
-        onLoadedMetadata={() => {
-          if (videoRef.current) setDuration(videoRef.current.duration);
-        }}
-        onDurationChange={() => {
-          if (videoRef.current) setDuration(videoRef.current.duration);
-        }}
-      >
-        <source src="/bonding/demo.mp4" type="video/mp4" />
-      </video>
-
-      {!isPlaying && (
-        <button
-          type="button"
-          onClick={startPlayback}
-          className="video-play-prompt"
-          aria-label="Reproducir demo con audio"
+    <div className="bonding-demo-stack">
+      <div ref={containerRef} className="bonding-video-stage relative" tabIndex={0}>
+        <video
+          ref={videoRef}
+          playsInline
+          preload="metadata"
+          poster="/bonding/poster.svg"
+          className="bonding-video-el"
+          disablePictureInPicture
+          disableRemotePlayback
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onTimeUpdate={() => {
+            if (!seekingRef.current && videoRef.current) {
+              setCurrentTime(videoRef.current.currentTime);
+            }
+          }}
+          onLoadedMetadata={() => {
+            if (videoRef.current) setDuration(videoRef.current.duration);
+          }}
+          onDurationChange={() => {
+            if (videoRef.current) setDuration(videoRef.current.duration);
+          }}
         >
-          <span className="video-play-prompt-icon" aria-hidden="true">
-            <PlayIcon />
-          </span>
-          <span className="video-play-prompt-text">Reproducir demo</span>
-        </button>
-      )}
+          <source src="/bonding/demo.mp4" type="video/mp4" />
+        </video>
 
-      <div className="video-controls">
-        <div className="video-controls-bar">
+        {!isPlaying && (
           <button
             type="button"
-            onClick={togglePlay}
-            className="video-control-btn"
-            aria-label={isPlaying ? "Pausar" : "Reproducir"}
+            onClick={startPlayback}
+            className="video-play-prompt"
+            aria-label="Reproducir demo con audio"
           >
-            {isPlaying ? <PauseIcon /> : <PlayIcon />}
+            <span className="video-play-prompt-icon" aria-hidden="true">
+              <PlayIcon />
+            </span>
+            <span className="video-play-prompt-text">Reproducir demo</span>
           </button>
-          <div className="video-seek-wrap">
-            <input
-              type="range"
-              min={0}
-              max={maxTime}
-              step={0.05}
-              value={Math.min(currentTime, maxTime)}
-              onInput={(e) => handleSeek(Number(e.currentTarget.value))}
-              onChange={(e) => handleSeek(Number(e.currentTarget.value))}
-              onPointerDown={startSeek}
-              onPointerUp={endSeek}
-              onPointerCancel={endSeek}
-              className="video-seek"
-              aria-label="Posición del video"
-              style={{ "--video-progress": `${progress}%` } as React.CSSProperties}
-            />
+        )}
+
+        <div className="video-controls">
+          <div className="video-controls-bar">
+            <button
+              type="button"
+              onClick={togglePlay}
+              className="video-control-btn"
+              aria-label={isPlaying ? "Pausar" : "Reproducir"}
+            >
+              {isPlaying ? <PauseIcon /> : <PlayIcon />}
+            </button>
+            <div className="video-seek-wrap">
+              <input
+                type="range"
+                min={0}
+                max={maxTime}
+                step={0.05}
+                value={Math.min(currentTime, maxTime)}
+                onInput={(e) => handleSeek(Number(e.currentTarget.value))}
+                onChange={(e) => handleSeek(Number(e.currentTarget.value))}
+                onPointerDown={startSeek}
+                onPointerUp={endSeek}
+                onPointerCancel={endSeek}
+                className="video-seek"
+                aria-label="Posición del video"
+                style={{ "--video-progress": `${progress}%` } as React.CSSProperties}
+              />
+            </div>
+            <span className="video-time">
+              {formatTime(currentTime)} / {formatTime(duration)}
+            </span>
+            <button
+              type="button"
+              onClick={toggleMute}
+              className="video-control-btn"
+              aria-label={isMuted ? "Activar audio" : "Silenciar"}
+            >
+              {isMuted ? <MuteIcon /> : <SoundIcon />}
+            </button>
           </div>
-          <span className="video-time">
-            {formatTime(currentTime)} / {formatTime(duration)}
-          </span>
-          <button
-            type="button"
-            onClick={toggleMute}
-            className="video-control-btn"
-            aria-label={isMuted ? "Activar audio" : "Silenciar"}
-          >
-            {isMuted ? <MuteIcon /> : <SoundIcon />}
-          </button>
         </div>
       </div>
+
+      <BondingLangSwitch lang={subtitleLang} onChange={setSubtitleLang} />
+      <BondingKaraokeSubtitle lang={subtitleLang} currentTime={currentTime} />
     </div>
   );
 }
