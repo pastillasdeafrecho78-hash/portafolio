@@ -1,4 +1,5 @@
 import { NAV_LINKS, SITE, WHATSAPP_URL } from "@/lib/constants";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer() {
   return (
@@ -6,10 +7,8 @@ export function Footer() {
       <div className="container-page">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="text-sm font-semibold tracking-[0.28em] text-white">
-              {SITE.name.toUpperCase()}
-            </p>
-            <p className="mt-3 max-w-md leading-6">
+            <BrandLogo size="lg" showName className="mb-4" />
+            <p className="max-w-md leading-6">
               Desarrollador web freelance para páginas corporativas, formularios, integraciones con
               WhatsApp y aplicaciones web para negocios.
             </p>

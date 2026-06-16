@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NAV_LINKS, SITE, WHATSAPP_URL } from "@/lib/constants";
+import { NAV_LINKS, WHATSAPP_URL } from "@/lib/constants";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,10 +24,7 @@ export function Header() {
     >
       <div className="container-page flex items-center justify-between">
         <a href="#" className="group" aria-label="Ir al inicio">
-          <div className="leading-none">
-            <p className="text-sm font-semibold tracking-[0.28em] text-white">{SITE.shortName}</p>
-            <p className="mt-1 hidden text-xs text-slate-400 sm:block">Web developer</p>
-          </div>
+          <BrandLogo size="md" showName />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">

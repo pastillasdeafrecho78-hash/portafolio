@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: "es_MX",
     type: "website",
   },
-  icons: { icon: "/favicon.png" },
+  icons: { icon: "/logo-salvador-barba.png", apple: "/logo-salvador-barba.png" },
 };
 
 const jsonLd = {
