@@ -41,27 +41,9 @@ function formatTime(seconds: number) {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
-async function playWithSound(video: HTMLVideoElement) {
-  video.muted = false;
-  video.volume = 1;
-  try {
-    await video.play();
-    return { playing: true, muted: false };
-  } catch {
-    video.muted = true;
-    try {
-      await video.play();
-      return { playing: true, muted: true };
-    } catch {
-      return { playing: false, muted: true };
-    }
-  }
-}
-
 export function VideoHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const userPausedRef = useRef(false);
   const seekingRef = useRef(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -92,22 +74,14 @@ export function VideoHero() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || reduceMotion) return;
+    if (!video || reduceMotion || inView) return;
 
-    if (inView) {
-      if (!userPausedRef.current) {
-        void playWithSound(video).then(({ playing, muted }) => {
-          setIsPlaying(playing);
-          setIsMuted(muted);
-        });
-      }
-    } else {
-      video.pause();
-      video.currentTime = 0;
-      userPausedRef.current = false;
-      setIsPlaying(false);
-      setCurrentTime(0);
-    }
+    video.pause();
+    video.currentTime = 0;
+    video.muted = false;
+    setIsPlaying(false);
+    setIsMuted(false);
+    setCurrentTime(0);
   }, [inView, reduceMotion]);
 
   useEffect(() => {
@@ -139,21 +113,30 @@ export function VideoHero() {
     };
   }, []);
 
+  const startPlayback = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = false;
+    video.volume = 1;
+    setIsMuted(false);
+
+    void video.play().then(
+      () => setIsPlaying(true),
+      () => setIsPlaying(false),
+    );
+  }, []);
+
   const togglePlay = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
 
     if (video.paused) {
-      userPausedRef.current = false;
-      void playWithSound(video).then(({ playing, muted }) => {
-        setIsPlaying(playing);
-        setIsMuted(muted);
-      });
+      startPlayback();
     } else {
-      userPausedRef.current = true;
       video.pause();
     }
-  }, []);
+  }, [startPlayback]);
 
   const toggleMute = useCallback(() => {
     const video = videoRef.current;
@@ -161,13 +144,6 @@ export function VideoHero() {
 
     video.muted = !video.muted;
     setIsMuted(video.muted);
-
-    if (video.paused && !userPausedRef.current) {
-      void video.play().then(
-        () => setIsPlaying(true),
-        () => setIsPlaying(false),
-      );
-    }
   }, []);
 
   const handleSeek = useCallback((value: number) => {
@@ -178,6 +154,7 @@ export function VideoHero() {
   }, []);
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+  const showPlayPrompt = inView && !isPlaying;
 
   if (reduceMotion) {
     return (
@@ -206,6 +183,20 @@ export function VideoHero() {
         <source src="/video/hero-demo.webm" type="video/webm" />
         <source src="/video/hero-demo.mp4" type="video/mp4" />
       </video>
+
+      {showPlayPrompt && (
+        <button
+          type="button"
+          onClick={startPlayback}
+          className="video-play-prompt"
+          aria-label="Reproducir presentación con audio"
+        >
+          <span className="video-play-prompt-icon" aria-hidden="true">
+            <PlayIcon />
+          </span>
+          <span className="video-play-prompt-text">Reproducir presentación</span>
+        </button>
+      )}
 
       <div className="video-controls">
         <div className="video-controls-bar">
