@@ -31,7 +31,6 @@ const jsonLd = {
   description: SITE.description,
   url: SITE.url,
   email: SITE.email,
-  telephone: SITE.phone,
 };
 
 export default function RootLayout({

@@ -34,7 +34,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="footer-link"
                 >
-                  WhatsApp: {SITE.phoneDisplay}
+                  WhatsApp
                 </a>
                 <a href={`mailto:${SITE.email}`} className="footer-link">
                   {SITE.email}

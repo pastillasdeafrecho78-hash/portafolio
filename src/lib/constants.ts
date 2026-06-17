@@ -7,11 +7,9 @@ export const SITE = {
     "Desarrollo de páginas corporativas, landing pages, formularios de contacto, integración con WhatsApp y aplicaciones web para negocios.",
   url: "https://salvador.dev",
   email: "salvador@thinkdeepgroup.com",
-  phone: "+524881774543",
-  phoneDisplay: "488 177 4543",
 };
 
-export const WHATSAPP_NUMBER = "524881774543";
+export const WHATSAPP_NUMBER = "524181774543";
 export const WHATSAPP_MESSAGE =
   "Hola Salvador, vi tu portafolio y me gustaría solicitar una cotización.";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;

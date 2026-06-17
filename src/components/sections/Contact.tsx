@@ -111,18 +111,6 @@ export function Contact() {
             </p>
             <div className="mt-8 space-y-4 text-sm text-slate-300">
               <p>
-                <span className="text-slate-500">WhatsApp</span>
-                <br />
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="contact-link"
-                >
-                  {SITE.phoneDisplay}
-                </a>
-              </p>
-              <p>
                 <span className="text-slate-500">Correo</span>
                 <br />
                 <a href={`mailto:${SITE.email}`} className="contact-link">
