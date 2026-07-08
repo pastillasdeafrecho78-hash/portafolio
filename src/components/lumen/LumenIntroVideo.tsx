@@ -9,7 +9,7 @@ const SCENES = [
     eyebrow: "Lúmen Outfit",
     title: "¿Y si tu tienda entendiera lo que quieres?",
     sub: "Un asistente que navega, recomienda y compra contigo.",
-    audioSrc: "/video/narration/hook.mp3",
+    audioSrc: "/lumen/narration/hook.mp3",
     visual: "mic" as const,
   },
   {
@@ -17,7 +17,7 @@ const SCENES = [
     eyebrow: "Antes vs ahora",
     title: "Menús y filtros vs. solo pedirlo",
     sub: '"Busco algo casual para el fin" — y listo.',
-    audioSrc: "/video/narration/contrast.mp3",
+    audioSrc: "/lumen/narration/contrast.mp3",
     visual: "contrast" as const,
   },
   {
@@ -25,7 +25,7 @@ const SCENES = [
     eyebrow: "En vivo",
     title: "El agente resalta y navega por ti",
     sub: "Productos, tallas y carrito sin perder el contexto.",
-    audioSrc: "/video/narration/live.mp3",
+    audioSrc: "/lumen/narration/live.mp3",
     visual: "products" as const,
   },
   {
@@ -33,12 +33,12 @@ const SCENES = [
     eyebrow: "Demo",
     title: "Pruébalo en tiempo real",
     sub: "Escribe al asistente y mira la tienda moverse sola.",
-    audioSrc: "/video/narration/cta.mp3",
+    audioSrc: "/lumen/narration/cta.mp3",
     visual: "bubble" as const,
   },
 ] as const;
 
-const BG_MUSIC_SRC = "/video/narration/bg-music.mp3";
+const BG_MUSIC_SRC = "/lumen/narration/bg-music.mp3";
 const MUSIC_PLAY_VOLUME = 0.55;
 const FALLBACK_SCENE_SEC = 6;
 
