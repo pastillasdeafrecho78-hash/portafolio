@@ -34,6 +34,47 @@ function SoundIcon() {
   );
 }
 
+function FullscreenIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" />
+    </svg>
+  );
+}
+
+function ExitFullscreenIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3" />
+    </svg>
+  );
+}
+
+function getFullscreenElement(): Element | null {
+  const doc = document as Document & {
+    webkitFullscreenElement?: Element | null;
+  };
+  return doc.fullscreenElement ?? doc.webkitFullscreenElement ?? null;
+}
+
+function requestContainerFullscreen(container: HTMLElement) {
+  const el = container as HTMLElement & {
+    webkitRequestFullscreen?: () => Promise<void> | void;
+  };
+  if (el.requestFullscreen) return el.requestFullscreen();
+  if (el.webkitRequestFullscreen) return el.webkitRequestFullscreen();
+  return Promise.reject(new Error("Fullscreen not supported"));
+}
+
+function exitDocumentFullscreen() {
+  const doc = document as Document & {
+    webkitExitFullscreen?: () => Promise<void> | void;
+  };
+  if (doc.exitFullscreen) return doc.exitFullscreen();
+  if (doc.webkitExitFullscreen) return doc.webkitExitFullscreen();
+  return Promise.reject(new Error("Fullscreen not supported"));
+}
+
 function formatTime(seconds: number) {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
   const mins = Math.floor(seconds / 60);
@@ -51,6 +92,7 @@ export function VideoHero() {
   const [inView, setInView] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -113,6 +155,19 @@ export function VideoHero() {
     };
   }, []);
 
+  useEffect(() => {
+    const onFullscreenChange = () => {
+      setIsFullscreen(getFullscreenElement() === containerRef.current);
+    };
+
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
+      document.removeEventListener("webkitfullscreenchange", onFullscreenChange);
+    };
+  }, []);
+
   const startPlayback = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -151,6 +206,26 @@ export function VideoHero() {
     if (!video || !Number.isFinite(value)) return;
     video.currentTime = value;
     setCurrentTime(value);
+  }, []);
+
+  const toggleFullscreen = useCallback(async () => {
+    const container = containerRef.current;
+    const video = videoRef.current;
+    if (!container) return;
+
+    try {
+      if (getFullscreenElement()) {
+        await exitDocumentFullscreen();
+        return;
+      }
+
+      await requestContainerFullscreen(container);
+    } catch {
+      const iosVideo = video as HTMLVideoElement & { webkitEnterFullscreen?: () => void };
+      if (iosVideo?.webkitEnterFullscreen) {
+        iosVideo.webkitEnterFullscreen();
+      }
+    }
   }, []);
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
@@ -246,6 +321,15 @@ export function VideoHero() {
             aria-label={isMuted ? "Activar audio" : "Silenciar video"}
           >
             {isMuted ? <MuteIcon /> : <SoundIcon />}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => void toggleFullscreen()}
+            className="video-control-btn"
+            aria-label={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+          >
+            {isFullscreen ? <ExitFullscreenIcon /> : <FullscreenIcon />}
           </button>
         </div>
       </div>

@@ -131,6 +131,20 @@ export const PROJECTS: readonly Project[] = [
     featured: true,
     links: [{ label: "Ver plataforma", href: "https://servimos.online/login" }],
   },
+  {
+    name: "Lúmen Outfit — Tienda agéntica",
+    description:
+      "Demo de tienda en línea con un asistente de IA que entiende lenguaje natural: busca, resalta productos, navega fichas y agrega al carrito en tiempo real mientras conversa.",
+    role: "Diseño de la experiencia agéntica, integración con OpenRouter (tool calling), estado en tiempo real con Zustand y servidor MCP para exponer las mismas herramientas.",
+    capabilities: [
+      "Agente con IA",
+      "Tool calling",
+      "Estado en tiempo real",
+      "MCP server",
+      "Next.js / SSE",
+    ],
+    links: [{ label: "Ver demo", href: "/lumen" }],
+  },
 ];
 
 export const PLATFORMS_INSIGHTS = {

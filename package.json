@@ -7,13 +7,16 @@
     "dev:clean": "rm -rf .next && next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mcp:lumen": "tsx mcp-server/lumen-store.ts"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
     "next": "^15.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "zod": "^3.25.67"
+    "zod": "^3.25.67",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -24,6 +27,7 @@
     "eslint": "^9.28.0",
     "eslint-config-next": "^15.3.3",
     "tailwindcss": "^4.1.8",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   }
 }
