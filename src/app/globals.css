@@ -2656,3 +2656,52 @@ body {
   }
 }
 
+/* ===================================================================== */
+/* ===== Lúmen — overrides de clases compartidas que colisionan ======== */
+/* El portafolio define .premium-card/.video-showcase/etc. distinto.     */
+/* Bajo .lumen-scope recuperamos los valores originales de Lúmen.        */
+/* ===================================================================== */
+.lumen-scope .premium-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  padding: 1.25rem;
+  min-height: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.lumen-scope .premium-card::before {
+  display: none;
+}
+
+.lumen-scope .video-showcase {
+  position: relative;
+  margin-top: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 36px 120px rgba(0, 0, 0, 0.34);
+  min-height: min(50vh, 560px);
+  background: #0b0d11;
+}
+
+.lumen-scope .video-play-prompt-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.lumen-scope .section-title {
+  margin-top: 0;
+}
+
+.lumen-scope .button-small {
+  font-size: 0.85rem;
+}
+
