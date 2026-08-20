@@ -1,14 +1,11 @@
 # SA Portafolio
 
 Landing profesional con video hero HyperFrames, WhatsApp y formulario de contacto.
-Incluye la demo aislada **Lúmen Outfit** (tienda agéntica) en `/lumen`.
 
 ## Stack
 
 - **Next.js 15** + TypeScript + Tailwind CSS v4
 - **HyperFrames** — video hero de ~22s en `video/`
-- **Zustand** — estado de la demo Lúmen
-- **OpenRouter** + **MCP** (`@modelcontextprotocol/sdk`) — agente de la demo Lúmen
 
 ## Desarrollo
 
@@ -32,27 +29,6 @@ Abre [http://localhost:3000](http://localhost:3000).
    - `WHATSAPP_NUMBER`
    - `SITE.email` / `SITE.phone`
    - `SITE.url`
-
-## Demo Lúmen Outfit (`/lumen`)
-
-Tienda agéntica de demostración, montada como rutas aisladas que no afectan la landing:
-
-- `/lumen` — landing con video introductorio de la demo.
-- `/lumen/demo` — tienda + asistente de chat (busca, resalta, navega y agrega al carrito).
-- `/api/lumen/agent` — endpoint SSE del agente.
-
-### Variables de entorno (OpenRouter)
-
-- `OPENROUTER_API_KEY` — sin ella, la demo corre en **modo demo** (chat con fallback local, sin costo).
-- `OPENROUTER_MODEL` — opcional, default `google/gemini-2.5-flash`.
-
-### Servidor MCP
-
-Expone las mismas herramientas del agente sobre stdio:
-
-```bash
-npm run mcp:lumen
-```
 
 ## Estructura
 
