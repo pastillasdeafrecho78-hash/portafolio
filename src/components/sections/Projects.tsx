@@ -1,74 +1,64 @@
 import Image from "next/image";
 import { PROJECTS } from "@/lib/constants";
+import { GlassCTA } from "@/components/effects/GlassCTA";
 
 export function Projects() {
   return (
-    <section id="proyectos" className="section">
+    <section id="proyectos" className="section section-rule">
       <div className="container-page">
         <div className="section-heading">
-          <p className="eyebrow">Proyectos</p>
-          <h2 className="section-title">
-            Trabajo aplicado a sitios, plataformas y flujos reales.
-          </h2>
+          <p className="section-label">Proyectos</p>
+          <h2 className="section-title">Cinco piezas distintas.</h2>
           <p className="section-copy">
-            Proyectos tangibles donde se ve la landing, la plataforma y la operación digital
-            funcionando en producción.
+            Una plataforma en producción y cuatro verticales: inmobiliaria, energía, automatización
+            y demo agéntica.
           </p>
         </div>
 
-        <div className="projects-grid">
+        <div className="projects-stack">
           {PROJECTS.map((project, index) => {
             const primaryLink = project.links?.[0];
 
             return (
-              <article
-                key={project.name}
-                className={`project-card ${project.featured ? "project-card-featured" : ""}`}
-              >
-                {project.preview && (
-                  <div className="project-preview">
+              <article key={project.name} className="project-block">
+                {project.preview ? (
+                  <div
+                    className={`project-media ${project.previewFit === "contain" ? "is-contain" : ""}`}
+                  >
                     <Image
                       src={project.preview}
                       alt={`Vista del proyecto ${project.name}`}
                       fill
-                      sizes="(min-width: 1024px) 540px, 92vw"
-                      className={`project-preview-image ${project.previewFit === "contain" ? "contain" : ""}`}
+                      sizes="(min-width: 900px) 520px, 92vw"
                     />
-                    <div className="project-preview-shade" aria-hidden="true" />
+                  </div>
+                ) : (
+                  <div className="project-media project-media--mark" aria-hidden="true">
+                    <span>{project.name}</span>
                   </div>
                 )}
 
-                <div className="project-card-content">
-                  <p className="project-index">Proyecto 0{index + 1}</p>
+                <div>
+                  <p className="project-index">{String(index + 1).padStart(2, "0")}</p>
                   <h3 className="project-title">{project.name}</h3>
                   <p className="project-description">{project.description}</p>
 
-                  <div className="project-meta">
-                    <p className="project-meta-label">Rol</p>
-                    <p className="project-meta-copy">{project.role}</p>
+                  <div className="project-role">
+                    <p className="project-role-label">Rol</p>
+                    <p>{project.role}</p>
                   </div>
 
                   <div className="project-tags">
                     {project.capabilities.map((capability) => (
-                      <span key={capability} className="tag">
-                        {capability}
-                      </span>
+                      <span key={capability}>{capability}</span>
                     ))}
                   </div>
 
                   {primaryLink && (
-                    <div className="project-card-actions">
-                      <a
-                        href={primaryLink.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`project-cta ${project.featured ? "project-cta-featured" : ""}`}
-                      >
+                    <div className="project-cta-wrap">
+                      <GlassCTA href={primaryLink.href} external size="small">
                         {primaryLink.label}
-                        <span className="project-cta-icon" aria-hidden="true">
-                          ↗
-                        </span>
-                      </a>
+                      </GlassCTA>
                     </div>
                   )}
                 </div>

@@ -1,51 +1,94 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect } from "react";
 
-function setCursor(x: number, y: number) {
-  document.documentElement.style.setProperty("--cursor-x", `${x}px`);
-  document.documentElement.style.setProperty("--cursor-y", `${y}px`);
+function isCoarsePointer() {
+  if (typeof window === "undefined") return false;
+  return (
+    window.matchMedia("(hover: none), (pointer: coarse)").matches ||
+    window.matchMedia("(max-width: 768px)").matches
+  );
 }
 
 export function SiteBackground() {
   useEffect(() => {
     const root = document.documentElement;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    setCursor(window.innerWidth * 0.5, window.innerHeight * 0.35);
-
-    if (reducedMotion) return;
-
+    let pointerX = 0.5;
+    let pointerY = 0.35;
     let raf = 0;
-    const move = (x: number, y: number) => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => setCursor(x, y));
+    let reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const apply = () => {
+      raf = 0;
+      const scrollMax = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+      const scrollT = Math.min(Math.max(window.scrollY / scrollMax, 0), 1);
+      const scrollY = 0.22 + scrollT * 0.56;
+
+      let x: number;
+      let y: number;
+
+      if (isCoarsePointer() || reduced) {
+        x = 0.5;
+        y = scrollY;
+      } else {
+        x = pointerX;
+        y = pointerY * 0.6 + scrollY * 0.4;
+      }
+
+      root.style.setProperty("--light-x", `${(x * 100).toFixed(2)}%`);
+      root.style.setProperty("--light-y", `${(y * 100).toFixed(2)}%`);
+      root.style.setProperty("--scroll-t", scrollT.toFixed(4));
     };
 
-    const onMouseMove = (e: MouseEvent) => move(e.clientX, e.clientY);
-    const onTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      if (touch) move(touch.clientX, touch.clientY);
+    const schedule = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(apply);
     };
 
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    const onPointer = (e: PointerEvent) => {
+      if (isCoarsePointer() || e.pointerType === "touch") return;
+      pointerX = e.clientX / Math.max(window.innerWidth, 1);
+      pointerY = e.clientY / Math.max(window.innerHeight, 1);
+      schedule();
+    };
+
+    apply();
+    window.addEventListener("pointermove", onPointer, { passive: true });
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onMotion = () => {
+      reduced = motionQuery.matches;
+      schedule();
+    };
+    motionQuery.addEventListener("change", onMotion);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("touchmove", onTouchMove);
-      cancelAnimationFrame(raf);
-      root.style.removeProperty("--cursor-x");
-      root.style.removeProperty("--cursor-y");
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("pointermove", onPointer);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      motionQuery.removeEventListener("change", onMotion);
     };
   }, []);
 
   return (
-    <div className="site-bg" aria-hidden="true">
-      <div className="site-bg__base" />
-      <div className="site-bg__grid" />
-      <div className="site-bg__grid-neon" />
-      <div className="site-bg__spotlight" />
+    <div className="site-bg" data-glass-field aria-hidden="true">
+      <div className="site-bg__photo">
+        <Image
+          src="/illustrations/glass-field.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="site-bg__photo-img"
+          unoptimized
+        />
+      </div>
+      <div className="site-bg__wash" />
+      <div className="site-bg__light" />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CONTACT_FORM_ENABLED, SITE, WHATSAPP_URL } from "@/lib/constants";
+import { GlassButton, GlassCTA, GlassSurface } from "@/components/effects/GlassCTA";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -45,7 +46,7 @@ export function Contact() {
     if (!accessKey || accessKey === "REEMPLAZAR_EN_VERCEL") {
       setStatus("error");
       setErrorMsg(
-        "Falta la API key de Web3Forms en Vercel (NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY o WEB3FORMS_ACCESS_KEY). Después de guardarla, haz redeploy.",
+        "Falta la API key de Web3Forms. Mientras tanto, escríbenos por WhatsApp o correo.",
       );
       return;
     }
@@ -58,7 +59,7 @@ export function Contact() {
           access_key: accessKey,
           name,
           email,
-          subject: `Cotización — ${name} (${company})`,
+          subject: `Proyecto — ${name} (${company})`,
           message: `Empresa o proyecto: ${company}\n\n${message}`,
         }),
       });
@@ -75,8 +76,7 @@ export function Contact() {
 
       if (!res.ok || !body.success) {
         throw new Error(
-          body.message ??
-            "No se pudo enviar el mensaje. Si persiste, escríbeme por WhatsApp.",
+          body.message ?? "No se pudo enviar. Si persiste, escríbenos por WhatsApp.",
         );
       }
 
@@ -87,138 +87,129 @@ export function Contact() {
       setErrorMsg(
         err instanceof Error
           ? err.message
-          : "No se pudo enviar el formulario. También puedes escribirme directo por WhatsApp.",
+          : "No se pudo enviar el formulario. También puedes escribir por WhatsApp.",
       );
     }
   }
 
   return (
-    <section id="contacto" className="section section-muted">
+    <section id="contacto" className="section section-rule">
       <div className="container-page">
-        <div
-          className={
-            CONTACT_FORM_ENABLED
-              ? "grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start"
-              : "max-w-2xl"
-          }
-        >
+        <div className={CONTACT_FORM_ENABLED ? "contact-grid" : "max-w-2xl"}>
           <div>
-            <p className="eyebrow">Contacto</p>
-            <h2 className="section-title">¿Necesitas una página profesional para tu negocio?</h2>
-            <p className="section-copy mt-6">
-              Puedo ayudarte a convertir tu servicio, empresa o idea en una presencia digital clara,
-              funcional y lista para recibir prospectos.
+            <p className="section-label">Contacto</p>
+            <h2 className="section-title">Escríbenos</h2>
+            <p className="section-copy">
+              Cuéntanos qué necesitas. Te respondemos con el siguiente paso.
             </p>
-            <div className="mt-8 space-y-4 text-sm text-slate-300">
-              <p>
-                <span className="text-slate-500">Correo</span>
-                <br />
-                <a href={`mailto:${SITE.email}`} className="contact-link">
-                  {SITE.email}
+
+            <div className="contact-channels">
+              <GlassSurface preset="panel" className="contact-channel">
+                <span>WhatsApp</span>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  {SITE.phoneDisplay}
                 </a>
-              </p>
+              </GlassSurface>
+              <GlassSurface preset="panel" className="contact-channel">
+                <span>Correo</span>
+                <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              </GlassSurface>
             </div>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button button-primary mt-10 inline-flex"
-            >
-              Escribirme por WhatsApp
-            </a>
+
+            <div className="mt-10">
+              <GlassCTA href={WHATSAPP_URL} external>
+                WhatsApp
+              </GlassCTA>
+            </div>
           </div>
 
           {CONTACT_FORM_ENABLED &&
             (status === "success" ? (
-            <div className="contact-card flex min-h-[320px] flex-col items-center justify-center text-center">
-              <p className="text-xl font-semibold text-white">Mensaje enviado.</p>
-              <p className="mt-2 text-slate-400">Te respondo lo antes posible.</p>
-              <button
-                type="button"
-                className="button button-secondary mt-6"
-                onClick={() => setStatus("idle")}
-              >
-                Enviar otro mensaje
-              </button>
-            </div>
-          ) : (
-            <form className="contact-card" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                <div>
-                  <label htmlFor="name" className="form-label">
-                    Nombre
+              <div className="contact-panel flex min-h-[280px] flex-col items-center justify-center text-center">
+                <p className="text-xl font-semibold text-[var(--color-text)]">Mensaje enviado.</p>
+                <p className="mt-2 text-[var(--color-muted)]">Te respondemos lo antes posible.</p>
+                <GlassButton className="mt-6" onClick={() => setStatus("idle")}>
+                  Enviar otro mensaje
+                </GlassButton>
+              </div>
+            ) : (
+              <form className="contact-panel" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                  <div>
+                    <label htmlFor="name" className="form-label">
+                      Nombre
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="form-field"
+                      placeholder="Tu nombre"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="form-label">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="form-field"
+                      placeholder="tu@email.com"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="mt-5">
+                  <label htmlFor="company" className="form-label">
+                    Empresa o proyecto
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
+                    id="company"
+                    name="company"
                     className="form-field"
-                    placeholder="Tu nombre"
+                    placeholder="Nombre de tu negocio"
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="email" className="form-label">
-                    Email
+                <div className="mt-5">
+                  <label htmlFor="message" className="form-label">
+                    ¿Qué necesitas resolver?
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="form-field"
-                    placeholder="tu@email.com"
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    className="form-field resize-none"
+                    placeholder="Cuéntalo en pocas líneas: resultado esperado, problema actual, plazo o enlace relevante..."
                     required
+                    minLength={5}
                   />
                 </div>
-              </div>
-              <div className="mt-5">
-                <label htmlFor="company" className="form-label">
-                  Empresa o proyecto
-                </label>
                 <input
                   type="text"
-                  id="company"
-                  name="company"
-                  className="form-field"
-                  placeholder="Nombre de tu negocio"
-                  required
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="absolute -left-[9999px]"
+                  aria-hidden="true"
                 />
-              </div>
-              <div className="mt-5">
-                <label htmlFor="message" className="form-label">
-                  ¿Qué necesitas desarrollar?
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  className="form-field resize-none"
-                  placeholder="Cuéntalo en pocas líneas: página corporativa, landing, formulario, dashboard, integración con WhatsApp..."
-                  required
-                  minLength={5}
-                />
-              </div>
-              <input
-                type="text"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                className="absolute -left-[9999px]"
-                aria-hidden="true"
-              />
-              {status === "error" && (
-                <p className="mt-5 rounded-md border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-                  {errorMsg}
-                </p>
-              )}
-              <button
-                type="submit"
-                className="button button-primary mt-6 w-full justify-center"
-                disabled={status === "loading"}
-              >
-                {status === "loading" ? "Enviando..." : "Solicitar cotización"}
-              </button>
-            </form>
+                {status === "error" && (
+                  <p className="mt-5 border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+                    {errorMsg}
+                  </p>
+                )}
+                <GlassButton
+                  type="submit"
+                  className="mt-6 w-full justify-center"
+                  disabled={status === "loading"}
+                >
+                  {status === "loading" ? "Enviando..." : "Enviar contexto"}
+                </GlassButton>
+              </form>
             ))}
         </div>
       </div>

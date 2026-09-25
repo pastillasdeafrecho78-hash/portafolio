@@ -2,22 +2,23 @@ import { PROCESS_STEPS } from "@/lib/constants";
 
 export function Process() {
   return (
-    <section id="proceso" className="section section-muted">
+    <section id="proceso" className="section section-rule">
       <div className="container-page">
         <div className="section-heading">
-          <p className="eyebrow">Cómo trabajo</p>
-          <h2 className="section-title">
-            Un proceso directo para pasar de idea a sitio publicado.
-          </h2>
+          <p className="section-label">Proceso</p>
+          <h2 className="section-title">Cómo trabajamos</h2>
+          <p className="section-copy">
+            Casi todo se cierra por WhatsApp o correo. Las llamadas son opcionales.
+          </p>
         </div>
 
-        <div className="mx-auto max-w-4xl">
+        <div className="process-list">
           {PROCESS_STEPS.map((step, index) => (
-            <article key={step.title} className="process-row">
-              <div className="process-number">{String(index + 1).padStart(2, "0")}</div>
+            <article key={step.title} className="process-item">
+              <div className="process-num">{String(index + 1).padStart(2, "0")}</div>
               <div>
-                <h3 className="text-xl font-semibold text-white">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">{step.description}</p>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
               </div>
             </article>
           ))}

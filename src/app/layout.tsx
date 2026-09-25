@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope, Syne } from "next/font/google";
 import { SITE } from "@/lib/constants";
 import { SiteBackground } from "@/components/layout/SiteBackground";
 import "./globals.css";
 
-const inter = Inter({
+const syne = Syne({
   subsets: ["latin"],
   display: "swap",
+  variable: "--font-syne",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +28,7 @@ export const metadata: Metadata = {
     locale: "es_MX",
     type: "website",
   },
-  icons: { icon: "/logo-salvador-barba.png", apple: "/logo-salvador-barba.png" },
+  icons: { icon: "/favicon.png", apple: "/favicon.png" },
 };
 
 const jsonLd = {
@@ -31,6 +38,9 @@ const jsonLd = {
   description: SITE.description,
   url: SITE.url,
   email: SITE.email,
+  telephone: SITE.phoneDisplay,
+  areaServed: "MX",
+  founder: SITE.director,
 };
 
 export default function RootLayout({
@@ -40,19 +50,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${syne.variable} ${manrope.variable} antialiased`}>
         <SiteBackground />
         <div className="site-shell">
           <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-surface px-4 focus:py-2"
-        >
-          Ir al contenido
-        </a>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-surface focus:px-4 focus:py-2"
+          >
+            Ir al contenido
+          </a>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
           {children}
         </div>
       </body>

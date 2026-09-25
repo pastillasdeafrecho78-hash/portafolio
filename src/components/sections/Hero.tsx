@@ -1,79 +1,151 @@
-import Image from "next/image";
-import { HERO_PROOFS, SITE, WHATSAPP_URL } from "@/lib/constants";
-import { VideoHero } from "@/components/VideoHero";
+"use client";
 
-export function Hero() {
+import { useEffect, useRef } from "react";
+import { getGsap } from "@/lib/gsap";
+import { ThinkDeepMark } from "@/components/brand/ThinkDeepMark";
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function isCoarseOrNarrow() {
   return (
-    <header className="hero-section">
-      <div className="container-page relative">
-        <div className="grid min-h-screen gap-12 pt-32 pb-20 md:pt-40 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-          <div>
-            <p className="eyebrow mb-6">
-              {SITE.name} · {SITE.role}
-            </p>
-            <h1 className="max-w-5xl text-4xl font-semibold leading-[1.06] tracking-normal text-white md:text-6xl lg:text-7xl">
-              Desarrollo sitios web y sistemas digitales para negocios que necesitan verse
-              profesionales y operar mejor.
-            </h1>
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
-              Páginas corporativas, formularios de contacto, integraciones con WhatsApp y
-              aplicaciones web diseñadas para convertir visitas en prospectos reales.
-            </p>
+    window.matchMedia("(hover: none), (pointer: coarse)").matches ||
+    window.matchMedia("(max-width: 768px)").matches
+  );
+}
 
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button button-primary"
-              >
-                Solicitar cotización por WhatsApp
-              </a>
-              <a href="#proyectos" className="button button-secondary">
-                Ver proyectos
-              </a>
-            </div>
+type Props = {
+  onSettled?: () => void;
+  /** Skip scrub when the site is already unlocked. */
+  skipMotion?: boolean;
+};
 
-            <div className="mt-16 grid gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 md:grid-cols-3">
-              {HERO_PROOFS.map((proof) => (
-                <p key={proof}>{proof}</p>
-              ))}
-            </div>
+/**
+ * Sticky scroll runway: draw mark + reveal wordmark while you scroll.
+ * Freezes at full size (no shrink, no pin-kill jump). Scroll back up anytime
+ * to see the same peak logo; questions live in the next section.
+ */
+export function Hero({ onSettled, skipMotion = false }: Props) {
+  const stageRef = useRef<HTMLElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+  const markWrapRef = useRef<HTMLDivElement>(null);
+  const wordRef = useRef<HTMLHeadingElement>(null);
+  const hintRef = useRef<HTMLDivElement>(null);
+  const settledRef = useRef(false);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    const path = pathRef.current;
+    if (!stage || !path) return;
+
+    const { gsap } = getGsap();
+    const reduced = prefersReducedMotion();
+    const mobile = isCoarseOrNarrow();
+    const hint = hintRef.current;
+
+    const applyFinal = () => {
+      gsap.set(path, { drawSVG: "0% 100%" });
+      gsap.set(markWrapRef.current, { clearProps: "transform" });
+      gsap.set(wordRef.current, { opacity: 1, y: 0 });
+      if (hint) gsap.set(hint, { opacity: 0, pointerEvents: "none" });
+      stage.classList.add("hero-stage--settled");
+    };
+
+    const notifySettled = () => {
+      if (settledRef.current) return;
+      settledRef.current = true;
+      applyFinal();
+      onSettled?.();
+    };
+
+    if (process.env.NODE_ENV === "development") {
+      (window as unknown as { __tdForceSettle?: () => void }).__tdForceSettle = () => {
+        applyFinal();
+        notifySettled();
+      };
+    }
+
+    if (reduced || skipMotion) {
+      stage.classList.add("hero-stage--static");
+      applyFinal();
+      settledRef.current = true;
+      onSettled?.();
+      return;
+    }
+
+    gsap.set(path, { drawSVG: "0% 0%" });
+    gsap.set(markWrapRef.current, { scale: 1, y: 0 });
+    gsap.set(wordRef.current, { opacity: 0, y: 24 });
+    if (hint) gsap.set(hint, { opacity: 1 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: stage,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.65,
+        // No GSAP pin — CSS sticky handles it, so there's no spacer jump.
+        once: true,
+        onLeave: notifySettled,
+        onUpdate: (self) => {
+          if (hint) {
+            // Hint se va en cuanto empiezas a bajar; el logo toma el protagonismo
+            const fade = Math.max(0, 1 - self.progress / 0.08);
+            gsap.set(hint, {
+              opacity: fade,
+              pointerEvents: fade < 0.05 ? "none" : "auto",
+            });
+          }
+          if (self.progress >= 0.92) notifySettled();
+        },
+      },
+    });
+
+    tl.to(path, { drawSVG: "0% 100%", duration: 1, ease: "none" }, 0);
+    tl.to(
+      wordRef.current,
+      { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
+      mobile ? 0.45 : 0.55,
+    );
+
+    return () => {
+      tl.scrollTrigger?.kill(false);
+      tl.kill();
+    };
+  }, [onSettled, skipMotion]);
+
+  return (
+    <section ref={stageRef} className="hero-stage" aria-label="Think Deep">
+      <div className="hero-stage__viewport">
+        <div className="hero-stage__stack">
+          <div ref={markWrapRef} className="hero-stage__mark">
+            <ThinkDeepMark ref={pathRef} className="hero-stage__svg" />
           </div>
 
-          <div className="hero-portrait-wrap">
-            <div className="portrait-card">
-              <Image
-                src="/salvador-barba.png"
-                alt={SITE.name}
-                fill
-                sizes="(min-width: 1024px) 460px, 92vw"
-                className="portrait-image"
-                priority
-              />
-              <div className="portrait-shade" />
-            </div>
-
-            <div className="portrait-caption">
-              <div>
-                <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Enfoque</p>
-                <p className="mt-1 font-semibold text-white">
-                  Sitios corporativos, formularios y sistemas web para negocios.
-                </p>
-              </div>
-              <div className="caption-stack">
-                <span>React</span>
-                <span>Next.js</span>
-                <span>Vercel</span>
-              </div>
-            </div>
-          </div>
+          <h1 ref={wordRef} className="hero-stage__word">
+            <span className="hero-stage__word-line">think</span>
+            <span className="hero-stage__word-line">deep</span>
+          </h1>
         </div>
 
-        <div className="pb-20">
-          <VideoHero />
+        <div ref={hintRef} className="hero-scroll-hint" aria-hidden>
+          <span className="hero-scroll-hint__glow" />
+          <span className="hero-scroll-hint__line" />
+          <span className="hero-scroll-hint__label">Desliza</span>
+          <span className="hero-scroll-hint__chev">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6.5 9.5 12 15l5.5-5.5"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
         </div>
       </div>
-    </header>
+    </section>
   );
 }

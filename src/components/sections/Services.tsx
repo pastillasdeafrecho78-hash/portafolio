@@ -1,26 +1,30 @@
-import { SERVICES } from "@/lib/constants";
+"use client";
+
+import { GlassSurface } from "@/components/effects/GlassCTA";
+import { OFFERS } from "@/lib/constants";
 
 export function Services() {
   return (
-    <section id="servicios" className="section section-muted">
+    <section id="servicios" className="section section-rule">
       <div className="container-page">
         <div className="section-heading">
-          <p className="eyebrow">Servicios</p>
-          <h2 className="section-title">
-            Soluciones digitales claras, funcionales y listas para negocio.
-          </h2>
+          <p className="section-label">Ofertas</p>
+          <h2 className="section-title">Tres trabajos de código. Precio fijo.</h2>
           <p className="section-copy">
-            Trabajo con empresas y profesionales que necesitan una presencia digital seria, fácil de
-            entender y preparada para recibir prospectos.
+            Sitio, chats o panel. Eliges uno, pagas el anticipo y arrancamos.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => (
-            <article key={service.title} className="premium-card">
-              <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-slate-400">{service.description}</p>
-            </article>
+        <div id="ofertas" className="hero-offers scroll-mt-28" aria-label="Ofertas">
+          {OFFERS.map((offer) => (
+            <GlassSurface key={offer.id} as="article" preset="panel" className="hero-offer">
+              <h3>{offer.title}</h3>
+              <p className="hero-offer-price">{offer.price}</p>
+              <p>{offer.description}</p>
+              <p className="hero-offer-meta">
+                {offer.turnaround} · {offer.deposit}
+              </p>
+            </GlassSurface>
           ))}
         </div>
       </div>

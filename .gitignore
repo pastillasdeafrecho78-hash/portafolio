@@ -23,7 +23,31 @@
 
 # misc
 .DS_Store
+.tmp-*
 *.pem
+/video/proceso/archive/
+/video/proceso/.hyperframes/
+/video/proceso/*/*.mp4
+/video/proceso/*/snapshots/
+/video/proceso/*/.thumbnails/
+/video/proceso/scripts/__pycache__/
+/video/proceso/*/AGENTS.md
+/video/proceso/*/CLAUDE.md
+/video/proceso/*/node_modules/
+/video/proceso/*/.hyperframes/
+/video/proceso/*/.waveform-cache/
+/video/proceso/*/assets/preview/
+/video/proceso/assets/
+/video/proceso/HANDOFF-CODEX.md
+/video/proceso/VOZ.md
+/video/proceso/GUION.md
+/video/proceso/GUION-SITIO.md
+/video/proceso/GUIONES.md
+/video/proceso/*/audio/sitio-vo-flat.mp3
+/video/proceso/*/audio/sitio-vo-kate.mp3
+/public/video/proceso/ver.html
+/public/video/proceso/poster-fallback.svg
+/public/video/proceso/sitio-poster.png
 
 # debug
 npm-debug.log*

@@ -1,94 +1,278 @@
 export const SITE = {
-  name: "Salvador Barba",
-  shortName: "SB",
-  role: "Desarrollador web freelance",
-  title: "Salvador Barba | Desarrollador Web Freelance",
+  name: "Think Deep",
+  shortName: "TD",
+  role: "Estudio digital",
+  director: "Salvador Barba",
+  title: "Think Deep | Sitios, chats y paneles",
   description:
-    "Desarrollo de páginas corporativas, landing pages, formularios de contacto, integración con WhatsApp y aplicaciones web para negocios.",
-  url: "https://salvador.dev",
+    "Sitio, automatización de chats o panel/MVP con precio cerrado. Think Deep — México. WhatsApp.",
+  url: "https://www.thinkdeepgroup.com",
   email: "salvador@thinkdeepgroup.com",
+  location: "Dolores Hidalgo — México",
+  phoneDisplay: "418 177 4543",
 };
 
 export const WHATSAPP_NUMBER = "524181774543";
 export const WHATSAPP_MESSAGE =
-  "Hola Salvador, vi tu portafolio y me gustaría solicitar una cotización.";
+  "Hola Think Deep — vi el sitio y quiero platicar de un proyecto.";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+export function buildWhatsAppUrl(message: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
 
 /** Activar cuando Web3Forms esté configurado en Vercel. */
 export const CONTACT_FORM_ENABLED = false;
 
 export const NAV_LINKS = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#proceso", label: "Proceso" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/", label: "Ofertas" },
+  { href: "/proceso", label: "Proceso" },
 ] as const;
 
-export const HERO_PROOFS = [
-  "Web developer enfocado en sitios corporativos, landing pages y aplicaciones web para negocios.",
-  "Interfaces claras, responsive y pensadas para generar contacto real desde celular y escritorio.",
-  "Integraciones prácticas con WhatsApp, correo, formularios y flujos internos de operación.",
-] as const;
-
-export const SERVICES = [
+/** Ofertas de programación (sin video como oferta primaria). */
+export const OFFERS = [
   {
-    title: "Páginas corporativas",
+    id: "landing",
+    title: "Sitio web",
+    price: "USD 160",
+    deposit: "USD 80 de anticipo",
+    turnaround: "48 h",
     description:
-      "Sitios profesionales para presentar tu empresa, servicios y propuesta de valor de forma clara.",
+      "Hasta cinco secciones, WhatsApp, formulario y publicación. Una revisión.",
   },
   {
-    title: "Landing pages de conversión",
+    id: "chats",
+    title: "Automatización de chats",
+    price: "USD 200",
+    deposit: "USD 100 de anticipo",
+    turnaround: "3 a 5 días",
     description:
-      "Páginas enfocadas en captar prospectos, agendar llamadas o recibir solicitudes de cotización.",
+      "WhatsApp o inbox → respuesta o registro. Un flujo.",
   },
   {
-    title: "Formularios de contacto",
+    id: "panel",
+    title: "Panel o MVP",
+    price: "USD 280",
+    deposit: "USD 140 de anticipo",
+    turnaround: "5 a 7 días",
     description:
-      "Formularios conectados a correo electrónico para recibir datos de clientes potenciales.",
-  },
-  {
-    title: "Integración con WhatsApp",
-    description:
-      "Botones, flujos y llamadas a la acción conectadas directamente con WhatsApp.",
-  },
-  {
-    title: "Optimización móvil",
-    description:
-      "Diseños responsivos para que la página funcione correctamente en celular, tablet y escritorio.",
-  },
-  {
-    title: "Aplicaciones web / dashboards",
-    description:
-      "Interfaces internas para operación, administración de pedidos, seguimiento o gestión de procesos.",
+      "Una pantalla con auth para pedidos, usuarios o reportes.",
   },
 ] as const;
 
-export const CAPABILITIES = [
-  "Páginas corporativas",
-  "Formularios de contacto",
-  "WhatsApp y correo",
-  "Responsive mobile-first",
-  "Paneles administrativos",
-  "Dashboards y reportes",
+export type InterestId = "landing" | "chats" | "panel" | "other";
+
+export type OnboardingIconKey =
+  | "monitor"
+  | "messages"
+  | "camera"
+  | "globe"
+  | "dashboard"
+  | "rocket"
+  | "chat"
+  | "mail"
+  | "face"
+  | "scan"
+  | "list"
+  | "building"
+  | "user"
+  | "package"
+  | "cart"
+  | "users"
+  | "chart"
+  | "zap"
+  | "pen";
+
+/** Paso 01: tres familias visibles; al expandir, tres opciones concretas en los mismos huecos. */
+export type OnboardingLeaf = {
+  id: string;
+  interest: InterestId;
+  label: string;
+  icon: OnboardingIconKey;
+  hint?: string;
+  /** Si viene definido, se salta el detalle del paso 02. */
+  followUp?: string;
+};
+
+export type OnboardingFamily = {
+  id: string;
+  label: string;
+  icon: OnboardingIconKey;
+  children: readonly OnboardingLeaf[];
+};
+
+export const ONBOARDING_FAMILIES: readonly OnboardingFamily[] = [
+  {
+    id: "presencia",
+    label: "Web, panel o producto",
+    icon: "monitor",
+    children: [
+      {
+        id: "sitio",
+        interest: "landing",
+        label: "Sitio web",
+        icon: "globe",
+        hint: "Tu negocio en internet",
+      },
+      {
+        id: "panel",
+        interest: "panel",
+        label: "Panel o tablero",
+        icon: "dashboard",
+        hint: "Ver pedidos, clientes o reportes",
+      },
+      {
+        id: "mvp",
+        interest: "panel",
+        followUp: "mvp",
+        label: "MVP / app nueva",
+        icon: "rocket",
+        hint: "Producto desde cero, versión inicial",
+      },
+    ],
+  },
+  {
+    id: "automatizar",
+    label: "Automatizar chats o procesos",
+    icon: "messages",
+    children: [
+      {
+        id: "whatsapp",
+        interest: "chats",
+        followUp: "whatsapp",
+        label: "WhatsApp",
+        icon: "chat",
+        hint: "Respuestas o registros automáticos",
+      },
+      {
+        id: "webchat",
+        interest: "chats",
+        followUp: "web",
+        label: "Chat en tu web",
+        icon: "messages",
+        hint: "Atiende visitas en tu página",
+      },
+      {
+        id: "inbox",
+        interest: "chats",
+        followUp: "inbox",
+        label: "Correo o inbox",
+        icon: "mail",
+        hint: "Mensajes que llegan por correo",
+      },
+    ],
+  },
+  {
+    id: "camara",
+    label: "Cámara: caras, objetos o listas",
+    icon: "camera",
+    children: [
+      {
+        id: "rostro",
+        interest: "other",
+        followUp: "rostro",
+        label: "Reconocimiento facial",
+        icon: "face",
+        hint: "Check-in o acceso con cámara",
+      },
+      {
+        id: "patron",
+        interest: "other",
+        followUp: "patron",
+        label: "Detectar en cámara",
+        icon: "scan",
+        hint: "Movimiento, objetos o conteo",
+      },
+      {
+        id: "lista",
+        interest: "other",
+        followUp: "lista",
+        label: "Validar contra lista",
+        icon: "list",
+        hint: "Huéspedes, socios o empleados",
+      },
+    ],
+  },
 ] as const;
 
-export const STACK_ITEMS = [
+export const ONBOARDING_EXTRA_FOLLOWUP_LABELS: Record<string, string> = {
+  mvp: "MVP / producto desde cero",
+  rostro: "Reconocimiento facial",
+  patron: "Detección con cámara",
+  lista: "Validación contra lista",
+};
+
+export const ONBOARDING_INTERESTS = [
   {
-    title: "React / Next.js",
-    description:
-      "Ideal cuando el sitio necesita crecer hacia formularios avanzados, dashboards, pedidos o integraciones reales.",
+    id: "landing" as const,
+    label: "Sitio web",
+    hint: "",
   },
   {
-    title: "WordPress / Elementor",
-    description:
-      "Lo puedo tomar como referencia de estructura visual, pero prefiero React cuando el proyecto exige control, rendimiento y escalabilidad.",
+    id: "chats" as const,
+    label: "Automatización de chats",
+    hint: "",
   },
   {
-    title: "Vercel / formularios / WhatsApp",
-    description:
-      "Deploy moderno, llamadas a la acción claras y canales de contacto conectados para recibir prospectos.",
+    id: "panel" as const,
+    label: "Panel o MVP",
+    hint: "",
+  },
+  {
+    id: "other" as const,
+    label: "Otro",
+    hint: "",
   },
 ] as const;
+
+export const ONBOARDING_FOLLOWUPS: Record<
+  InterestId,
+  {
+    question: string;
+    options: readonly { id: string; label: string; icon: OnboardingIconKey }[];
+  }
+> = {
+  landing: {
+    question: "¿Para qué es el sitio?",
+    options: [
+      { id: "negocio", label: "Negocio", icon: "building" },
+      { id: "personal", label: "Personal", icon: "user" },
+      { id: "producto", label: "Producto", icon: "package" },
+      { id: "otro", label: "Otro", icon: "pen" },
+    ],
+  },
+  chats: {
+    question: "¿Dónde llegan los mensajes?",
+    options: [
+      { id: "whatsapp", label: "WhatsApp", icon: "chat" },
+      { id: "web", label: "Chat en la web", icon: "messages" },
+      { id: "inbox", label: "Inbox / correo", icon: "mail" },
+      { id: "otro", label: "Otro", icon: "pen" },
+    ],
+  },
+  panel: {
+    question: "¿Qué quieres mover?",
+    options: [
+      { id: "pedidos", label: "Pedidos", icon: "cart" },
+      { id: "usuarios", label: "Usuarios", icon: "users" },
+      { id: "reportes", label: "Reportes", icon: "chart" },
+      { id: "mvp", label: "MVP / app nueva", icon: "rocket" },
+      { id: "otro", label: "Otro", icon: "pen" },
+    ],
+  },
+  other: {
+    question: "¿Qué necesitas?",
+    options: [
+      { id: "rostro", label: "Reconocimiento facial", icon: "face" },
+      { id: "patron", label: "Detección con cámara", icon: "scan" },
+      { id: "lista", label: "Validar contra lista", icon: "list" },
+      { id: "ya", label: "Lo antes posible", icon: "zap" },
+      { id: "otro", label: "Otro", icon: "pen" },
+    ],
+  },
+};
+
+export const STORAGE_ONBOARDING = "td-onboarding-v2";
 
 export type ProjectLink = { label: string; href: string };
 
@@ -105,89 +289,92 @@ export type Project = {
 
 export const PROJECTS: readonly Project[] = [
   {
-    name: "ServimOS — Landing",
+    name: "ServimOS",
     description:
-      "Landing pública para presentar el producto, explicar el valor y convertir visitas en registros o contacto comercial.",
-    role: "Estructura visual, copy de conversión, responsive y llamadas a la acción conectadas al flujo de registro.",
-    capabilities: ["Landing page", "Conversión", "Responsive", "SEO", "Marca producto"],
-    preview: "/servimos-landing.jpg",
-    previewFit: "cover",
-    links: [{ label: "Ver landing", href: "https://servimos.online/" }],
-  },
-  {
-    name: "ServimOS — Plataforma",
-    description:
-      "Plataforma completa en producción: operación diaria, pedidos digitales, cocina, menús y flujos internos de atención.",
-    role: "Frontend, arquitectura de interfaces, paneles administrativos, experiencia móvil para cliente y operación del negocio.",
+      "Plataforma en producción para restaurantes: pedidos digitales, cocina, menús y paneles de operación diaria.",
+    role: "Frontend, arquitectura de interfaces, paneles administrativos y experiencia móvil del cliente.",
     capabilities: [
-      "Plataforma en producción",
       "Dashboard operativo",
       "Menús digitales",
       "Flujo de pedidos",
-      "Experiencia cliente",
+      "Producto en vivo",
     ],
     preview: "/servimos-reportes.png",
     previewFit: "cover",
     featured: true,
-    links: [{ label: "Ver plataforma", href: "https://servimos.online/login" }],
+    links: [
+      { label: "Ver producto", href: "https://servimos.online/" },
+      { label: "Entrar", href: "https://servimos.online/login" },
+    ],
+  },
+  {
+    name: "Torre Creativa",
+    description:
+      "Sitio inmobiliario para presentar desarrollos, tipologías y contacto comercial con una narrativa clara.",
+    role: "Estructura web, presentación de inventario y flujo hacia contacto.",
+    capabilities: ["Inmobiliaria", "Landing", "Responsive"],
+    links: [
+      {
+        label: "Ver repositorio",
+        href: "https://github.com/pastillasdeafrecho78-hash/TorreCreativa",
+      },
+    ],
+  },
+  {
+    name: "ENERSCI",
+    description:
+      "Presencia digital orientada al sector energético: propuesta de valor, servicios y punto de contacto.",
+    role: "Sitio de marca y estructura de contenido para una vertical técnica.",
+    capabilities: ["Energía", "Marca", "Web"],
+    links: [
+      {
+        label: "Ver repositorio",
+        href: "https://github.com/pastillasdeafrecho78-hash/enersci",
+      },
+    ],
+  },
+  {
+    name: "Solar Security Automation",
+    description:
+      "Automatización orientada a monitoreo y respuesta en contextos de seguridad solar / operación remota.",
+    role: "Lógica de automatización, flujos y superficie de control.",
+    capabilities: ["Automatización", "Seguridad", "Operación"],
+    links: [
+      {
+        label: "Ver repositorio",
+        href: "https://github.com/pastillasdeafrecho78-hash/solar-security-automation",
+      },
+    ],
+  },
+  {
+    name: "Lúmen Outfit / Bonding",
+    description:
+      "Demo agéntica y pieza audiovisual: narrativa de marca con flujo interactivo y salida en video.",
+    role: "Prototipo de experiencia, dirección visual y ensamble demo.",
+    capabilities: ["Demo agéntica", "Video", "Experiencia"],
+    links: [{ label: "Ver demo", href: "/bonding" }],
   },
 ];
 
-export const PLATFORMS_INSIGHTS = {
-  eyebrow: "Plataformas e insights",
-  title: "También construimos herramientas internas para operar y entender el negocio.",
-  description:
-    "Más allá de la landing, diseño y desarrollo interfaces para equipos que necesitan ordenar operación, administrar información y tomar decisiones con datos claros.",
-  points: [
-    {
-      title: "Paneles administrativos",
-      description: "Vistas para gestionar pedidos, usuarios, estados y procesos internos con interfaces claras.",
-    },
-    {
-      title: "Reportes y métricas",
-      description: "Dashboards para visualizar rendimiento, tendencias y señales útiles del negocio.",
-    },
-    {
-      title: "Tablas, filtros y flujos",
-      description: "Componentes reutilizables para consultar, filtrar y actuar sobre información operativa.",
-    },
-    {
-      title: "Escalabilidad con React",
-      description: "Bases sólidas para crecer de una página simple a una plataforma web completa.",
-    },
-  ],
-  tags: [
-    "Paneles admin",
-    "BI operativo",
-    "Tablas y filtros",
-    "React / Next.js",
-    "Operación interna",
-  ],
-} as const;
-
 export const PROCESS_STEPS = [
   {
-    title: "Diagnóstico rápido",
+    title: "Mensaje",
     description:
-      "Entiendo qué necesita comunicar tu negocio y qué acción quieres que tome el visitante.",
+      "Nos escribes qué necesitas. Te decimos cuál de las tres ofertas encaja y qué pedimos.",
   },
   {
-    title: "Estructura y propuesta visual",
-    description: "Defino la arquitectura de la página, secciones principales y dirección visual.",
+    title: "Anticipo",
+    description:
+      "Confirmas precio y plazo. Con el anticipo arrancamos.",
   },
   {
-    title: "Desarrollo responsive",
+    title: "Entrega",
     description:
-      "Construyo la página cuidando rendimiento, claridad y adaptación a dispositivos móviles.",
+      "Te mandamos la primera versión en el plazo de la oferta, con una ronda de cambios.",
   },
   {
-    title: "Integraciones",
+    title: "Cierre",
     description:
-      "Conecto formularios, correo electrónico, WhatsApp o herramientas necesarias para recibir prospectos.",
-  },
-  {
-    title: "Revisión y entrega",
-    description:
-      "Ajustamos detalles finales y dejo el sitio listo para publicarse o conectarse a dominio.",
+      "Ajustamos lo acordado, entregamos el archivo o el sitio, y cobramos el saldo.",
   },
 ] as const;

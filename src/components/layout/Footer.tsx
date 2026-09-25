@@ -3,49 +3,40 @@ import { BrandLogo } from "@/components/BrandLogo";
 
 export function Footer() {
   return (
-    <footer className="site-footer border-t border-white/10 py-10 text-sm text-slate-400">
+    <footer className="site-footer">
       <div className="container-page">
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div>
-            <BrandLogo size="lg" showName className="mb-4" />
-            <p className="max-w-md leading-6">
-              Desarrollador web freelance para páginas corporativas, formularios, integraciones con
-              WhatsApp y aplicaciones web para negocios.
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <BrandLogo size="lg" showName />
+            <p>
+              Desarrollo web, automatización y producto digital por proyecto. Trabajo dirigido por{" "}
+              {SITE.director}.
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            <div>
-              <p className="font-medium text-white">Navegación</p>
-              <div className="mt-3 flex flex-col gap-2">
-                {NAV_LINKS.map((link) => (
-                  <a key={link.href} href={link.href} className="footer-link">
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div>
-              <p className="font-medium text-white">Contacto</p>
-              <div className="mt-3 flex flex-col gap-2">
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-link"
-                >
-                  WhatsApp
-                </a>
-                <a href={`mailto:${SITE.email}`} className="footer-link">
-                  {SITE.email}
-                </a>
-              </div>
-            </div>
+          <div className="footer-col">
+            <h3>Navegación</h3>
+            {NAV_LINKS.map((link) => (
+              <a key={link.href} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="footer-col">
+            <h3>Contacto</h3>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              WhatsApp: {SITE.phoneDisplay}
+            </a>
+            <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            <a href="#">{SITE.location}</a>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} {SITE.name}. Todos los derechos reservados.</p>
+        <div className="footer-bottom">
+          <p>
+            © {new Date().getFullYear()} {SITE.name}. Todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>

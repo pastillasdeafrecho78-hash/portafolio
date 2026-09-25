@@ -1,49 +1,32 @@
-# SA Portafolio
+# Think Deep · portafolio
 
-Landing profesional con video hero HyperFrames, WhatsApp y formulario de contacto.
-
-## Stack
-
-- **Next.js 15** + TypeScript + Tailwind CSS v4
-- **HyperFrames** — video hero de ~22s en `video/`
+Sitio personal de Think Deep. La página principal presenta el estudio y guía al visitante por un cuestionario; al terminar prepara un mensaje de WhatsApp y muestra `/proceso`. Incluye una página de demostración en `/bonding`.
 
 ## Desarrollo
 
 ```bash
-# Landing
 npm install
 npm run dev
-
-# Video (opcional, re-render)
-cd video && npm run render
-cp video/out/hero-demo.mp4 public/video/
 ```
 
-Abre [http://localhost:3000](http://localhost:3000).
+## Comprobación antes de publicar
+
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
+
+Las rutas `/`, `/proceso` y `/bonding` deben abrir sin error. Comprueba el recorrido del cuestionario en móvil y escritorio, y que el botón final abra el número de `src/lib/constants.ts` con el mensaje elegido.
 
 ## Configuración
 
-1. Copia `.env.example` a `.env.local`
-2. Añade `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` desde [web3forms.com](https://web3forms.com) (envío desde el navegador; el plan gratis no permite `/api/contact` en servidor)
-3. Actualiza en `src/lib/constants.ts`:
-   - `WHATSAPP_NUMBER`
-   - `SITE.email` / `SITE.phone`
-   - `SITE.url`
+- `src/lib/constants.ts`: nombre, dominio, correo y número de WhatsApp. El contacto principal funciona mediante WhatsApp y correo sin variables de entorno.
+- `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`: opcional. El formulario de `src/components/sections/Contact.tsx` solo aparece si `CONTACT_FORM_ENABLED` está activado en `src/lib/constants.ts`.
+- ManyChat está desactivado. Para configurarlo después, consulta `docs/MANYCHAT-FASE-B.md`. Los tokens deben ir en variables del servidor, nunca en Git.
 
-## Estructura
+## Videos de `/proceso`
 
-```
-design.md          # Design system compartido
-video/             # Proyecto HyperFrames
-src/app/           # Next.js App Router
-src/components/    # UI y secciones
-public/video/      # Video renderizado para el hero
-```
+Los diez clips tienen versiones móvil (1080 × 1920) y escritorio (1920 × 1080) en `public/video/proceso/`, con su poster correspondiente. El material fuente y las instrucciones para regenerarlos están en [`video/proceso/README.md`](video/proceso/README.md). «Sitio web» conserva su narración; los otros nueve se entienden sin audio.
 
-## Deploy (Vercel)
-
-```bash
-npx vercel
-```
-
-Variables de entorno en Vercel: `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (Production + Preview).
+El despliegue conectado a `main` se actualiza con un push al repositorio remoto. Este repositorio no necesita guardar `.env.local` ni archivos temporales de diseño.
