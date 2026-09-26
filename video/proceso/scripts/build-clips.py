@@ -5,14 +5,77 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import math
 import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "sitio"
 SYMBOL = (SOURCE / "assets" / "symbol.svg").read_text(encoding="utf-8").split("?>", 1)[-1].replace('id="think-deep-symbol"', "")
-DURATION = {"sitio": 52.94}
+# Spoken take length (ffprobe). Composition adds a short logo hold after the last word.
+VO_LENGTH = {
+    "sitio": 52.94,
+    "panel": 30.186,
+    "mvp": 26.796,
+    "whatsapp": 24.706,
+    "webchat": 26.982,
+    "inbox": 26.935,
+    "rostro": 24.706,
+    "patron": 23.081,
+    "lista": 22.523,
+    "otro": 29.396,
+}
+# Video follows the spoken take + a short logo hold. Do not pad mute time.
+DURATION = {
+    "sitio": 52.94,
+    "panel": 31.09,
+    "mvp": 27.70,
+    "whatsapp": 25.61,
+    "webchat": 27.88,
+    "inbox": 27.83,
+    "rostro": 25.61,
+    "patron": 23.98,
+    "lista": 23.42,
+    "otro": 30.30,
+}
+# Content-scene starts (after the hook). End card starts when "Think Deep" lands.
+SCENE_STARTS = {
+    "panel": [3.29, 14.63, 18.35, 21.28],
+    "mvp": [3.45, 11.00, 17.96, 20.71],
+    "whatsapp": [3.52, 7.33, 15.05, 20.10],
+    "webchat": [3.54, 7.85, 15.81, 20.39],
+    "inbox": [4.27, 13.30, 20.54, 23.70],
+    "rostro": [3.81, 7.97, 15.03, 21.23],
+    "patron": [3.94, 9.82, 13.64, 16.24],
+    "lista": [4.10, 9.66, 15.69, 18.32],
+    "otro": [4.87, 7.72, 13.74, 23.21],
+}
+END_START = {
+    "sitio": 48.0,
+    "panel": 29.51,
+    "mvp": 26.15,
+    "whatsapp": 24.08,
+    "webchat": 26.39,
+    "inbox": 26.25,
+    "rostro": 24.08,
+    "patron": 22.42,
+    "lista": 21.89,
+    "otro": 28.79,
+}
+HOOK_LINE = {
+    "sitio": "Así se ve el trabajo, paso a paso.",
+    "panel": "Pediste un panel.",
+    "mvp": "Pediste una app nueva.",
+    "whatsapp": "Pediste ordenar WhatsApp.",
+    "webchat": "Pediste un chat en tu sitio.",
+    "inbox": "Pediste poner orden en el inbox.",
+    "rostro": "Pediste reconocimiento facial.",
+    "patron": "Pediste detectar con cámara.",
+    "lista": "Pediste validar contra una lista.",
+    "otro": "Trajiste algo que no cabe en una casilla.",
+}
 IDS = ("sitio", "panel", "mvp", "whatsapp", "webchat", "inbox", "rostro", "patron", "lista", "otro")
+VOICED = frozenset(IDS)
 
 
 def e(value: str) -> str:
@@ -186,13 +249,18 @@ def render_scene(idx: int, item: tuple[str, str, str, str]) -> str:
 
 def build_html(clip_id: str, desktop: bool) -> str:
     name, scenes = STORIES[clip_id]
-    duration = DURATION.get(clip_id, 44.0)
+    duration = DURATION[clip_id]
     width, height = ((1920, 1080) if desktop else (1080, 1920))
-    interval = 9.0 if clip_id == "sitio" else 9.0
-    end_start = 48.0 if clip_id == "sitio" else 39.0
-    starts = [3.0 + interval * i for i in range(len(scenes))]
+    if clip_id == "sitio":
+        starts = [3.0 + 9.0 * i for i in range(len(scenes))]
+        end_start = END_START["sitio"]
+    else:
+        starts = SCENE_STARTS[clip_id][: len(scenes)]
+        end_start = END_START[clip_id]
     scenes_html = ''.join(render_scene(i + 1, s) for i, s in enumerate(scenes))
-    audio = f'<audio id="site-voice" data-start="0" data-duration="{duration}" data-track-index="3" data-volume="1" src="audio/sitio-vo.mp3" preload="auto"></audio>' if clip_id == "sitio" else ''
+    vo_name = "sitio-vo.mp3" if clip_id == "sitio" else f"{clip_id}-vo.mp3"
+    vo_len = VO_LENGTH[clip_id]
+    audio = f'<audio id="clip-voice" data-start="0" data-duration="{vo_len}" data-track-index="3" data-volume="1" src="audio/{vo_name}" preload="auto"></audio>' if clip_id in VOICED else ''
     timeline = ['const tl = gsap.timeline({paused:true});', 'const scenes = [...document.querySelectorAll(".scene")];', 'tl.fromTo(scenes[0],{opacity:0},{opacity:1,duration:.5,ease:"power2.out"},0);']
     all_starts = [0.0, *starts, end_start]
     for n, start in enumerate(all_starts):
@@ -202,14 +270,18 @@ def build_html(clip_id: str, desktop: bool) -> str:
             prev = '.scene-hook' if n == 1 else f'.scene-{n-1}'
             timeline.append(f'tl.to("{prev}",{{opacity:0,duration:.55,ease:"power2.inOut"}}, {start:.2f});')
             timeline.append(f'tl.fromTo("{selector}",{{opacity:0}},{{opacity:1,duration:.55,ease:"power2.inOut"}}, {start:.2f});')
-    timeline.append('tl.fromTo(".ambient-halo",{scale:.82,opacity:.55},{scale:1.08,opacity:.95,duration:9,ease:"sine.inOut",yoyo:true,repeat:4},0);')
-    timeline.append('tl.fromTo(".ambient-ring",{scale:.85,opacity:.25},{scale:1.1,opacity:.7,duration:7,ease:"sine.inOut",yoyo:true,repeat:5},0);')
+    halo_repeat = max(1, math.ceil(duration / 9) - 1)
+    ring_repeat = max(1, math.ceil(duration / 7) - 1)
+    timeline.append(f'tl.fromTo(".ambient-halo",{{scale:.82,opacity:.55}},{{scale:1.08,opacity:.95,duration:9,ease:"sine.inOut",yoyo:true,repeat:{halo_repeat}}},0);')
+    timeline.append(f'tl.fromTo(".ambient-ring",{{scale:.85,opacity:.25}},{{scale:1.1,opacity:.7,duration:7,ease:"sine.inOut",yoyo:true,repeat:{ring_repeat}}},0);')
     if clip_id in ("rostro", "patron"):
-        timeline.append('tl.fromTo(".sweep",{y:-100,opacity:.2},{y:240,opacity:.9,duration:3,ease:"sine.inOut",yoyo:true,repeat:1},7);')
+        sweep_at = starts[0] + 0.4
+        sweep_repeat = max(1, math.ceil((end_start - sweep_at) / 3) - 1)
+        timeline.append(f'tl.fromTo(".sweep",{{y:-100,opacity:.2}},{{y:240,opacity:.9,duration:3,ease:"sine.inOut",yoyo:true,repeat:{sweep_repeat}}},{sweep_at:.2f});')
     timeline.append('window.__timelines = window.__timelines || {}; window.__timelines.main = tl;')
     js = '\n'.join(timeline)
     css = CSS + (DESKTOP_CSS if desktop else '')
-    return f'''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width={width},height={height}"><title>Think Deep — {e(name)}</title><script src="vendor/gsap.min.js"></script><style>html,body{{width:{width}px;height:{height}px}}:root{{--w:{width}px;--h:{height}px}}{css}</style></head><body><div id="root" data-composition-id="main" data-start="0" data-duration="{duration}" data-width="{width}" data-height="{height}" data-fps="30"><div class="ambient" data-layout-ignore><div class="ambient-grid"></div><div class="ambient-halo"></div><div class="ambient-ring"></div><div class="ambient-rule"></div></div><section class="scene scene-hook"><div class="hook-stage"><div class="hook-copy"><p class="hook-kicker reveal">THINK DEEP / EN BREVE</p><h1 class="hook-title reveal">{e(name)}</h1><p class="hook-summary reveal">Así se ve el trabajo, paso a paso.</p></div><div class="hook-mark reveal">{SYMBOL}</div><div class="hook-bottom reveal"><span>ESTUDIO DIGITAL</span><span>0{len(scenes)} IDEAS → UN RESULTADO</span></div></div></section>{scenes_html}<section class="scene scene-end"><div class="end-stage"><div class="end-mark reveal">{SYMBOL}</div><div><p class="end-word reveal">think deep</p><p class="end-line reveal">Claridad antes de construir.</p></div></div></section>{audio}</div><script>{js}</script></body></html>'''
+    return f'''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width={width},height={height}"><title>Think Deep — {e(name)}</title><script src="vendor/gsap.min.js"></script><style>html,body{{width:{width}px;height:{height}px}}:root{{--w:{width}px;--h:{height}px}}{css}</style></head><body><div id="root" data-composition-id="main" data-start="0" data-duration="{duration}" data-width="{width}" data-height="{height}" data-fps="30"><div class="ambient" data-layout-ignore><div class="ambient-grid"></div><div class="ambient-halo"></div><div class="ambient-ring"></div><div class="ambient-rule"></div></div><section class="scene scene-hook"><div class="hook-stage"><div class="hook-copy"><p class="hook-kicker reveal">THINK DEEP / EN BREVE</p><h1 class="hook-title reveal">{e(name)}</h1><p class="hook-summary reveal">{e(HOOK_LINE[clip_id])}</p></div><div class="hook-mark reveal">{SYMBOL}</div><div class="hook-bottom reveal"><span>ESTUDIO DIGITAL</span><span>0{len(scenes)} IDEAS → UN RESULTADO</span></div></div></section>{scenes_html}<section class="scene scene-end"><div class="end-stage"><div class="end-mark reveal">{SYMBOL}</div><div><p class="end-word reveal">think deep</p><p class="end-line reveal">Claridad antes de construir.</p></div></div></section>{audio}</div><script>{js}</script></body></html>'''
 
 
 def write_comp(clip_id: str, desktop: bool) -> Path:
@@ -224,12 +296,15 @@ def write_comp(clip_id: str, desktop: bool) -> Path:
     assets.mkdir(exist_ok=True)
     if not (assets / "symbol.svg").exists():
         shutil.copy2(SOURCE / "assets" / "symbol.svg", assets / "symbol.svg")
-    if clip_id == "sitio" and desktop:
+    if clip_id in VOICED:
         audio = dest / "audio"
         audio.mkdir(exist_ok=True)
-        if not (audio / "sitio-vo.mp3").exists():
-            shutil.copy2(SOURCE / "audio" / "sitio-vo.mp3", audio / "sitio-vo.mp3")
-    duration = DURATION.get(clip_id, 44.0)
+        vo_name = "sitio-vo.mp3" if clip_id == "sitio" else f"{clip_id}-vo.mp3"
+        source_vo = (SOURCE if clip_id == "sitio" else ROOT / clip_id) / "audio" / vo_name
+        target_vo = audio / vo_name
+        if source_vo.exists() and source_vo.resolve() != target_vo.resolve():
+            shutil.copy2(source_vo, target_vo)
+    duration = DURATION[clip_id]
     width, height = ((1920, 1080) if desktop else (1080, 1920))
     (dest / "index.html").write_text(build_html(clip_id, desktop), encoding="utf-8")
     (dest / "meta.json").write_text(json.dumps({"id": name, "name": f"Think Deep — {clip_id} ({'PC' if desktop else 'móvil'})", "width": width, "height": height, "fps": 30, "duration": duration}, indent=2, ensure_ascii=False) + "\n")
@@ -244,7 +319,7 @@ def write_comp(clip_id: str, desktop: bool) -> Path:
         "- Estructura: apertura, cuatro escenas de proceso (cinco en sitio), cierre de marca.\n"
         "- Cada escena ocupa el lienzo con un diagrama, una interfaz ficticia o un documento. "
         "El resultado se puede entender sin escuchar el audio.\n"
-        f"- Audio: {'narración original de sitio' if clip_id == 'sitio' else 'sin audio'}.\n"
+        f"- Audio: narración Richard Social Media (`audio/{'sitio' if clip_id == 'sitio' else clip_id}-vo.mp3`), misma pista en móvil y escritorio.\n"
         "- Fuente única de este HTML: `../scripts/build-clips.py`.\n",
         encoding="utf-8",
     )

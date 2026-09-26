@@ -1,6 +1,6 @@
 # Videos de `/proceso`
 
-Diez recorridos visuales de Think Deep, cada uno en formato móvil (1080 × 1920) y escritorio (1920 × 1080). Los archivos que usa Next.js están en `public/video/proceso/` con nombres `{id}.mp4`, `{id}-pc.mp4` y sus posters WebP. «Sitio web» conserva la narración original. Los otros nueve se leen sin audio, también cuando el reproductor inicia silenciado.
+Diez recorridos visuales de Think Deep, cada uno en formato móvil (1080 × 1920) y escritorio (1920 × 1080). Los archivos que usa Next.js están en `public/video/proceso/` con nombres `{id}.mp4`, `{id}-pc.mp4` y sus posters WebP. Los diez llevan narración Richard Social Media; el reproductor de `/proceso` inicia silenciado y deja activar el sonido.
 
 ## Regenerar
 

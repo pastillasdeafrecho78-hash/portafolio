@@ -1,6 +1,6 @@
 # Guiones para revisión · videos de `/proceso`
 
-**Estado:** las diez rutas tienen clips móvil y escritorio publicados en `/public/video/proceso/`. Este documento conserva los textos de voz como material editorial; la voz de «Sitio web» sigue siendo la única producida. Los nueve clips restantes usan narrativa visual sin audio.
+**Estado:** las diez rutas tienen clips móvil y escritorio con narración Richard Social Media. `sitio` conserva la toma original; los otros nueve usan la misma pista en ambas versiones, sincronizada a las escenas.
 
 El catálogo tiene diez rutas. `sitio` dura ~53 s; los otros nueve clips duran 44 s.
 
