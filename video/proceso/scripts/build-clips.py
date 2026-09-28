@@ -12,56 +12,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "sitio"
 SYMBOL = (SOURCE / "assets" / "symbol.svg").read_text(encoding="utf-8").split("?>", 1)[-1].replace('id="think-deep-symbol"', "")
-# Spoken take length (ffprobe). Composition adds a short logo hold after the last word.
-VO_LENGTH = {
-    "sitio": 52.94,
-    "panel": 30.186,
-    "mvp": 26.796,
-    "whatsapp": 24.706,
-    "webchat": 26.982,
-    "inbox": 26.935,
-    "rostro": 24.706,
-    "patron": 23.081,
-    "lista": 22.523,
-    "otro": 29.396,
-}
-# Video follows the spoken take + a short logo hold. Do not pad mute time.
-DURATION = {
-    "sitio": 52.94,
-    "panel": 31.09,
-    "mvp": 27.70,
-    "whatsapp": 25.61,
-    "webchat": 27.88,
-    "inbox": 27.83,
-    "rostro": 25.61,
-    "patron": 23.98,
-    "lista": 23.42,
-    "otro": 30.30,
-}
-# Content-scene starts (after the hook). End card starts when "Think Deep" lands.
-SCENE_STARTS = {
-    "panel": [3.29, 14.63, 18.35, 21.28],
-    "mvp": [3.45, 11.00, 17.96, 20.71],
-    "whatsapp": [3.52, 7.33, 15.05, 20.10],
-    "webchat": [3.54, 7.85, 15.81, 20.39],
-    "inbox": [4.27, 13.30, 20.54, 23.70],
-    "rostro": [3.81, 7.97, 15.03, 21.23],
-    "patron": [3.94, 9.82, 13.64, 16.24],
-    "lista": [4.10, 9.66, 15.69, 18.32],
-    "otro": [4.87, 7.72, 13.74, 23.21],
-}
-END_START = {
-    "sitio": 48.0,
-    "panel": 29.51,
-    "mvp": 26.15,
-    "whatsapp": 24.08,
-    "webchat": 26.39,
-    "inbox": 26.25,
-    "rostro": 24.08,
-    "patron": 22.42,
-    "lista": 21.89,
-    "otro": 28.79,
-}
+# Final ffprobe durations and word alignment after the edited breathing pauses.
+# These metadata files are emitted by produce-voice.py; sitio remains untouched.
+RETIMED_IDS = ("panel", "mvp", "whatsapp", "webchat", "inbox", "rostro", "patron", "lista", "otro")
+VOICE_TIMINGS = {clip_id: json.loads((ROOT / clip_id / "audio" / f"{clip_id}-vo.json").read_text()) for clip_id in RETIMED_IDS}
+VO_LENGTH = {"sitio": 52.94, **{key: take["duration"] for key, take in VOICE_TIMINGS.items()}}
+DURATION = {"sitio": 52.94, **{key: round(take["duration"] + .9, 3) for key, take in VOICE_TIMINGS.items()}}
+SCENE_STARTS = {key: [scene["speech_start"] for scene in take["scenes"]] for key, take in VOICE_TIMINGS.items()}
+END_START = {"sitio": 48.0, **{key: take["end_speech_start"] for key, take in VOICE_TIMINGS.items()}}
 HOOK_LINE = {
     "sitio": "Así se ve el trabajo, paso a paso.",
     "panel": "Pediste un panel.",
@@ -265,11 +223,17 @@ def build_html(clip_id: str, desktop: bool) -> str:
     all_starts = [0.0, *starts, end_start]
     for n, start in enumerate(all_starts):
         selector = '.scene-hook' if n == 0 else (f'.scene-{n}' if n <= len(scenes) else '.scene-end')
-        timeline.append(f'tl.fromTo("{selector} .reveal",{{opacity:0,y:35,scale:.97}},{{opacity:1,y:0,scale:1,duration:.7,stagger:.16,ease:"power3.out"}}, {start + .35:.2f});')
+        # New takes: start the crossfade 0.2s before the spoken block, so the
+        # heading is fully visible within 0.23s of the first word. Preserve sitio.
+        transition_at = start if clip_id == "sitio" else max(0, start - .2)
+        reveal_at = start + .35 if clip_id == "sitio" else transition_at + .03
+        reveal_duration, stagger = (.7, .16) if clip_id == "sitio" else (.35, .05)
+        transition_duration = .55 if clip_id == "sitio" else .35
+        timeline.append(f'tl.fromTo("{selector} .reveal",{{opacity:0,y:35,scale:.97}},{{opacity:1,y:0,scale:1,duration:{reveal_duration},stagger:{stagger},ease:"power3.out"}}, {reveal_at:.3f});')
         if n > 0:
             prev = '.scene-hook' if n == 1 else f'.scene-{n-1}'
-            timeline.append(f'tl.to("{prev}",{{opacity:0,duration:.55,ease:"power2.inOut"}}, {start:.2f});')
-            timeline.append(f'tl.fromTo("{selector}",{{opacity:0}},{{opacity:1,duration:.55,ease:"power2.inOut"}}, {start:.2f});')
+            timeline.append(f'tl.to("{prev}",{{opacity:0,duration:{transition_duration},ease:"power2.inOut"}}, {transition_at:.3f});')
+            timeline.append(f'tl.fromTo("{selector}",{{opacity:0}},{{opacity:1,duration:{transition_duration},ease:"power2.inOut"}}, {transition_at:.3f});')
     halo_repeat = max(1, math.ceil(duration / 9) - 1)
     ring_repeat = max(1, math.ceil(duration / 7) - 1)
     timeline.append(f'tl.fromTo(".ambient-halo",{{scale:.82,opacity:.55}},{{scale:1.08,opacity:.95,duration:9,ease:"sine.inOut",yoyo:true,repeat:{halo_repeat}}},0);')

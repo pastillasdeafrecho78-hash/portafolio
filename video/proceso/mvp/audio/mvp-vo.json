@@ -1,0 +1,450 @@
+{
+  "text": "Pediste una app nueva. Vamos a armarla contigo. Antes de llenarla de pantallas, encontramos juntos la tarea que tiene que resolverse primero: quién entra, qué hace y qué recibe al terminar. Con eso armamos un recorrido corto: acceso, una pantalla principal y una acción completa. Crear, registrar o consultar. Una persona real lo usa y vemos dónde se atora. Después ajustamos y decidimos la siguiente pieza. La primera versión es chica, pero ya sirve. Think Deep.",
+  "voice_id": "Cpm6N9BNC1M75bYS7kO1",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.46,
+    "similarity_boost": 0.78,
+    "style": 0.36,
+    "speed": 0.85,
+    "use_speaker_boost": true
+  },
+  "duration": 32.068617,
+  "added_pause_seconds": 0.861,
+  "pauses": [
+    {
+      "source_time": 1.695,
+      "added": 0.108
+    },
+    {
+      "source_time": 3.4195,
+      "added": 0.119
+    },
+    {
+      "source_time": 12.388,
+      "added": 0.084
+    },
+    {
+      "source_time": 18.483,
+      "added": 0.108
+    },
+    {
+      "source_time": 20.886,
+      "added": 0.084
+    },
+    {
+      "source_time": 24.375,
+      "added": 0.096
+    },
+    {
+      "source_time": 27.6315,
+      "added": 0.131
+    },
+    {
+      "source_time": 30.3715,
+      "added": 0.131
+    }
+  ],
+  "words": [
+    {
+      "word": "Pediste",
+      "start": 0.0,
+      "end": 0.557
+    },
+    {
+      "word": "una",
+      "start": 0.662,
+      "end": 0.894
+    },
+    {
+      "word": "app",
+      "start": 0.917,
+      "end": 1.08
+    },
+    {
+      "word": "nueva.",
+      "start": 1.173,
+      "end": 1.803
+    },
+    {
+      "word": "Vamos",
+      "start": 1.849,
+      "end": 2.186
+    },
+    {
+      "word": "a",
+      "start": 2.256,
+      "end": 2.279
+    },
+    {
+      "word": "armarla",
+      "start": 2.302,
+      "end": 2.813
+    },
+    {
+      "word": "contigo.",
+      "start": 2.883,
+      "end": 3.664
+    },
+    {
+      "word": "Antes",
+      "start": 3.687,
+      "end": 4.07
+    },
+    {
+      "word": "de",
+      "start": 4.116,
+      "end": 4.198
+    },
+    {
+      "word": "llenarla",
+      "start": 4.221,
+      "end": 4.906
+    },
+    {
+      "word": "de",
+      "start": 4.975,
+      "end": 5.045
+    },
+    {
+      "word": "pantallas,",
+      "start": 5.115,
+      "end": 5.8
+    },
+    {
+      "word": "encontramos",
+      "start": 5.823,
+      "end": 6.52
+    },
+    {
+      "word": "juntos",
+      "start": 6.589,
+      "end": 6.984
+    },
+    {
+      "word": "la",
+      "start": 7.054,
+      "end": 7.147
+    },
+    {
+      "word": "tarea",
+      "start": 7.216,
+      "end": 7.553
+    },
+    {
+      "word": "que",
+      "start": 7.623,
+      "end": 7.692
+    },
+    {
+      "word": "tiene",
+      "start": 7.762,
+      "end": 8.075
+    },
+    {
+      "word": "que",
+      "start": 8.133,
+      "end": 8.226
+    },
+    {
+      "word": "resolverse",
+      "start": 8.284,
+      "end": 8.946
+    },
+    {
+      "word": "primero:",
+      "start": 9.004,
+      "end": 9.608
+    },
+    {
+      "word": "quién",
+      "start": 9.678,
+      "end": 9.898
+    },
+    {
+      "word": "entra,",
+      "start": 9.968,
+      "end": 10.397
+    },
+    {
+      "word": "qué",
+      "start": 10.444,
+      "end": 10.583
+    },
+    {
+      "word": "hace",
+      "start": 10.676,
+      "end": 10.989
+    },
+    {
+      "word": "y",
+      "start": 11.071,
+      "end": 11.152
+    },
+    {
+      "word": "qué",
+      "start": 11.256,
+      "end": 11.384
+    },
+    {
+      "word": "recibe",
+      "start": 11.465,
+      "end": 11.849
+    },
+    {
+      "word": "al",
+      "start": 11.895,
+      "end": 11.941
+    },
+    {
+      "word": "terminar.",
+      "start": 12.0,
+      "end": 12.71
+    },
+    {
+      "word": "Con",
+      "start": 12.757,
+      "end": 12.931
+    },
+    {
+      "word": "eso",
+      "start": 12.989,
+      "end": 13.163
+    },
+    {
+      "word": "armamos",
+      "start": 13.21,
+      "end": 13.628
+    },
+    {
+      "word": "un",
+      "start": 13.721,
+      "end": 13.767
+    },
+    {
+      "word": "recorrido",
+      "start": 13.837,
+      "end": 14.371
+    },
+    {
+      "word": "corto:",
+      "start": 14.429,
+      "end": 14.893
+    },
+    {
+      "word": "acceso,",
+      "start": 14.939,
+      "end": 15.613
+    },
+    {
+      "word": "una",
+      "start": 15.694,
+      "end": 15.88
+    },
+    {
+      "word": "pantalla",
+      "start": 15.938,
+      "end": 16.426
+    },
+    {
+      "word": "principal",
+      "start": 16.495,
+      "end": 17.111
+    },
+    {
+      "word": "y",
+      "start": 17.215,
+      "end": 17.273
+    },
+    {
+      "word": "una",
+      "start": 17.412,
+      "end": 17.598
+    },
+    {
+      "word": "acción",
+      "start": 17.621,
+      "end": 18.039
+    },
+    {
+      "word": "completa.",
+      "start": 18.109,
+      "end": 18.902
+    },
+    {
+      "word": "Crear,",
+      "start": 18.948,
+      "end": 19.575
+    },
+    {
+      "word": "registrar",
+      "start": 19.749,
+      "end": 20.481
+    },
+    {
+      "word": "o",
+      "start": 20.551,
+      "end": 20.574
+    },
+    {
+      "word": "consultar.",
+      "start": 20.632,
+      "end": 21.401
+    },
+    {
+      "word": "Una",
+      "start": 21.447,
+      "end": 21.668
+    },
+    {
+      "word": "persona",
+      "start": 21.714,
+      "end": 22.167
+    },
+    {
+      "word": "real",
+      "start": 22.26,
+      "end": 22.631
+    },
+    {
+      "word": "lo",
+      "start": 22.701,
+      "end": 22.864
+    },
+    {
+      "word": "usa",
+      "start": 22.945,
+      "end": 23.247
+    },
+    {
+      "word": "y",
+      "start": 23.316,
+      "end": 23.34
+    },
+    {
+      "word": "vemos",
+      "start": 23.421,
+      "end": 23.769
+    },
+    {
+      "word": "dónde",
+      "start": 23.839,
+      "end": 24.21
+    },
+    {
+      "word": "se",
+      "start": 24.257,
+      "end": 24.35
+    },
+    {
+      "word": "atora.",
+      "start": 24.408,
+      "end": 24.872
+    },
+    {
+      "word": "Después",
+      "start": 25.026,
+      "end": 25.502
+    },
+    {
+      "word": "ajustamos",
+      "start": 25.584,
+      "end": 26.187
+    },
+    {
+      "word": "y",
+      "start": 26.257,
+      "end": 26.303
+    },
+    {
+      "word": "decidimos",
+      "start": 26.373,
+      "end": 26.977
+    },
+    {
+      "word": "la",
+      "start": 27.035,
+      "end": 27.128
+    },
+    {
+      "word": "siguiente",
+      "start": 27.186,
+      "end": 27.685
+    },
+    {
+      "word": "pieza.",
+      "start": 27.743,
+      "end": 28.219
+    },
+    {
+      "word": "La",
+      "start": 28.396,
+      "end": 28.513
+    },
+    {
+      "word": "primera",
+      "start": 28.571,
+      "end": 28.954
+    },
+    {
+      "word": "versión",
+      "start": 29.012,
+      "end": 29.441
+    },
+    {
+      "word": "es",
+      "start": 29.523,
+      "end": 29.615
+    },
+    {
+      "word": "chica,",
+      "start": 29.674,
+      "end": 30.091
+    },
+    {
+      "word": "pero",
+      "start": 30.115,
+      "end": 30.359
+    },
+    {
+      "word": "ya",
+      "start": 30.44,
+      "end": 30.567
+    },
+    {
+      "word": "sirve.",
+      "start": 30.637,
+      "end": 31.09
+    },
+    {
+      "word": "Think",
+      "start": 31.267,
+      "end": 31.581
+    },
+    {
+      "word": "Deep.",
+      "start": 31.651,
+      "end": 32.068
+    }
+  ],
+  "scenes": [
+    {
+      "phrase": "Antes de llenarla",
+      "speech_start": 3.687
+    },
+    {
+      "phrase": "Con eso armamos",
+      "speech_start": 12.757
+    },
+    {
+      "phrase": "Una persona real",
+      "speech_start": 21.447
+    },
+    {
+      "phrase": "Después ajustamos",
+      "speech_start": 25.026
+    }
+  ],
+  "end_speech_start": 31.267,
+  "audio_sha256": "8d60f1e714afff9ab5439d44e145f24eb2d9019859f16434ea0c31888d55f93a"
+}

@@ -36,10 +36,10 @@
 /video/proceso/*/node_modules/
 /video/proceso/*/.hyperframes/
 /video/proceso/*/.waveform-cache/
+/video/proceso/.voice-work/
 /video/proceso/*/assets/preview/
 /video/proceso/assets/
 /video/proceso/HANDOFF-CODEX.md
-/video/proceso/VOZ.md
 /video/proceso/GUION.md
 /video/proceso/GUION-SITIO.md
 /video/proceso/GUIONES.md

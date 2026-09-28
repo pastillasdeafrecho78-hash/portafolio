@@ -1,0 +1,391 @@
+{
+  "text": "Pediste validar contra una lista. Vamos a armarlo contigo. Primero definimos cuál lista manda y quién la actualiza: huéspedes, socios, empleados o pases temporales. Llega la consulta, busca el dato y responde: está, no está o hay que revisar. Queda cuándo se consultó. Si el nombre no cuadra, no forzamos el match. Después podemos sumar altas, bajas y la fuente que ya usas. Think Deep.",
+  "voice_id": "Cpm6N9BNC1M75bYS7kO1",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.46,
+    "similarity_boost": 0.78,
+    "style": 0.36,
+    "speed": 0.85,
+    "use_speaker_boost": true
+  },
+  "duration": 27.649977,
+  "added_pause_seconds": 0.622,
+  "pauses": [
+    {
+      "source_time": 2.1185,
+      "added": 0.119
+    },
+    {
+      "source_time": 3.785,
+      "added": 0.084
+    },
+    {
+      "source_time": 11.32,
+      "added": 0.084
+    },
+    {
+      "source_time": 16.7475,
+      "added": 0.095
+    },
+    {
+      "source_time": 18.5005,
+      "added": 0.095
+    },
+    {
+      "source_time": 21.8095,
+      "added": 0.073
+    },
+    {
+      "source_time": 26.047,
+      "added": 0.072
+    }
+  ],
+  "words": [
+    {
+      "word": "Pediste",
+      "start": 0.0,
+      "end": 0.499
+    },
+    {
+      "word": "validar",
+      "start": 0.557,
+      "end": 1.01
+    },
+    {
+      "word": "contra",
+      "start": 1.08,
+      "end": 1.382
+    },
+    {
+      "word": "una",
+      "start": 1.44,
+      "end": 1.614
+    },
+    {
+      "word": "lista.",
+      "start": 1.683,
+      "end": 2.255
+    },
+    {
+      "word": "Vamos",
+      "start": 2.278,
+      "end": 2.604
+    },
+    {
+      "word": "a",
+      "start": 2.673,
+      "end": 2.696
+    },
+    {
+      "word": "armarlo",
+      "start": 2.72,
+      "end": 3.219
+    },
+    {
+      "word": "contigo.",
+      "start": 3.277,
+      "end": 3.999
+    },
+    {
+      "word": "Primero",
+      "start": 4.046,
+      "end": 4.475
+    },
+    {
+      "word": "definimos",
+      "start": 4.545,
+      "end": 5.114
+    },
+    {
+      "word": "cuál",
+      "start": 5.184,
+      "end": 5.462
+    },
+    {
+      "word": "lista",
+      "start": 5.52,
+      "end": 5.869
+    },
+    {
+      "word": "manda",
+      "start": 5.938,
+      "end": 6.333
+    },
+    {
+      "word": "y",
+      "start": 6.391,
+      "end": 6.414
+    },
+    {
+      "word": "quién",
+      "start": 6.519,
+      "end": 6.763
+    },
+    {
+      "word": "la",
+      "start": 6.844,
+      "end": 6.937
+    },
+    {
+      "word": "actualiza:",
+      "start": 6.96,
+      "end": 7.877
+    },
+    {
+      "word": "huéspedes,",
+      "start": 7.9,
+      "end": 8.643
+    },
+    {
+      "word": "socios,",
+      "start": 8.702,
+      "end": 9.259
+    },
+    {
+      "word": "empleados",
+      "start": 9.282,
+      "end": 9.967
+    },
+    {
+      "word": "o",
+      "start": 10.071,
+      "end": 10.153
+    },
+    {
+      "word": "pases",
+      "start": 10.246,
+      "end": 10.664
+    },
+    {
+      "word": "temporales.",
+      "start": 10.71,
+      "end": 11.618
+    },
+    {
+      "word": "Llega",
+      "start": 11.665,
+      "end": 11.955
+    },
+    {
+      "word": "la",
+      "start": 12.001,
+      "end": 12.071
+    },
+    {
+      "word": "consulta,",
+      "start": 12.129,
+      "end": 12.744
+    },
+    {
+      "word": "busca",
+      "start": 12.791,
+      "end": 13.139
+    },
+    {
+      "word": "el",
+      "start": 13.162,
+      "end": 13.232
+    },
+    {
+      "word": "dato",
+      "start": 13.313,
+      "end": 13.731
+    },
+    {
+      "word": "y",
+      "start": 13.824,
+      "end": 13.894
+    },
+    {
+      "word": "responde:",
+      "start": 14.033,
+      "end": 14.753
+    },
+    {
+      "word": "está,",
+      "start": 14.811,
+      "end": 15.357
+    },
+    {
+      "word": "no",
+      "start": 15.403,
+      "end": 15.519
+    },
+    {
+      "word": "está",
+      "start": 15.577,
+      "end": 15.833
+    },
+    {
+      "word": "o",
+      "start": 16.007,
+      "end": 16.065
+    },
+    {
+      "word": "hay",
+      "start": 16.111,
+      "end": 16.239
+    },
+    {
+      "word": "que",
+      "start": 16.297,
+      "end": 16.367
+    },
+    {
+      "word": "revisar.",
+      "start": 16.448,
+      "end": 17.135
+    },
+    {
+      "word": "Queda",
+      "start": 17.182,
+      "end": 17.518
+    },
+    {
+      "word": "cuándo",
+      "start": 17.588,
+      "end": 17.948
+    },
+    {
+      "word": "se",
+      "start": 18.006,
+      "end": 18.111
+    },
+    {
+      "word": "consultó.",
+      "start": 18.157,
+      "end": 18.877
+    },
+    {
+      "word": "Si",
+      "start": 19.03,
+      "end": 19.169
+    },
+    {
+      "word": "el",
+      "start": 19.227,
+      "end": 19.297
+    },
+    {
+      "word": "nombre",
+      "start": 19.378,
+      "end": 19.715
+    },
+    {
+      "word": "no",
+      "start": 19.773,
+      "end": 19.901
+    },
+    {
+      "word": "cuadra,",
+      "start": 19.959,
+      "end": 20.551
+    },
+    {
+      "word": "no",
+      "start": 20.69,
+      "end": 20.876
+    },
+    {
+      "word": "forzamos",
+      "start": 20.945,
+      "end": 21.607
+    },
+    {
+      "word": "el",
+      "start": 21.689,
+      "end": 21.781
+    },
+    {
+      "word": "match.",
+      "start": 21.851,
+      "end": 22.269
+    },
+    {
+      "word": "Después",
+      "start": 22.423,
+      "end": 22.934
+    },
+    {
+      "word": "podemos",
+      "start": 22.992,
+      "end": 23.422
+    },
+    {
+      "word": "sumar",
+      "start": 23.445,
+      "end": 23.828
+    },
+    {
+      "word": "altas,",
+      "start": 23.921,
+      "end": 24.467
+    },
+    {
+      "word": "bajas",
+      "start": 24.513,
+      "end": 24.954
+    },
+    {
+      "word": "y",
+      "start": 25.024,
+      "end": 25.047
+    },
+    {
+      "word": "la",
+      "start": 25.105,
+      "end": 25.198
+    },
+    {
+      "word": "fuente",
+      "start": 25.256,
+      "end": 25.616
+    },
+    {
+      "word": "que",
+      "start": 25.674,
+      "end": 25.744
+    },
+    {
+      "word": "ya",
+      "start": 25.825,
+      "end": 25.964
+    },
+    {
+      "word": "usas.",
+      "start": 26.046,
+      "end": 26.591
+    },
+    {
+      "word": "Think",
+      "start": 26.733,
+      "end": 27.023
+    },
+    {
+      "word": "Deep.",
+      "start": 27.093,
+      "end": 27.65
+    }
+  ],
+  "scenes": [
+    {
+      "phrase": "Primero definimos",
+      "speech_start": 4.046
+    },
+    {
+      "phrase": "Llega la consulta",
+      "speech_start": 11.665
+    },
+    {
+      "phrase": "Si el nombre",
+      "speech_start": 19.03
+    },
+    {
+      "phrase": "Después podemos",
+      "speech_start": 22.423
+    }
+  ],
+  "end_speech_start": 26.733,
+  "audio_sha256": "a276986f99199b629c73fad78c6187dca0f2ac003d1c88ad5c401ede4a83e75c"
+}

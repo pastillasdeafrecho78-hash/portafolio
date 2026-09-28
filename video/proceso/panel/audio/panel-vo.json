@@ -1,0 +1,566 @@
+{
+  "text": "Pediste un panel. Vamos a armarlo contigo. Primero vemos qué necesitas tener a la vista para decidir o trabajar. Si hoy anda en hojas, chats y reportes, juntamos esos datos en una sola pantalla: pedidos, clientes o el avance de la operación. Después dejamos listas las acciones del día a día: filtrar, actualizar o abrir el detalle. Si lo usa más de una persona, cada quien ve lo suyo. Y si hay que sacar la información, va con exportación. La primera versión cubre el trabajo de todos los días; lo demás lo sumamos cuando ya lo estén usando. Think Deep.",
+  "voice_id": "Cpm6N9BNC1M75bYS7kO1",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.46,
+    "similarity_boost": 0.78,
+    "style": 0.36,
+    "speed": 0.85,
+    "use_speaker_boost": true
+  },
+  "duration": 39.710385,
+  "added_pause_seconds": 0.608,
+  "pauses": [
+    {
+      "source_time": 1.422,
+      "added": 0.072
+    },
+    {
+      "source_time": 3.2045,
+      "added": 0.153
+    },
+    {
+      "source_time": 7.825,
+      "added": 0.084
+    },
+    {
+      "source_time": 16.9855,
+      "added": 0.061
+    },
+    {
+      "source_time": 23.905,
+      "added": 0.108
+    },
+    {
+      "source_time": 27.533,
+      "added": 0.118
+    },
+    {
+      "source_time": 34.952,
+      "added": 0.012
+    }
+  ],
+  "words": [
+    {
+      "word": "Pediste",
+      "start": 0.0,
+      "end": 0.627
+    },
+    {
+      "word": "un",
+      "start": 0.731,
+      "end": 0.848
+    },
+    {
+      "word": "panel.",
+      "start": 0.917,
+      "end": 1.5
+    },
+    {
+      "word": "Vamos",
+      "start": 1.558,
+      "end": 1.906
+    },
+    {
+      "word": "a",
+      "start": 1.976,
+      "end": 1.999
+    },
+    {
+      "word": "armarlo",
+      "start": 2.022,
+      "end": 2.591
+    },
+    {
+      "word": "contigo.",
+      "start": 2.649,
+      "end": 3.276
+    },
+    {
+      "word": "Primero",
+      "start": 3.453,
+      "end": 3.894
+    },
+    {
+      "word": "vemos",
+      "start": 3.952,
+      "end": 4.323
+    },
+    {
+      "word": "qué",
+      "start": 4.37,
+      "end": 4.439
+    },
+    {
+      "word": "necesitas",
+      "start": 4.497,
+      "end": 5.136
+    },
+    {
+      "word": "tener",
+      "start": 5.182,
+      "end": 5.484
+    },
+    {
+      "word": "a",
+      "start": 5.542,
+      "end": 5.566
+    },
+    {
+      "word": "la",
+      "start": 5.612,
+      "end": 5.682
+    },
+    {
+      "word": "vista",
+      "start": 5.751,
+      "end": 6.1
+    },
+    {
+      "word": "para",
+      "start": 6.158,
+      "end": 6.39
+    },
+    {
+      "word": "decidir",
+      "start": 6.46,
+      "end": 7.063
+    },
+    {
+      "word": "o",
+      "start": 7.168,
+      "end": 7.307
+    },
+    {
+      "word": "trabajar.",
+      "start": 7.377,
+      "end": 8.134
+    },
+    {
+      "word": "Si",
+      "start": 8.192,
+      "end": 8.39
+    },
+    {
+      "word": "hoy",
+      "start": 8.448,
+      "end": 8.645
+    },
+    {
+      "word": "anda",
+      "start": 8.715,
+      "end": 8.97
+    },
+    {
+      "word": "en",
+      "start": 9.016,
+      "end": 9.109
+    },
+    {
+      "word": "hojas,",
+      "start": 9.179,
+      "end": 9.643
+    },
+    {
+      "word": "chats",
+      "start": 9.701,
+      "end": 10.108
+    },
+    {
+      "word": "y",
+      "start": 10.201,
+      "end": 10.305
+    },
+    {
+      "word": "reportes,",
+      "start": 10.456,
+      "end": 11.188
+    },
+    {
+      "word": "juntamos",
+      "start": 11.211,
+      "end": 11.756
+    },
+    {
+      "word": "esos",
+      "start": 11.838,
+      "end": 12.082
+    },
+    {
+      "word": "datos",
+      "start": 12.14,
+      "end": 12.534
+    },
+    {
+      "word": "en",
+      "start": 12.604,
+      "end": 12.674
+    },
+    {
+      "word": "una",
+      "start": 12.743,
+      "end": 12.906
+    },
+    {
+      "word": "sola",
+      "start": 12.952,
+      "end": 13.184
+    },
+    {
+      "word": "pantalla:",
+      "start": 13.243,
+      "end": 13.893
+    },
+    {
+      "word": "pedidos,",
+      "start": 13.939,
+      "end": 14.682
+    },
+    {
+      "word": "clientes",
+      "start": 14.74,
+      "end": 15.379
+    },
+    {
+      "word": "o",
+      "start": 15.518,
+      "end": 15.611
+    },
+    {
+      "word": "el",
+      "start": 15.681,
+      "end": 15.75
+    },
+    {
+      "word": "avance",
+      "start": 15.82,
+      "end": 16.238
+    },
+    {
+      "word": "de",
+      "start": 16.308,
+      "end": 16.4
+    },
+    {
+      "word": "la",
+      "start": 16.458,
+      "end": 16.528
+    },
+    {
+      "word": "operación.",
+      "start": 16.575,
+      "end": 17.283
+    },
+    {
+      "word": "Después",
+      "start": 17.425,
+      "end": 17.878
+    },
+    {
+      "word": "dejamos",
+      "start": 17.924,
+      "end": 18.377
+    },
+    {
+      "word": "listas",
+      "start": 18.447,
+      "end": 18.9
+    },
+    {
+      "word": "las",
+      "start": 18.969,
+      "end": 19.12
+    },
+    {
+      "word": "acciones",
+      "start": 19.201,
+      "end": 19.677
+    },
+    {
+      "word": "del",
+      "start": 19.735,
+      "end": 19.875
+    },
+    {
+      "word": "día",
+      "start": 19.933,
+      "end": 20.235
+    },
+    {
+      "word": "a",
+      "start": 20.281,
+      "end": 20.304
+    },
+    {
+      "word": "día:",
+      "start": 20.386,
+      "end": 20.862
+    },
+    {
+      "word": "filtrar,",
+      "start": 20.943,
+      "end": 21.686
+    },
+    {
+      "word": "actualizar",
+      "start": 21.744,
+      "end": 22.638
+    },
+    {
+      "word": "o",
+      "start": 22.812,
+      "end": 22.951
+    },
+    {
+      "word": "abrir",
+      "start": 23.033,
+      "end": 23.451
+    },
+    {
+      "word": "el",
+      "start": 23.497,
+      "end": 23.567
+    },
+    {
+      "word": "detalle.",
+      "start": 23.636,
+      "end": 24.252
+    },
+    {
+      "word": "Si",
+      "start": 24.429,
+      "end": 24.58
+    },
+    {
+      "word": "lo",
+      "start": 24.65,
+      "end": 24.766
+    },
+    {
+      "word": "usa",
+      "start": 24.824,
+      "end": 25.045
+    },
+    {
+      "word": "más",
+      "start": 25.138,
+      "end": 25.358
+    },
+    {
+      "word": "de",
+      "start": 25.381,
+      "end": 25.428
+    },
+    {
+      "word": "una",
+      "start": 25.509,
+      "end": 25.672
+    },
+    {
+      "word": "persona,",
+      "start": 25.73,
+      "end": 26.31
+    },
+    {
+      "word": "cada",
+      "start": 26.357,
+      "end": 26.74
+    },
+    {
+      "word": "quien",
+      "start": 26.809,
+      "end": 27.111
+    },
+    {
+      "word": "ve",
+      "start": 27.181,
+      "end": 27.297
+    },
+    {
+      "word": "lo",
+      "start": 27.355,
+      "end": 27.471
+    },
+    {
+      "word": "suyo.",
+      "start": 27.529,
+      "end": 27.994
+    },
+    {
+      "word": "Y",
+      "start": 28.17,
+      "end": 28.228
+    },
+    {
+      "word": "si",
+      "start": 28.309,
+      "end": 28.425
+    },
+    {
+      "word": "hay",
+      "start": 28.483,
+      "end": 28.634
+    },
+    {
+      "word": "que",
+      "start": 28.692,
+      "end": 28.785
+    },
+    {
+      "word": "sacar",
+      "start": 28.843,
+      "end": 29.203
+    },
+    {
+      "word": "la",
+      "start": 29.284,
+      "end": 29.331
+    },
+    {
+      "word": "información,",
+      "start": 29.354,
+      "end": 30.178
+    },
+    {
+      "word": "va",
+      "start": 30.318,
+      "end": 30.55
+    },
+    {
+      "word": "con",
+      "start": 30.631,
+      "end": 30.828
+    },
+    {
+      "word": "exportación.",
+      "start": 30.898,
+      "end": 31.85
+    },
+    {
+      "word": "La",
+      "start": 31.989,
+      "end": 32.117
+    },
+    {
+      "word": "primera",
+      "start": 32.175,
+      "end": 32.558
+    },
+    {
+      "word": "versión",
+      "start": 32.605,
+      "end": 33.104
+    },
+    {
+      "word": "cubre",
+      "start": 33.174,
+      "end": 33.534
+    },
+    {
+      "word": "el",
+      "start": 33.557,
+      "end": 33.603
+    },
+    {
+      "word": "trabajo",
+      "start": 33.673,
+      "end": 34.184
+    },
+    {
+      "word": "de",
+      "start": 34.242,
+      "end": 34.335
+    },
+    {
+      "word": "todos",
+      "start": 34.404,
+      "end": 34.811
+    },
+    {
+      "word": "los",
+      "start": 34.857,
+      "end": 35.02
+    },
+    {
+      "word": "días;",
+      "start": 35.066,
+      "end": 35.531
+    },
+    {
+      "word": "lo",
+      "start": 35.624,
+      "end": 35.74
+    },
+    {
+      "word": "demás",
+      "start": 35.798,
+      "end": 36.1
+    },
+    {
+      "word": "lo",
+      "start": 36.17,
+      "end": 36.274
+    },
+    {
+      "word": "sumamos",
+      "start": 36.332,
+      "end": 36.855
+    },
+    {
+      "word": "cuando",
+      "start": 36.913,
+      "end": 37.226
+    },
+    {
+      "word": "ya",
+      "start": 37.296,
+      "end": 37.412
+    },
+    {
+      "word": "lo",
+      "start": 37.47,
+      "end": 37.574
+    },
+    {
+      "word": "estén",
+      "start": 37.621,
+      "end": 37.853
+    },
+    {
+      "word": "usando.",
+      "start": 37.923,
+      "end": 38.503
+    },
+    {
+      "word": "Think",
+      "start": 38.654,
+      "end": 39.014
+    },
+    {
+      "word": "Deep.",
+      "start": 39.118,
+      "end": 39.711
+    }
+  ],
+  "scenes": [
+    {
+      "phrase": "Primero vemos",
+      "speech_start": 3.453
+    },
+    {
+      "phrase": "Después dejamos",
+      "speech_start": 17.425
+    },
+    {
+      "phrase": "Si lo usa",
+      "speech_start": 24.429
+    },
+    {
+      "phrase": "Y si hay que sacar",
+      "speech_start": 28.17
+    }
+  ],
+  "end_speech_start": 38.654,
+  "audio_sha256": "58dcd59974c06594cc70875561ec0cc84b758f46298160f56e3d943595873a50"
+}

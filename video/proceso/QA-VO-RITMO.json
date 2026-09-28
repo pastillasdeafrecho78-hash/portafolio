@@ -1,0 +1,452 @@
+[
+  {
+    "id": "panel",
+    "voice_duration": 39.710385,
+    "scenes": [
+      {
+        "phrase": "Primero vemos",
+        "speech_start": 3.453
+      },
+      {
+        "phrase": "Después dejamos",
+        "speech_start": 17.425
+      },
+      {
+        "phrase": "Si lo usa",
+        "speech_start": 24.429
+      },
+      {
+        "phrase": "Y si hay que sacar",
+        "speech_start": 28.17
+      }
+    ],
+    "variants": [
+      {
+        "name": "panel",
+        "duration": 40.633333,
+        "start": {
+          "correlation": 0.99989,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99994,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -8.58
+      },
+      {
+        "name": "panel-pc",
+        "duration": 40.633333,
+        "start": {
+          "correlation": 0.99989,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99994,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -8.58
+      }
+    ]
+  },
+  {
+    "id": "mvp",
+    "voice_duration": 32.068617,
+    "scenes": [
+      {
+        "phrase": "Antes de llenarla",
+        "speech_start": 3.687
+      },
+      {
+        "phrase": "Con eso armamos",
+        "speech_start": 12.757
+      },
+      {
+        "phrase": "Una persona real",
+        "speech_start": 21.447
+      },
+      {
+        "phrase": "Después ajustamos",
+        "speech_start": 25.026
+      }
+    ],
+    "variants": [
+      {
+        "name": "mvp",
+        "duration": 33.0,
+        "start": {
+          "correlation": 0.99992,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99987,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.08
+      },
+      {
+        "name": "mvp-pc",
+        "duration": 33.0,
+        "start": {
+          "correlation": 0.99992,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99987,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.08
+      }
+    ]
+  },
+  {
+    "id": "whatsapp",
+    "voice_duration": 32.647188,
+    "scenes": [
+      {
+        "phrase": "Primero vemos",
+        "speech_start": 3.895
+      },
+      {
+        "phrase": "Armamos un flujo",
+        "speech_start": 9.006
+      },
+      {
+        "phrase": "Si se sale",
+        "speech_start": 19.641
+      },
+      {
+        "phrase": "Empezamos con",
+        "speech_start": 26.238
+      }
+    ],
+    "variants": [
+      {
+        "name": "whatsapp",
+        "duration": 33.566667,
+        "start": {
+          "correlation": 0.99996,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99992,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -7.88
+      },
+      {
+        "name": "whatsapp-pc",
+        "duration": 33.566667,
+        "start": {
+          "correlation": 0.99996,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99992,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -7.88
+      }
+    ]
+  },
+  {
+    "id": "webchat",
+    "voice_duration": 38.004966,
+    "scenes": [
+      {
+        "phrase": "Alguien pregunta",
+        "speech_start": 4.139
+      },
+      {
+        "phrase": "Definimos juntos",
+        "speech_start": 9.425
+      },
+      {
+        "phrase": "Si no hay respuesta",
+        "speech_start": 20.549
+      },
+      {
+        "phrase": "Y cuidamos",
+        "speech_start": 27.03
+      }
+    ],
+    "variants": [
+      {
+        "name": "webchat",
+        "duration": 38.933333,
+        "start": {
+          "correlation": 0.99998,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99994,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.13
+      },
+      {
+        "name": "webchat-pc",
+        "duration": 38.933333,
+        "start": {
+          "correlation": 0.99998,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99994,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.13
+      }
+    ]
+  },
+  {
+    "id": "inbox",
+    "voice_duration": 32.359796,
+    "scenes": [
+      {
+        "phrase": "Cuando todo",
+        "speech_start": 4.65
+      },
+      {
+        "phrase": "Después dejamos",
+        "speech_start": 14.512
+      },
+      {
+        "phrase": "Si hace falta criterio",
+        "speech_start": 20.747
+      },
+      {
+        "phrase": "Empezamos con",
+        "speech_start": 27.843
+      }
+    ],
+    "variants": [
+      {
+        "name": "inbox",
+        "duration": 33.266667,
+        "start": {
+          "correlation": 0.99965,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99987,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.24
+      },
+      {
+        "name": "inbox-pc",
+        "duration": 33.266667,
+        "start": {
+          "correlation": 0.99965,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99987,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.24
+      }
+    ]
+  },
+  {
+    "id": "rostro",
+    "voice_duration": 29.02102,
+    "scenes": [
+      {
+        "phrase": "Primero acordamos",
+        "speech_start": 3.929
+      },
+      {
+        "phrase": "La cámara toma",
+        "speech_start": 9.656
+      },
+      {
+        "phrase": "Si no, alguien",
+        "speech_start": 17.695
+      },
+      {
+        "phrase": "Empezamos con un acceso",
+        "speech_start": 24.909
+      }
+    ],
+    "variants": [
+      {
+        "name": "rostro",
+        "duration": 29.933333,
+        "start": {
+          "correlation": 0.99997,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99995,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.48
+      },
+      {
+        "name": "rostro-pc",
+        "duration": 29.933333,
+        "start": {
+          "correlation": 0.99997,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99995,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.48
+      }
+    ]
+  },
+  {
+    "id": "patron",
+    "voice_duration": 29.647914,
+    "scenes": [
+      {
+        "phrase": "Primero elegimos",
+        "speech_start": 4.521
+      },
+      {
+        "phrase": "La cámara observa",
+        "speech_start": 12.508
+      },
+      {
+        "phrase": "Cada aviso",
+        "speech_start": 16.679
+      },
+      {
+        "phrase": "Probamos luz",
+        "speech_start": 20.72
+      }
+    ],
+    "variants": [
+      {
+        "name": "patron",
+        "duration": 30.566667,
+        "start": {
+          "correlation": 0.99996,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99997,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -8.56
+      },
+      {
+        "name": "patron-pc",
+        "duration": 30.566667,
+        "start": {
+          "correlation": 0.99996,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99997,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -8.56
+      }
+    ]
+  },
+  {
+    "id": "lista",
+    "voice_duration": 27.649977,
+    "scenes": [
+      {
+        "phrase": "Primero definimos",
+        "speech_start": 4.046
+      },
+      {
+        "phrase": "Llega la consulta",
+        "speech_start": 11.665
+      },
+      {
+        "phrase": "Si el nombre",
+        "speech_start": 19.03
+      },
+      {
+        "phrase": "Después podemos",
+        "speech_start": 22.423
+      }
+    ],
+    "variants": [
+      {
+        "name": "lista",
+        "duration": 28.566667,
+        "start": {
+          "correlation": 0.99993,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.9998,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.35
+      },
+      {
+        "name": "lista-pc",
+        "duration": 28.566667,
+        "start": {
+          "correlation": 0.99993,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.9998,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -9.35
+      }
+    ]
+  },
+  {
+    "id": "otro",
+    "voice_duration": 41.752404,
+    "scenes": [
+      {
+        "phrase": "Primero aterrizamos",
+        "speech_start": 5.555
+      },
+      {
+        "phrase": "Luego el momento",
+        "speech_start": 10.224
+      },
+      {
+        "phrase": "Con eso dibujamos",
+        "speech_start": 18.283
+      },
+      {
+        "phrase": "El siguiente paso",
+        "speech_start": 31.268
+      }
+    ],
+    "variants": [
+      {
+        "name": "otro",
+        "duration": 42.666667,
+        "start": {
+          "correlation": 0.99994,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99984,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -8.57
+      },
+      {
+        "name": "otro-pc",
+        "duration": 42.666667,
+        "start": {
+          "correlation": 0.99994,
+          "offset_seconds": 0.0
+        },
+        "end": {
+          "correlation": 0.99984,
+          "offset_seconds": 0.0
+        },
+        "peak_dbfs": -8.57
+      }
+    ]
+  }
+]

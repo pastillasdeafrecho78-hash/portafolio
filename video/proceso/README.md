@@ -11,4 +11,16 @@ hyperframes render -f 30 -q looks -o public/video/proceso/panel.mp4 video/proces
 python video/proceso/scripts/make-posters.py
 ```
 
-El generador acepta uno o varios IDs para trabajar solo en esas composiciones. Ejecuta `hyperframes check` en cada versión antes del render final. Los guiones de voz que aún no se produjeron están en [`docs/GUIONES-PROCESO-REVISION.md`](../../docs/GUIONES-PROCESO-REVISION.md). La estructura visual vigente se genera desde `scripts/build-clips.py`; los borradores antiguos están en `archive/` solo como referencia local.
+El generador acepta uno o varios IDs para trabajar solo en esas composiciones. Ejecuta `hyperframes check` en cada versión antes del render final. Los nueve guiones de voz vigentes son los textos literales del [`handoff de voz y ritmo`](HANDOFF-CODEX-VO-RITMO.md), guardados en `scripts/vo-scripts.json`. La estructura visual se genera desde `scripts/build-clips.py`.
+
+## Voz y sincronización
+
+`scripts/produce-voice.py` requiere `ELEVENLABS_API_KEY` en el entorno. Genera Richard a velocidad 0.85, completa las pausas breves entre oraciones y guarda la alineación corregida por palabra en `audio/{id}-vo.json`. Los takes originales se conservan en `.voice-work/`, ignorado por Git, para reutilizarlos sin repetir la solicitud de síntesis. `sitio` conserva su voz y sus tiempos anteriores.
+
+Después de regenerar la voz, ejecuta `build-clips.py` con los mismos IDs: obtiene del JSON la duración y el inicio hablado de cada escena. Renderiza ambas versiones y verifica los MP4 finales:
+
+```bash
+python video/proceso/scripts/verify-voice-sync.py
+```
+
+La prueba compara la señal al inicio y al final, los anclajes de las escenas, la duración y la igualdad de takes entre móvil y PC. Los resultados de esta entrega están en [`QA-VO-RITMO.md`](QA-VO-RITMO.md) y `QA-VO-RITMO.json`.

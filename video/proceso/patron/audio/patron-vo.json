@@ -1,0 +1,395 @@
+{
+  "text": "Pediste detectar con cámara. Vamos a armarlo contigo. Primero elegimos el evento que sí importa: un objeto en una zona, movimiento fuera de horario o un conteo. La cámara observa y el sistema marca cuando se cumple la regla. Cada aviso trae dónde, cuándo y qué se vio. Probamos luz y falsos avisos en el lugar. Empezamos con una cámara o una zona. Si funciona, lo ampliamos. Think Deep.",
+  "voice_id": "Cpm6N9BNC1M75bYS7kO1",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.46,
+    "similarity_boost": 0.78,
+    "style": 0.36,
+    "speed": 0.85,
+    "use_speaker_boost": true
+  },
+  "duration": 29.647914,
+  "added_pause_seconds": 0.205,
+  "pauses": [
+    {
+      "source_time": 2.6295,
+      "added": 0.095
+    },
+    {
+      "source_time": 4.29,
+      "added": 0.072
+    },
+    {
+      "source_time": 16.393,
+      "added": 0.038
+    }
+  ],
+  "words": [
+    {
+      "word": "Pediste",
+      "start": 0.0,
+      "end": 0.639
+    },
+    {
+      "word": "detectar",
+      "start": 0.697,
+      "end": 1.358
+    },
+    {
+      "word": "con",
+      "start": 1.498,
+      "end": 1.765
+    },
+    {
+      "word": "cámara.",
+      "start": 1.904,
+      "end": 2.754
+    },
+    {
+      "word": "Vamos",
+      "start": 2.777,
+      "end": 3.09
+    },
+    {
+      "word": "a",
+      "start": 3.16,
+      "end": 3.183
+    },
+    {
+      "word": "armarlo",
+      "start": 3.206,
+      "end": 3.659
+    },
+    {
+      "word": "contigo.",
+      "start": 3.729,
+      "end": 4.379
+    },
+    {
+      "word": "Primero",
+      "start": 4.521,
+      "end": 4.95
+    },
+    {
+      "word": "elegimos",
+      "start": 4.974,
+      "end": 5.473
+    },
+    {
+      "word": "el",
+      "start": 5.531,
+      "end": 5.6
+    },
+    {
+      "word": "evento",
+      "start": 5.659,
+      "end": 6.03
+    },
+    {
+      "word": "que",
+      "start": 6.088,
+      "end": 6.204
+    },
+    {
+      "word": "sí",
+      "start": 6.262,
+      "end": 6.425
+    },
+    {
+      "word": "importa:",
+      "start": 6.494,
+      "end": 7.272
+    },
+    {
+      "word": "un",
+      "start": 7.412,
+      "end": 7.516
+    },
+    {
+      "word": "objeto",
+      "start": 7.574,
+      "end": 8.073
+    },
+    {
+      "word": "en",
+      "start": 8.131,
+      "end": 8.201
+    },
+    {
+      "word": "una",
+      "start": 8.271,
+      "end": 8.433
+    },
+    {
+      "word": "zona,",
+      "start": 8.491,
+      "end": 8.979
+    },
+    {
+      "word": "movimiento",
+      "start": 9.118,
+      "end": 9.896
+    },
+    {
+      "word": "fuera",
+      "start": 9.977,
+      "end": 10.372
+    },
+    {
+      "word": "de",
+      "start": 10.442,
+      "end": 10.511
+    },
+    {
+      "word": "horario",
+      "start": 10.535,
+      "end": 11.127
+    },
+    {
+      "word": "o",
+      "start": 11.266,
+      "end": 11.405
+    },
+    {
+      "word": "un",
+      "start": 11.51,
+      "end": 11.638
+    },
+    {
+      "word": "conteo.",
+      "start": 11.731,
+      "end": 12.369
+    },
+    {
+      "word": "La",
+      "start": 12.508,
+      "end": 12.659
+    },
+    {
+      "word": "cámara",
+      "start": 12.706,
+      "end": 13.077
+    },
+    {
+      "word": "observa",
+      "start": 13.124,
+      "end": 13.704
+    },
+    {
+      "word": "y",
+      "start": 13.774,
+      "end": 13.82
+    },
+    {
+      "word": "el",
+      "start": 13.878,
+      "end": 13.925
+    },
+    {
+      "word": "sistema",
+      "start": 13.983,
+      "end": 14.436
+    },
+    {
+      "word": "marca",
+      "start": 14.505,
+      "end": 14.854
+    },
+    {
+      "word": "cuando",
+      "start": 14.912,
+      "end": 15.214
+    },
+    {
+      "word": "se",
+      "start": 15.272,
+      "end": 15.376
+    },
+    {
+      "word": "cumple",
+      "start": 15.434,
+      "end": 15.829
+    },
+    {
+      "word": "la",
+      "start": 15.887,
+      "end": 15.98
+    },
+    {
+      "word": "regla.",
+      "start": 16.073,
+      "end": 16.598
+    },
+    {
+      "word": "Cada",
+      "start": 16.679,
+      "end": 17.062
+    },
+    {
+      "word": "aviso",
+      "start": 17.086,
+      "end": 17.469
+    },
+    {
+      "word": "trae",
+      "start": 17.538,
+      "end": 17.805
+    },
+    {
+      "word": "dónde,",
+      "start": 17.875,
+      "end": 18.398
+    },
+    {
+      "word": "cuándo",
+      "start": 18.456,
+      "end": 19.094
+    },
+    {
+      "word": "y",
+      "start": 19.233,
+      "end": 19.338
+    },
+    {
+      "word": "qué",
+      "start": 19.512,
+      "end": 19.779
+    },
+    {
+      "word": "se",
+      "start": 19.918,
+      "end": 20.058
+    },
+    {
+      "word": "vio.",
+      "start": 20.139,
+      "end": 20.58
+    },
+    {
+      "word": "Probamos",
+      "start": 20.72,
+      "end": 21.288
+    },
+    {
+      "word": "luz",
+      "start": 21.381,
+      "end": 21.683
+    },
+    {
+      "word": "y",
+      "start": 21.73,
+      "end": 21.776
+    },
+    {
+      "word": "falsos",
+      "start": 21.846,
+      "end": 22.206
+    },
+    {
+      "word": "avisos",
+      "start": 22.287,
+      "end": 22.705
+    },
+    {
+      "word": "en",
+      "start": 22.775,
+      "end": 22.867
+    },
+    {
+      "word": "el",
+      "start": 22.937,
+      "end": 23.007
+    },
+    {
+      "word": "lugar.",
+      "start": 23.03,
+      "end": 23.518
+    },
+    {
+      "word": "Empezamos",
+      "start": 23.657,
+      "end": 24.272
+    },
+    {
+      "word": "con",
+      "start": 24.33,
+      "end": 24.458
+    },
+    {
+      "word": "una",
+      "start": 24.528,
+      "end": 24.69
+    },
+    {
+      "word": "cámara",
+      "start": 24.76,
+      "end": 25.224
+    },
+    {
+      "word": "o",
+      "start": 25.294,
+      "end": 25.317
+    },
+    {
+      "word": "una",
+      "start": 25.375,
+      "end": 25.573
+    },
+    {
+      "word": "zona.",
+      "start": 25.631,
+      "end": 26.107
+    },
+    {
+      "word": "Si",
+      "start": 26.281,
+      "end": 26.443
+    },
+    {
+      "word": "funciona,",
+      "start": 26.513,
+      "end": 27.268
+    },
+    {
+      "word": "lo",
+      "start": 27.407,
+      "end": 27.558
+    },
+    {
+      "word": "ampliamos.",
+      "start": 27.581,
+      "end": 28.382
+    },
+    {
+      "word": "Think",
+      "start": 28.556,
+      "end": 28.928
+    },
+    {
+      "word": "Deep.",
+      "start": 29.009,
+      "end": 29.648
+    }
+  ],
+  "scenes": [
+    {
+      "phrase": "Primero elegimos",
+      "speech_start": 4.521
+    },
+    {
+      "phrase": "La cámara observa",
+      "speech_start": 12.508
+    },
+    {
+      "phrase": "Cada aviso",
+      "speech_start": 16.679
+    },
+    {
+      "phrase": "Probamos luz",
+      "speech_start": 20.72
+    }
+  ],
+  "end_speech_start": 28.556,
+  "audio_sha256": "4bf07d8c6052f6146449a4124e180665d7261adf8c59208b92bfe07a63d13062"
+}

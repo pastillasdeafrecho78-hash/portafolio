@@ -1,0 +1,444 @@
+{
+  "text": "Pediste ordenar WhatsApp. Vamos a armarlo contigo. Primero vemos qué preguntan una y otra vez, y cuándo tienes que entrar tú. Armamos un flujo que recibe, responde lo útil y guarda lo necesario: opciones, horarios o el dato mínimo antes de pasarlo a una persona. Si se sale del camino, tu equipo lo toma. Queda claro qué respondió el flujo y qué sigue. Empezamos con un caso concreto; luego lo ampliamos si el volumen lo pide. Think Deep.",
+  "voice_id": "Cpm6N9BNC1M75bYS7kO1",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.46,
+    "similarity_boost": 0.78,
+    "style": 0.36,
+    "speed": 0.85,
+    "use_speaker_boost": true
+  },
+  "duration": 32.647188,
+  "added_pause_seconds": 0.325,
+  "pauses": [
+    {
+      "source_time": 1.817,
+      "added": 0.096
+    },
+    {
+      "source_time": 3.6455,
+      "added": 0.107
+    },
+    {
+      "source_time": 8.661,
+      "added": 0.084
+    },
+    {
+      "source_time": 22.349,
+      "added": 0.038
+    }
+  ],
+  "words": [
+    {
+      "word": "Pediste",
+      "start": 0.0,
+      "end": 0.546
+    },
+    {
+      "word": "ordenar",
+      "start": 0.615,
+      "end": 1.126
+    },
+    {
+      "word": "WhatsApp.",
+      "start": 1.231,
+      "end": 1.919
+    },
+    {
+      "word": "Vamos",
+      "start": 1.965,
+      "end": 2.337
+    },
+    {
+      "word": "a",
+      "start": 2.418,
+      "end": 2.441
+    },
+    {
+      "word": "armarlo",
+      "start": 2.464,
+      "end": 3.08
+    },
+    {
+      "word": "contigo.",
+      "start": 3.138,
+      "end": 3.849
+    },
+    {
+      "word": "Primero",
+      "start": 3.895,
+      "end": 4.348
+    },
+    {
+      "word": "vemos",
+      "start": 4.406,
+      "end": 4.812
+    },
+    {
+      "word": "qué",
+      "start": 4.87,
+      "end": 4.963
+    },
+    {
+      "word": "preguntan",
+      "start": 5.021,
+      "end": 5.625
+    },
+    {
+      "word": "una",
+      "start": 5.764,
+      "end": 5.962
+    },
+    {
+      "word": "y",
+      "start": 6.066,
+      "end": 6.089
+    },
+    {
+      "word": "otra",
+      "start": 6.147,
+      "end": 6.368
+    },
+    {
+      "word": "vez,",
+      "start": 6.438,
+      "end": 6.763
+    },
+    {
+      "word": "y",
+      "start": 6.821,
+      "end": 6.89
+    },
+    {
+      "word": "cuándo",
+      "start": 7.03,
+      "end": 7.436
+    },
+    {
+      "word": "tienes",
+      "start": 7.506,
+      "end": 7.935
+    },
+    {
+      "word": "que",
+      "start": 7.993,
+      "end": 8.063
+    },
+    {
+      "word": "entrar",
+      "start": 8.109,
+      "end": 8.527
+    },
+    {
+      "word": "tú.",
+      "start": 8.597,
+      "end": 8.948
+    },
+    {
+      "word": "Armamos",
+      "start": 9.006,
+      "end": 9.529
+    },
+    {
+      "word": "un",
+      "start": 9.668,
+      "end": 9.714
+    },
+    {
+      "word": "flujo",
+      "start": 9.772,
+      "end": 10.132
+    },
+    {
+      "word": "que",
+      "start": 10.202,
+      "end": 10.295
+    },
+    {
+      "word": "recibe,",
+      "start": 10.399,
+      "end": 11.038
+    },
+    {
+      "word": "responde",
+      "start": 11.131,
+      "end": 11.734
+    },
+    {
+      "word": "lo",
+      "start": 11.792,
+      "end": 11.909
+    },
+    {
+      "word": "útil",
+      "start": 12.048,
+      "end": 12.385
+    },
+    {
+      "word": "y",
+      "start": 12.431,
+      "end": 12.536
+    },
+    {
+      "word": "guarda",
+      "start": 12.628,
+      "end": 13.07
+    },
+    {
+      "word": "lo",
+      "start": 13.128,
+      "end": 13.232
+    },
+    {
+      "word": "necesario:",
+      "start": 13.302,
+      "end": 14.068
+    },
+    {
+      "word": "opciones,",
+      "start": 14.126,
+      "end": 14.974
+    },
+    {
+      "word": "horarios",
+      "start": 14.997,
+      "end": 15.601
+    },
+    {
+      "word": "o",
+      "start": 15.705,
+      "end": 15.798
+    },
+    {
+      "word": "el",
+      "start": 15.856,
+      "end": 15.926
+    },
+    {
+      "word": "dato",
+      "start": 16.007,
+      "end": 16.32
+    },
+    {
+      "word": "mínimo",
+      "start": 16.413,
+      "end": 16.982
+    },
+    {
+      "word": "antes",
+      "start": 17.063,
+      "end": 17.516
+    },
+    {
+      "word": "de",
+      "start": 17.574,
+      "end": 17.644
+    },
+    {
+      "word": "pasarlo",
+      "start": 17.725,
+      "end": 18.329
+    },
+    {
+      "word": "a",
+      "start": 18.387,
+      "end": 18.41
+    },
+    {
+      "word": "una",
+      "start": 18.48,
+      "end": 18.665
+    },
+    {
+      "word": "persona.",
+      "start": 18.723,
+      "end": 19.432
+    },
+    {
+      "word": "Si",
+      "start": 19.641,
+      "end": 19.803
+    },
+    {
+      "word": "se",
+      "start": 19.861,
+      "end": 19.966
+    },
+    {
+      "word": "sale",
+      "start": 20.024,
+      "end": 20.279
+    },
+    {
+      "word": "del",
+      "start": 20.325,
+      "end": 20.488
+    },
+    {
+      "word": "camino,",
+      "start": 20.546,
+      "end": 21.08
+    },
+    {
+      "word": "tu",
+      "start": 21.185,
+      "end": 21.324
+    },
+    {
+      "word": "equipo",
+      "start": 21.382,
+      "end": 21.904
+    },
+    {
+      "word": "lo",
+      "start": 21.974,
+      "end": 22.102
+    },
+    {
+      "word": "toma.",
+      "start": 22.16,
+      "end": 22.613
+    },
+    {
+      "word": "Queda",
+      "start": 22.755,
+      "end": 23.069
+    },
+    {
+      "word": "claro",
+      "start": 23.127,
+      "end": 23.475
+    },
+    {
+      "word": "qué",
+      "start": 23.545,
+      "end": 23.614
+    },
+    {
+      "word": "respondió",
+      "start": 23.707,
+      "end": 24.299
+    },
+    {
+      "word": "el",
+      "start": 24.346,
+      "end": 24.415
+    },
+    {
+      "word": "flujo",
+      "start": 24.485,
+      "end": 25.019
+    },
+    {
+      "word": "y",
+      "start": 25.112,
+      "end": 25.182
+    },
+    {
+      "word": "qué",
+      "start": 25.333,
+      "end": 25.495
+    },
+    {
+      "word": "sigue.",
+      "start": 25.576,
+      "end": 26.099
+    },
+    {
+      "word": "Empezamos",
+      "start": 26.238,
+      "end": 26.853
+    },
+    {
+      "word": "con",
+      "start": 26.912,
+      "end": 27.039
+    },
+    {
+      "word": "un",
+      "start": 27.12,
+      "end": 27.19
+    },
+    {
+      "word": "caso",
+      "start": 27.248,
+      "end": 27.562
+    },
+    {
+      "word": "concreto;",
+      "start": 27.62,
+      "end": 28.34
+    },
+    {
+      "word": "luego",
+      "start": 28.444,
+      "end": 28.769
+    },
+    {
+      "word": "lo",
+      "start": 28.839,
+      "end": 28.885
+    },
+    {
+      "word": "ampliamos",
+      "start": 28.908,
+      "end": 29.617
+    },
+    {
+      "word": "si",
+      "start": 29.698,
+      "end": 29.86
+    },
+    {
+      "word": "el",
+      "start": 29.918,
+      "end": 29.988
+    },
+    {
+      "word": "volumen",
+      "start": 30.058,
+      "end": 30.522
+    },
+    {
+      "word": "lo",
+      "start": 30.58,
+      "end": 30.696
+    },
+    {
+      "word": "pide.",
+      "start": 30.754,
+      "end": 31.277
+    },
+    {
+      "word": "Think",
+      "start": 31.416,
+      "end": 31.764
+    },
+    {
+      "word": "Deep.",
+      "start": 31.846,
+      "end": 32.647
+    }
+  ],
+  "scenes": [
+    {
+      "phrase": "Primero vemos",
+      "speech_start": 3.895
+    },
+    {
+      "phrase": "Armamos un flujo",
+      "speech_start": 9.006
+    },
+    {
+      "phrase": "Si se sale",
+      "speech_start": 19.641
+    },
+    {
+      "phrase": "Empezamos con",
+      "speech_start": 26.238
+    }
+  ],
+  "end_speech_start": 31.416,
+  "audio_sha256": "24ef2b72d6698612574cef090bd40fad5387fcd5149152f5a89e619bd626c660"
+}

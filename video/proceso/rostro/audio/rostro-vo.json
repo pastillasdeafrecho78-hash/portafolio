@@ -1,0 +1,450 @@
+{
+  "text": "Pediste reconocimiento facial. Vamos a armarlo contigo. Primero acordamos para qué: una entrada, un registro de llegada o una verificación. La cámara toma el intento y lo compara con los registros que ustedes autorizaron. Si coincide, deja pasar y queda el evento. Si no, alguien lo revisa. También dejamos claro quién administra la lista y qué alternativa hay si no se usa la cara. Empezamos con un acceso y lo probamos en el lugar. Think Deep.",
+  "voice_id": "Cpm6N9BNC1M75bYS7kO1",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.46,
+    "similarity_boost": 0.78,
+    "style": 0.36,
+    "speed": 0.85,
+    "use_speaker_boost": true
+  },
+  "duration": 29.02102,
+  "added_pause_seconds": 0.832,
+  "pauses": [
+    {
+      "source_time": 2.0205,
+      "added": 0.107
+    },
+    {
+      "source_time": 3.6685,
+      "added": 0.107
+    },
+    {
+      "source_time": 9.3,
+      "added": 0.084
+    },
+    {
+      "source_time": 14.315,
+      "added": 0.084
+    },
+    {
+      "source_time": 17.154,
+      "added": 0.118
+    },
+    {
+      "source_time": 18.762,
+      "added": 0.13
+    },
+    {
+      "source_time": 24.1025,
+      "added": 0.153
+    },
+    {
+      "source_time": 27.1845,
+      "added": 0.049
+    }
+  ],
+  "words": [
+    {
+      "word": "Pediste",
+      "start": 0.0,
+      "end": 0.488
+    },
+    {
+      "word": "reconocimiento",
+      "start": 0.569,
+      "end": 1.44
+    },
+    {
+      "word": "facial.",
+      "start": 1.498,
+      "end": 2.02
+    },
+    {
+      "word": "Vamos",
+      "start": 2.174,
+      "end": 2.487
+    },
+    {
+      "word": "a",
+      "start": 2.545,
+      "end": 2.568
+    },
+    {
+      "word": "armarlo",
+      "start": 2.592,
+      "end": 3.091
+    },
+    {
+      "word": "contigo.",
+      "start": 3.149,
+      "end": 3.883
+    },
+    {
+      "word": "Primero",
+      "start": 3.929,
+      "end": 4.347
+    },
+    {
+      "word": "acordamos",
+      "start": 4.394,
+      "end": 4.904
+    },
+    {
+      "word": "para",
+      "start": 4.974,
+      "end": 5.148
+    },
+    {
+      "word": "qué:",
+      "start": 5.206,
+      "end": 5.497
+    },
+    {
+      "word": "una",
+      "start": 5.578,
+      "end": 5.764
+    },
+    {
+      "word": "entrada,",
+      "start": 5.787,
+      "end": 6.414
+    },
+    {
+      "word": "un",
+      "start": 6.553,
+      "end": 6.681
+    },
+    {
+      "word": "registro",
+      "start": 6.785,
+      "end": 7.331
+    },
+    {
+      "word": "de",
+      "start": 7.389,
+      "end": 7.482
+    },
+    {
+      "word": "llegada",
+      "start": 7.505,
+      "end": 8.062
+    },
+    {
+      "word": "o",
+      "start": 8.167,
+      "end": 8.306
+    },
+    {
+      "word": "una",
+      "start": 8.376,
+      "end": 8.585
+    },
+    {
+      "word": "verificación.",
+      "start": 8.631,
+      "end": 9.598
+    },
+    {
+      "word": "La",
+      "start": 9.656,
+      "end": 9.772
+    },
+    {
+      "word": "cámara",
+      "start": 9.83,
+      "end": 10.201
+    },
+    {
+      "word": "toma",
+      "start": 10.259,
+      "end": 10.503
+    },
+    {
+      "word": "el",
+      "start": 10.526,
+      "end": 10.573
+    },
+    {
+      "word": "intento",
+      "start": 10.666,
+      "end": 11.188
+    },
+    {
+      "word": "y",
+      "start": 11.246,
+      "end": 11.293
+    },
+    {
+      "word": "lo",
+      "start": 11.351,
+      "end": 11.455
+    },
+    {
+      "word": "compara",
+      "start": 11.513,
+      "end": 11.908
+    },
+    {
+      "word": "con",
+      "start": 11.954,
+      "end": 12.105
+    },
+    {
+      "word": "los",
+      "start": 12.152,
+      "end": 12.291
+    },
+    {
+      "word": "registros",
+      "start": 12.465,
+      "end": 13.057
+    },
+    {
+      "word": "que",
+      "start": 13.115,
+      "end": 13.208
+    },
+    {
+      "word": "ustedes",
+      "start": 13.266,
+      "end": 13.708
+    },
+    {
+      "word": "autorizaron.",
+      "start": 13.789,
+      "end": 14.697
+    },
+    {
+      "word": "Si",
+      "start": 14.755,
+      "end": 14.906
+    },
+    {
+      "word": "coincide,",
+      "start": 14.964,
+      "end": 15.684
+    },
+    {
+      "word": "deja",
+      "start": 15.731,
+      "end": 15.998
+    },
+    {
+      "word": "pasar",
+      "start": 16.056,
+      "end": 16.427
+    },
+    {
+      "word": "y",
+      "start": 16.485,
+      "end": 16.508
+    },
+    {
+      "word": "queda",
+      "start": 16.578,
+      "end": 16.834
+    },
+    {
+      "word": "el",
+      "start": 16.857,
+      "end": 16.903
+    },
+    {
+      "word": "evento.",
+      "start": 16.984,
+      "end": 17.519
+    },
+    {
+      "word": "Si",
+      "start": 17.695,
+      "end": 17.822
+    },
+    {
+      "word": "no,",
+      "start": 17.892,
+      "end": 18.113
+    },
+    {
+      "word": "alguien",
+      "start": 18.182,
+      "end": 18.53
+    },
+    {
+      "word": "lo",
+      "start": 18.589,
+      "end": 18.658
+    },
+    {
+      "word": "revisa.",
+      "start": 18.739,
+      "end": 19.25
+    },
+    {
+      "word": "También",
+      "start": 19.427,
+      "end": 19.775
+    },
+    {
+      "word": "dejamos",
+      "start": 19.833,
+      "end": 20.205
+    },
+    {
+      "word": "claro",
+      "start": 20.251,
+      "end": 20.588
+    },
+    {
+      "word": "quién",
+      "start": 20.657,
+      "end": 20.855
+    },
+    {
+      "word": "administra",
+      "start": 20.924,
+      "end": 21.54
+    },
+    {
+      "word": "la",
+      "start": 21.598,
+      "end": 21.691
+    },
+    {
+      "word": "lista",
+      "start": 21.76,
+      "end": 22.109
+    },
+    {
+      "word": "y",
+      "start": 22.202,
+      "end": 22.26
+    },
+    {
+      "word": "qué",
+      "start": 22.399,
+      "end": 22.527
+    },
+    {
+      "word": "alternativa",
+      "start": 22.573,
+      "end": 23.339
+    },
+    {
+      "word": "hay",
+      "start": 23.363,
+      "end": 23.548
+    },
+    {
+      "word": "si",
+      "start": 23.618,
+      "end": 23.688
+    },
+    {
+      "word": "no",
+      "start": 23.757,
+      "end": 23.85
+    },
+    {
+      "word": "se",
+      "start": 23.908,
+      "end": 24.001
+    },
+    {
+      "word": "usa",
+      "start": 24.059,
+      "end": 24.245
+    },
+    {
+      "word": "la",
+      "start": 24.291,
+      "end": 24.361
+    },
+    {
+      "word": "cara.",
+      "start": 24.419,
+      "end": 24.732
+    },
+    {
+      "word": "Empezamos",
+      "start": 24.909,
+      "end": 25.489
+    },
+    {
+      "word": "con",
+      "start": 25.536,
+      "end": 25.675
+    },
+    {
+      "word": "un",
+      "start": 25.745,
+      "end": 25.791
+    },
+    {
+      "word": "acceso",
+      "start": 25.872,
+      "end": 26.372
+    },
+    {
+      "word": "y",
+      "start": 26.441,
+      "end": 26.488
+    },
+    {
+      "word": "lo",
+      "start": 26.534,
+      "end": 26.627
+    },
+    {
+      "word": "probamos",
+      "start": 26.685,
+      "end": 27.184
+    },
+    {
+      "word": "en",
+      "start": 27.266,
+      "end": 27.335
+    },
+    {
+      "word": "el",
+      "start": 27.405,
+      "end": 27.475
+    },
+    {
+      "word": "lugar.",
+      "start": 27.521,
+      "end": 27.962
+    },
+    {
+      "word": "Think",
+      "start": 28.092,
+      "end": 28.406
+    },
+    {
+      "word": "Deep.",
+      "start": 28.499,
+      "end": 29.021
+    }
+  ],
+  "scenes": [
+    {
+      "phrase": "Primero acordamos",
+      "speech_start": 3.929
+    },
+    {
+      "phrase": "La cámara toma",
+      "speech_start": 9.656
+    },
+    {
+      "phrase": "Si no, alguien",
+      "speech_start": 17.695
+    },
+    {
+      "phrase": "Empezamos con un acceso",
+      "speech_start": 24.909
+    }
+  ],
+  "end_speech_start": 28.092,
+  "audio_sha256": "9020dad567a3ccbe5ddb75b51c18be41cea3549f36999fb04245f049bec0efb0"
+}

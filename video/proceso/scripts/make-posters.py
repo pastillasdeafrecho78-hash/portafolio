@@ -2,12 +2,17 @@
 """Extract a settled first-scene frame for every public /proceso video."""
 from pathlib import Path
 import subprocess
+import argparse
 
 ROOT = Path(__file__).resolve().parents[3]
 PUBLIC = ROOT / "public" / "video" / "proceso"
 IDS = ("sitio", "panel", "mvp", "whatsapp", "webchat", "inbox", "rostro", "patron", "lista", "otro")
 
-for clip_id in IDS:
+parser = argparse.ArgumentParser()
+parser.add_argument("ids", nargs="*", choices=IDS)
+args = parser.parse_args()
+
+for clip_id in args.ids or IDS:
     for suffix in ("", "-pc"):
         name = f"{clip_id}{suffix}"
         source = PUBLIC / f"{name}.mp4"

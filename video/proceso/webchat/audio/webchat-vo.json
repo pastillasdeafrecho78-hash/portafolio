@@ -1,0 +1,511 @@
+{
+  "text": "Pediste un chat en tu sitio. Vamos a armarlo contigo. Alguien pregunta mientras mira tus servicios; el chat es el lugar para hacerlo. Definimos juntos qué se resuelve al momento y qué llega a tu equipo. Puede explicar lo básico, pedir contacto o el dato que falta para cotizar o agendar. Si no hay respuesta segura, no inventa: deja la conversación lista para una persona. Y cuidamos que no tape la página en el celular. Primero una conversación bien resuelta; luego sumamos más casos si hacen falta. Think Deep.",
+  "voice_id": "Cpm6N9BNC1M75bYS7kO1",
+  "model": "eleven_multilingual_v2",
+  "settings": {
+    "stability": 0.46,
+    "similarity_boost": 0.78,
+    "style": 0.36,
+    "speed": 0.85,
+    "use_speaker_boost": true
+  },
+  "duration": 38.004966,
+  "added_pause_seconds": 0.528,
+  "pauses": [
+    {
+      "source_time": 2.113,
+      "added": 0.084
+    },
+    {
+      "source_time": 3.913,
+      "added": 0.084
+    },
+    {
+      "source_time": 6.699,
+      "added": 0.024
+    },
+    {
+      "source_time": 9.091,
+      "added": 0.084
+    },
+    {
+      "source_time": 13.7695,
+      "added": 0.107
+    },
+    {
+      "source_time": 26.505,
+      "added": 0.084
+    },
+    {
+      "source_time": 36.5015,
+      "added": 0.061
+    }
+  ],
+  "words": [
+    {
+      "word": "Pediste",
+      "start": 0.0,
+      "end": 0.58
+    },
+    {
+      "word": "un",
+      "start": 0.685,
+      "end": 0.801
+    },
+    {
+      "word": "chat",
+      "start": 0.871,
+      "end": 1.115
+    },
+    {
+      "word": "en",
+      "start": 1.196,
+      "end": 1.265
+    },
+    {
+      "word": "tu",
+      "start": 1.324,
+      "end": 1.451
+    },
+    {
+      "word": "sitio.",
+      "start": 1.521,
+      "end": 2.209
+    },
+    {
+      "word": "Vamos",
+      "start": 2.255,
+      "end": 2.65
+    },
+    {
+      "word": "a",
+      "start": 2.708,
+      "end": 2.731
+    },
+    {
+      "word": "armarlo",
+      "start": 2.778,
+      "end": 3.265
+    },
+    {
+      "word": "contigo.",
+      "start": 3.335,
+      "end": 3.985
+    },
+    {
+      "word": "Alguien",
+      "start": 4.139,
+      "end": 4.533
+    },
+    {
+      "word": "pregunta",
+      "start": 4.591,
+      "end": 5.102
+    },
+    {
+      "word": "mientras",
+      "start": 5.16,
+      "end": 5.59
+    },
+    {
+      "word": "mira",
+      "start": 5.66,
+      "end": 5.903
+    },
+    {
+      "word": "tus",
+      "start": 5.95,
+      "end": 6.112
+    },
+    {
+      "word": "servicios;",
+      "start": 6.136,
+      "end": 6.891
+    },
+    {
+      "word": "el",
+      "start": 6.949,
+      "end": 7.1
+    },
+    {
+      "word": "chat",
+      "start": 7.17,
+      "end": 7.483
+    },
+    {
+      "word": "es",
+      "start": 7.576,
+      "end": 7.773
+    },
+    {
+      "word": "el",
+      "start": 7.866,
+      "end": 7.936
+    },
+    {
+      "word": "lugar",
+      "start": 7.959,
+      "end": 8.296
+    },
+    {
+      "word": "para",
+      "start": 8.377,
+      "end": 8.586
+    },
+    {
+      "word": "hacerlo.",
+      "start": 8.609,
+      "end": 9.367
+    },
+    {
+      "word": "Definimos",
+      "start": 9.425,
+      "end": 10.017
+    },
+    {
+      "word": "juntos",
+      "start": 10.075,
+      "end": 10.481
+    },
+    {
+      "word": "qué",
+      "start": 10.562,
+      "end": 10.667
+    },
+    {
+      "word": "se",
+      "start": 10.76,
+      "end": 10.853
+    },
+    {
+      "word": "resuelve",
+      "start": 10.946,
+      "end": 11.538
+    },
+    {
+      "word": "al",
+      "start": 11.561,
+      "end": 11.607
+    },
+    {
+      "word": "momento",
+      "start": 11.677,
+      "end": 12.234
+    },
+    {
+      "word": "y",
+      "start": 12.316,
+      "end": 12.362
+    },
+    {
+      "word": "qué",
+      "start": 12.455,
+      "end": 12.606
+    },
+    {
+      "word": "llega",
+      "start": 12.629,
+      "end": 13.151
+    },
+    {
+      "word": "a",
+      "start": 13.175,
+      "end": 13.198
+    },
+    {
+      "word": "tu",
+      "start": 13.268,
+      "end": 13.395
+    },
+    {
+      "word": "equipo.",
+      "start": 13.477,
+      "end": 14.045
+    },
+    {
+      "word": "Puede",
+      "start": 14.199,
+      "end": 14.559
+    },
+    {
+      "word": "explicar",
+      "start": 14.582,
+      "end": 15.162
+    },
+    {
+      "word": "lo",
+      "start": 15.232,
+      "end": 15.337
+    },
+    {
+      "word": "básico,",
+      "start": 15.395,
+      "end": 15.963
+    },
+    {
+      "word": "pedir",
+      "start": 16.01,
+      "end": 16.37
+    },
+    {
+      "word": "contacto",
+      "start": 16.439,
+      "end": 17.031
+    },
+    {
+      "word": "o",
+      "start": 17.171,
+      "end": 17.264
+    },
+    {
+      "word": "el",
+      "start": 17.322,
+      "end": 17.391
+    },
+    {
+      "word": "dato",
+      "start": 17.461,
+      "end": 17.716
+    },
+    {
+      "word": "que",
+      "start": 17.786,
+      "end": 17.856
+    },
+    {
+      "word": "falta",
+      "start": 17.925,
+      "end": 18.274
+    },
+    {
+      "word": "para",
+      "start": 18.343,
+      "end": 18.587
+    },
+    {
+      "word": "cotizar",
+      "start": 18.657,
+      "end": 19.319
+    },
+    {
+      "word": "o",
+      "start": 19.469,
+      "end": 19.609
+    },
+    {
+      "word": "agendar.",
+      "start": 19.678,
+      "end": 20.41
+    },
+    {
+      "word": "Si",
+      "start": 20.549,
+      "end": 20.712
+    },
+    {
+      "word": "no",
+      "start": 20.77,
+      "end": 20.863
+    },
+    {
+      "word": "hay",
+      "start": 20.909,
+      "end": 21.037
+    },
+    {
+      "word": "respuesta",
+      "start": 21.118,
+      "end": 21.78
+    },
+    {
+      "word": "segura,",
+      "start": 21.838,
+      "end": 22.372
+    },
+    {
+      "word": "no",
+      "start": 22.511,
+      "end": 22.662
+    },
+    {
+      "word": "inventa:",
+      "start": 22.755,
+      "end": 23.591
+    },
+    {
+      "word": "deja",
+      "start": 23.73,
+      "end": 24.102
+    },
+    {
+      "word": "la",
+      "start": 24.171,
+      "end": 24.264
+    },
+    {
+      "word": "conversación",
+      "start": 24.334,
+      "end": 25.112
+    },
+    {
+      "word": "lista",
+      "start": 25.182,
+      "end": 25.565
+    },
+    {
+      "word": "para",
+      "start": 25.623,
+      "end": 25.855
+    },
+    {
+      "word": "una",
+      "start": 25.925,
+      "end": 26.11
+    },
+    {
+      "word": "persona.",
+      "start": 26.18,
+      "end": 26.972
+    },
+    {
+      "word": "Y",
+      "start": 27.03,
+      "end": 27.112
+    },
+    {
+      "word": "cuidamos",
+      "start": 27.204,
+      "end": 27.797
+    },
+    {
+      "word": "que",
+      "start": 27.855,
+      "end": 27.947
+    },
+    {
+      "word": "no",
+      "start": 28.122,
+      "end": 28.261
+    },
+    {
+      "word": "tape",
+      "start": 28.365,
+      "end": 28.725
+    },
+    {
+      "word": "la",
+      "start": 28.772,
+      "end": 28.876
+    },
+    {
+      "word": "página",
+      "start": 28.946,
+      "end": 29.445
+    },
+    {
+      "word": "en",
+      "start": 29.492,
+      "end": 29.584
+    },
+    {
+      "word": "el",
+      "start": 29.677,
+      "end": 29.77
+    },
+    {
+      "word": "celular.",
+      "start": 29.828,
+      "end": 30.513
+    },
+    {
+      "word": "Primero",
+      "start": 30.653,
+      "end": 31.21
+    },
+    {
+      "word": "una",
+      "start": 31.28,
+      "end": 31.465
+    },
+    {
+      "word": "conversación",
+      "start": 31.535,
+      "end": 32.313
+    },
+    {
+      "word": "bien",
+      "start": 32.394,
+      "end": 32.649
+    },
+    {
+      "word": "resuelta;",
+      "start": 32.742,
+      "end": 33.532
+    },
+    {
+      "word": "luego",
+      "start": 33.671,
+      "end": 34.089
+    },
+    {
+      "word": "sumamos",
+      "start": 34.159,
+      "end": 34.67
+    },
+    {
+      "word": "más",
+      "start": 34.751,
+      "end": 35.006
+    },
+    {
+      "word": "casos",
+      "start": 35.064,
+      "end": 35.575
+    },
+    {
+      "word": "si",
+      "start": 35.68,
+      "end": 35.889
+    },
+    {
+      "word": "hacen",
+      "start": 35.958,
+      "end": 36.318
+    },
+    {
+      "word": "falta.",
+      "start": 36.388,
+      "end": 37.041
+    },
+    {
+      "word": "Think",
+      "start": 37.099,
+      "end": 37.424
+    },
+    {
+      "word": "Deep.",
+      "start": 37.505,
+      "end": 38.005
+    }
+  ],
+  "scenes": [
+    {
+      "phrase": "Alguien pregunta",
+      "speech_start": 4.139
+    },
+    {
+      "phrase": "Definimos juntos",
+      "speech_start": 9.425
+    },
+    {
+      "phrase": "Si no hay respuesta",
+      "speech_start": 20.549
+    },
+    {
+      "phrase": "Y cuidamos",
+      "speech_start": 27.03
+    }
+  ],
+  "end_speech_start": 37.099,
+  "audio_sha256": "455d94930208ddd3a96e3497a6d7d8e38b80a85b576270f3f1ef0adb9f604098"
+}
