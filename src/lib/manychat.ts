@@ -4,7 +4,8 @@ export type ManyChatLead = {
   whatsappE164: string;
   productLabel: string;
   videoId: string;
-  waOptIn: boolean;
+  /** Kept for API shape; submitting a phone is treated as consent to message. */
+  waOptIn?: boolean;
 };
 
 export const MANYCHAT_ENABLED =
@@ -13,9 +14,6 @@ export const MANYCHAT_ENABLED =
 export async function enqueueManyChatWelcome(
   lead: ManyChatLead,
 ): Promise<{ ok: boolean; skipped?: string }> {
-  if (!lead.waOptIn) {
-    return { ok: false, skipped: "no_opt_in" };
-  }
   if (!MANYCHAT_ENABLED) {
     return { ok: false, skipped: "manychat_disabled" };
   }
@@ -24,7 +22,7 @@ export async function enqueueManyChatWelcome(
     const response = await fetch("/api/manychat/welcome", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(lead),
+      body: JSON.stringify({ ...lead, waOptIn: true }),
       keepalive: true,
     });
 

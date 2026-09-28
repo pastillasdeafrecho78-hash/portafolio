@@ -26,11 +26,9 @@ type Props = {
   phone: string;
   countryIso: string;
   gender: Gender | null;
-  waOptIn: boolean;
   onNameChange: (value: string) => void;
   onPhoneChange: (national: string, countryIso: string) => void;
   onGenderChange: (value: Gender) => void;
-  onWaOptInChange: (value: boolean) => void;
   onContinue: () => void;
 };
 
@@ -177,11 +175,9 @@ export function ContactStep({
   phone,
   countryIso,
   gender,
-  waOptIn,
   onNameChange,
   onPhoneChange,
   onGenderChange,
-  onWaOptInChange,
   onContinue,
 }: Props) {
   const [open, setOpen] = useState(false);
@@ -395,24 +391,13 @@ export function ContactStep({
         </div>
       </div>
 
-      <label className="onboard-contact__optin">
-        <input
-          type="checkbox"
-          checked={waOptIn}
-          onChange={(e) => onWaOptInChange(e.target.checked)}
-        />
-        <span>
-          Puedo escribirte por WhatsApp con el seguimiento de tu solicitud.
-        </span>
-      </label>
-
       <button
         ref={continueRef}
         type="submit"
         className="glass-cta onboard-contact__continue"
         disabled={!canContinue}
       >
-        <span className="glass-cta-label">WhatsApp</span>
+        <span className="glass-cta-label">Ver el proceso</span>
       </button>
     </form>
   );

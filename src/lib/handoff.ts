@@ -17,9 +17,9 @@ export type HandoffPayload = {
   waUrl: string;
   leafId: string | null;
   videoId: ProcesoVideoId;
-  /** Explicit opt-in for future ManyChat outbound (Fase B). */
+  /** Submitting a phone number implies WhatsApp follow-up. */
   waOptIn: boolean;
-  /** Bridge ritual finished (WA opened or user skipped). */
+  /** Legacy bridge flag; contact now lands straight on the video. */
   bridgeDone: boolean;
 };
 
@@ -41,7 +41,7 @@ export function saveHandoff(
       countryIso: payload.countryIso ?? "MX",
       leafId: payload.leafId ?? null,
       videoId,
-      waOptIn: payload.waOptIn ?? false,
+      waOptIn: payload.waOptIn ?? true,
       bridgeDone: payload.bridgeDone ?? false,
     };
     sessionStorage.setItem(STORAGE_HANDOFF, JSON.stringify(next));

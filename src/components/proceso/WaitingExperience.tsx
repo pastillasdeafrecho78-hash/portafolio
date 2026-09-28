@@ -3,15 +3,10 @@
 import { useEffect, useState } from "react";
 import { GlassCTA } from "@/components/effects/GlassCTA";
 import { Header } from "@/components/layout/Header";
-import { WhatsAppBridge } from "@/components/onboarding/WhatsAppBridge";
 import { OnboardingIcon } from "@/components/onboarding/OnboardingIcons";
 import { ProcesoVideoPlayer } from "@/components/proceso/ProcesoVideoPlayer";
-import { type InterestId, type OnboardingIconKey } from "@/lib/constants";
-import {
-  markHandoffBridgeDone,
-  readHandoff,
-  type HandoffPayload,
-} from "@/lib/handoff";
+import { type OnboardingIconKey } from "@/lib/constants";
+import { readHandoff, type HandoffPayload } from "@/lib/handoff";
 
 const WORK_LINES = [
   {
@@ -31,33 +26,33 @@ const WORK_LINES = [
   },
 ] as const;
 
-function tipsFor(interest: InterestId | null): string[] {
-  if (interest === "landing") {
-    return [
-      "Una o dos webs que te gusten (aunque no sean del mismo giro).",
-      "Si ya tienes dominio o nombre de marca.",
-      "Qué tiene que poder hacer alguien que te visita.",
-    ];
-  }
-  if (interest === "chats") {
-    return [
-      "De dónde llegan hoy los mensajes (WhatsApp, web, Instagram…).",
-      "Qué quieres que pase después: responder, agendar o registrar.",
-      "Un ejemplo de conversación real, aunque sea informal.",
-    ];
-  }
-  if (interest === "panel") {
-    return [
-      "Quién entra al panel y qué necesita ver primero.",
-      "Si ya hay una hoja de cálculo o sistema que hoy sostienen.",
-      "La acción más urgente: pedidos, usuarios o un reporte.",
-    ];
-  }
-  return [
-    "Cuéntanos el problema en una frase.",
-    "Qué intentaste hasta ahora (aunque no haya funcionado).",
-    "Para cuándo te gustaría tener algo usable.",
-  ];
+const CUE_MS = 3200;
+
+function ProcesoCue() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const t = window.setTimeout(() => setReady(true), reduce ? 200 : CUE_MS);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  return (
+    <div
+      className={`proceso-cue${ready ? " is-ready" : ""}`}
+      aria-hidden
+    >
+      <svg className="proceso-cue__svg" viewBox="0 0 120 120" fill="none">
+        <circle className="proceso-cue__track" cx="60" cy="60" r="52" />
+        <circle className="proceso-cue__progress" cx="60" cy="60" r="52" />
+        <path
+          className="proceso-cue__check"
+          d="M38 62.5 L52.5 77 L84 44"
+          pathLength={1}
+        />
+      </svg>
+    </div>
+  );
 }
 
 function PanelMark({ icon }: { icon: OnboardingIconKey }) {
@@ -83,18 +78,17 @@ function WaitingBody({ handoff }: { handoff: HandoffPayload }) {
     handoff.followUpLabel && handoff.followUpLabel !== handoff.interestLabel
       ? handoff.followUpLabel.trim()
       : null;
-  const tips = tipsFor(handoff.interest);
 
   return (
-    <section className="wait-stage" aria-label="Mientras te respondemos">
+    <section className="wait-stage" aria-label="Tu proceso">
       <div className="wait-stage__inner wait-stage__inner--video">
-        <PanelMark icon="chat" />
+        <ProcesoCue />
         <h1 className="wait-stage__title">
-          {firstName ? `${firstName}, mientras te respondemos` : "Mientras te respondemos"}
+          {firstName ? `${firstName}, mira el video` : "Mira el video"}
         </h1>
         <p className="wait-stage__lede">
-          Mientras alguien te atiende, esto ayuda a que la conversación sea corta y
-          clara.
+          Te cuenta cómo lo armamos. En un momento te llega un WhatsApp con este
+          pedido — ahí platicamos las dudas.
         </p>
 
         {pick ? (
@@ -105,21 +99,10 @@ function WaitingBody({ handoff }: { handoff: HandoffPayload }) {
 
         <ProcesoVideoPlayer videoId={handoff.videoId} />
 
-        <div className="wait-tips">
-          <p className="wait-tips__label">Para que la charla fluya</p>
-          <ul className="wait-tips__list">
-            {tips.map((tip) => (
-              <li key={tip} className="wait-tips__item">
-                {tip}
-              </li>
-            ))}
-          </ul>
-        </div>
-
         {handoff.waUrl ? (
           <div className="wait-stage__cta">
             <GlassCTA href={handoff.waUrl} external>
-              Volver a WhatsApp
+              Abrir WhatsApp
             </GlassCTA>
           </div>
         ) : null}
@@ -161,42 +144,21 @@ function ColdCatalog() {
   );
 }
 
-/** /proceso — bridge ritual then waiting lounge, or cold entry. */
+/** /proceso — video after contact, or cold entry without handoff. */
 export function WaitingExperience() {
   const [handoff, setHandoff] = useState<HandoffPayload | null>(null);
   const [ready, setReady] = useState(false);
-  const [showBridge, setShowBridge] = useState(false);
 
   useEffect(() => {
-    const data = readHandoff();
-    setHandoff(data);
-    setShowBridge(Boolean(data && !data.bridgeDone && data.waUrl));
+    setHandoff(readHandoff());
     setReady(true);
   }, []);
-
-  const finishBridge = () => {
-    markHandoffBridgeDone();
-    setHandoff((prev) => (prev ? { ...prev, bridgeDone: true } : prev));
-    setShowBridge(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <>
       <Header />
-      <main
-        id="main"
-        className={
-          showBridge ? "proceso-main proceso-main--bridge" : "proceso-main"
-        }
-      >
-        {!ready ? null : showBridge && handoff ? (
-          <WhatsAppBridge
-            waUrl={handoff.waUrl}
-            name={handoff.name}
-            onFinished={finishBridge}
-          />
-        ) : handoff ? (
+      <main id="main" className="proceso-main">
+        {!ready ? null : handoff ? (
           <WaitingBody handoff={handoff} />
         ) : (
           <ColdCatalog />

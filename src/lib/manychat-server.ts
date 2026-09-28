@@ -94,7 +94,6 @@ async function createSubscriber(
 export async function sendManyChatWelcome(
   lead: ManyChatLead,
 ): Promise<ManyChatWelcomeResult> {
-  if (!lead.waOptIn) return { ok: false, skipped: "no_opt_in" };
   if (process.env.NEXT_PUBLIC_MANYCHAT_ENABLED !== "true") {
     return { ok: false, skipped: "manychat_disabled" };
   }

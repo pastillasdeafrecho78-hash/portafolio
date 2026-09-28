@@ -18,8 +18,7 @@ function isLead(value: unknown): value is ManyChatLead {
     lead.productLabel.trim().length > 0 &&
     lead.productLabel.length <= 160 &&
     typeof lead.videoId === "string" &&
-    lead.videoId.length <= 100 &&
-    lead.waOptIn === true
+    lead.videoId.length <= 100
   );
 }
 

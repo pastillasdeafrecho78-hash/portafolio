@@ -35,7 +35,6 @@ type Answers = {
   phone: string;
   countryIso: string;
   gender: Gender | null;
-  waOptIn: boolean;
 };
 
 type Props = {
@@ -57,7 +56,6 @@ function emptyAnswers(): Answers {
     phone: "",
     countryIso: DEFAULT_COUNTRY.iso,
     gender: null,
-    waOptIn: false,
   };
 }
 
@@ -444,16 +442,16 @@ export function OnboardingFlow({ active, onComplete }: Props) {
       waUrl: url,
       leafId: a.leafId,
       videoId,
-      waOptIn: a.waOptIn,
-      bridgeDone: false,
+      waOptIn: true,
+      bridgeDone: true,
     });
-    // Fire-and-forget: /proceso y el puente wa.me continúan aunque ManyChat falle.
+    // Fire-and-forget: /proceso continues even if ManyChat fails.
     void enqueueManyChatWelcome({
       name: a.name.trim(),
       whatsappE164: formatInternational(a.countryIso, a.phone).replace(/\D/g, ""),
       productLabel: interestLabel(a),
       videoId,
-      waOptIn: a.waOptIn,
+      waOptIn: true,
     });
     onComplete();
   };
@@ -600,13 +598,11 @@ export function OnboardingFlow({ active, onComplete }: Props) {
                   phone={answers.phone}
                   countryIso={answers.countryIso}
                   gender={answers.gender}
-                  waOptIn={answers.waOptIn}
                   onNameChange={(name) => setAnswers((prev) => ({ ...prev, name }))}
                   onPhoneChange={(phone, countryIso) =>
                     setAnswers((prev) => ({ ...prev, phone, countryIso }))
                   }
                   onGenderChange={(gender) => setAnswers((prev) => ({ ...prev, gender }))}
-                  onWaOptInChange={(waOptIn) => setAnswers((prev) => ({ ...prev, waOptIn }))}
                   onContinue={finishWithWhatsApp}
                 />
               </div>
