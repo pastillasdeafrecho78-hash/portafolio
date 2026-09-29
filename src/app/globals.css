@@ -2790,20 +2790,47 @@ html.is-onboarding {
 }
 
 .proceso-cue {
-  width: 5.75rem;
-  height: 5.75rem;
-  margin: 0 auto 0.15rem;
+  width: 5.25rem;
+  height: 5.25rem;
+  margin: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  display: grid;
+  place-items: center;
+  cursor: default;
+}
+
+.proceso-cue--play {
+  cursor: pointer;
+  border-radius: 999px;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.proceso-cue--play:hover {
+  transform: scale(1.06);
+}
+
+.proceso-cue--play:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.proceso-cue:disabled {
+  pointer-events: none;
 }
 
 .proceso-cue__svg {
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
+  filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.45));
 }
 
 .proceso-cue__track {
-  fill: none;
-  stroke: rgba(244, 242, 236, 0.12);
+  fill: rgba(10, 14, 22, 0.42);
+  stroke: rgba(244, 242, 236, 0.18);
   stroke-width: 3.5;
 }
 
@@ -2814,7 +2841,7 @@ html.is-onboarding {
   stroke-linecap: round;
   stroke-dasharray: 327;
   stroke-dashoffset: 327;
-  animation: proceso-cue-ring 3.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: proceso-cue-ring 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .proceso-cue__check {
@@ -2830,8 +2857,37 @@ html.is-onboarding {
   opacity: 0;
 }
 
-.proceso-cue.is-ready .proceso-cue__check {
-  animation: proceso-cue-check 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s forwards;
+.proceso-cue.is-check .proceso-cue__check,
+.proceso-cue.is-play .proceso-cue__check {
+  animation: proceso-cue-check 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.proceso-cue.is-play .proceso-cue__check {
+  animation: proceso-cue-check-out 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.proceso-cue__play {
+  fill: var(--color-accent);
+  stroke: none;
+  transform: rotate(90deg) scale(0.72);
+  transform-origin: 60px 60px;
+  opacity: 0;
+}
+
+.proceso-cue.is-play .proceso-cue__play {
+  animation: proceso-cue-play-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.proceso-video__gate {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(212, 180, 74, 0.16), transparent 55%),
+    linear-gradient(180deg, rgba(8, 10, 14, 0.28) 0%, rgba(8, 10, 14, 0.55) 100%);
+  backdrop-filter: blur(1.5px);
 }
 
 @keyframes proceso-cue-ring {
@@ -2851,16 +2907,51 @@ html.is-onboarding {
   }
 }
 
+@keyframes proceso-cue-check-out {
+  from {
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transform: rotate(90deg) scale(1);
+  }
+  to {
+    opacity: 0;
+    stroke-dashoffset: 0;
+    transform: rotate(90deg) scale(0.8);
+  }
+}
+
+@keyframes proceso-cue-play-in {
+  from {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(90deg) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .proceso-cue__progress {
     animation: none;
     stroke-dashoffset: 0;
   }
 
-  .proceso-cue.is-ready .proceso-cue__check {
+  .proceso-cue.is-check .proceso-cue__check,
+  .proceso-cue.is-play .proceso-cue__check {
+    animation: none;
+    opacity: 0;
+    stroke-dashoffset: 0;
+  }
+
+  .proceso-cue.is-play .proceso-cue__play {
     animation: none;
     opacity: 1;
-    stroke-dashoffset: 0;
+    transform: rotate(90deg) scale(1);
+  }
+
+  .proceso-cue--play {
+    transition: none;
   }
 }
 

@@ -26,35 +26,6 @@ const WORK_LINES = [
   },
 ] as const;
 
-const CUE_MS = 3200;
-
-function ProcesoCue() {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const t = window.setTimeout(() => setReady(true), reduce ? 200 : CUE_MS);
-    return () => window.clearTimeout(t);
-  }, []);
-
-  return (
-    <div
-      className={`proceso-cue${ready ? " is-ready" : ""}`}
-      aria-hidden
-    >
-      <svg className="proceso-cue__svg" viewBox="0 0 120 120" fill="none">
-        <circle className="proceso-cue__track" cx="60" cy="60" r="52" />
-        <circle className="proceso-cue__progress" cx="60" cy="60" r="52" />
-        <path
-          className="proceso-cue__check"
-          d="M38 62.5 L52.5 77 L84 44"
-          pathLength={1}
-        />
-      </svg>
-    </div>
-  );
-}
-
 function PanelMark({ icon }: { icon: OnboardingIconKey }) {
   return (
     <div className="wait-mark" aria-hidden>
@@ -82,7 +53,6 @@ function WaitingBody({ handoff }: { handoff: HandoffPayload }) {
   return (
     <section className="wait-stage" aria-label="Tu proceso">
       <div className="wait-stage__inner wait-stage__inner--video">
-        <ProcesoCue />
         <h1 className="wait-stage__title">
           {firstName ? `${firstName}, mira el video` : "Mira el video"}
         </h1>
