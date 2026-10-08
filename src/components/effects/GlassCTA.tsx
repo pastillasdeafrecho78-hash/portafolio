@@ -1,6 +1,6 @@
 "use client";
 
-import type { ElementType, ReactNode } from "react";
+import type { ElementType, HTMLAttributes, ReactNode } from "react";
 import { useAppleGlass, type GlassPreset } from "@/hooks/useAppleGlass";
 
 type Props = {
@@ -75,7 +75,7 @@ type SurfaceProps = {
   preset?: GlassPreset;
   className?: string;
   as?: "div" | "article";
-};
+} & Omit<HTMLAttributes<HTMLElement>, "children" | "className">;
 
 /** Glass panel for translucent content blocks (offers, channels). */
 export function GlassSurface({
@@ -83,12 +83,13 @@ export function GlassSurface({
   preset = "panel",
   className = "",
   as = "div",
+  ...rest
 }: SurfaceProps) {
   const Tag = as as ElementType;
   const ref = useAppleGlass<HTMLElement>({ preset, followLight: true });
 
   return (
-    <Tag ref={ref} className={`glass-surface ${className}`.trim()}>
+    <Tag ref={ref} className={`glass-surface ${className}`.trim()} {...rest}>
       {children}
     </Tag>
   );

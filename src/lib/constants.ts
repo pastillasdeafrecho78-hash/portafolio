@@ -26,6 +26,7 @@ export const CONTACT_FORM_ENABLED = false;
 
 export const NAV_LINKS = [
   { href: "/", label: "Ofertas" },
+  { href: "/agencia", label: "Agencia" },
   { href: "/proceso", label: "Proceso" },
 ] as const;
 

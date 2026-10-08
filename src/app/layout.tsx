@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Manrope, Syne } from "next/font/google";
+import { Bricolage_Grotesque, Source_Sans_3 } from "next/font/google";
 import { SITE } from "@/lib/constants";
 import { SiteBackground } from "@/components/layout/SiteBackground";
 import "./globals.css";
 
-const syne = Syne({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-syne",
+  variable: "--font-display-face",
 });
 
-const manrope = Manrope({
+const body = Source_Sans_3({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-manrope",
+  variable: "--font-body-face",
 });
 
 export const metadata: Metadata = {
@@ -49,8 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${syne.variable} ${manrope.variable} antialiased`}>
+    <html lang="es" className={`${display.variable} ${body.variable}`}>
+      <body className="antialiased">
         <SiteBackground />
         <div className="site-shell">
           <a
