@@ -29,7 +29,13 @@ export function Footer() {
               WhatsApp: {SITE.phoneDisplay}
             </a>
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-            <a href="#">{SITE.location}</a>
+            <span>{SITE.location}</span>
+          </div>
+          <div className="footer-col">
+            <h3>Información</h3>
+            <a href="/aviso-de-privacidad">Privacidad</a>
+            <a href="/terminos">Términos</a>
+            <a href="/aviso-legal">Aviso legal</a>
           </div>
         </div>
 
