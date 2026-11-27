@@ -10,10 +10,9 @@ import {
   type OnboardingIconKey,
   type OnboardingLeaf,
 } from "@/lib/constants";
-import { DEFAULT_COUNTRY, formatInternational } from "@/lib/countries";
+import { DEFAULT_COUNTRY } from "@/lib/countries";
 import { saveHandoff } from "@/lib/handoff";
 import { resolveProcesoVideoId, resolveProcesoVideoIdFromInterest } from "@/lib/procesoVideos";
-import { enqueueManyChatWelcome } from "@/lib/manychat";
 import { GlassButton } from "@/components/effects/GlassCTA";
 import { CollapsingOptions } from "@/components/onboarding/CollapsingOptions";
 import { FamilyInterestPicker } from "@/components/onboarding/FamilyInterestPicker";
@@ -82,24 +81,16 @@ function skipsDetailStep(a: Answers) {
   return a.interest === "other" && a.followUp === "otro";
 }
 
-/** Adjective agreement for the WhatsApp blur — never spell out gender. */
-function interestedPhrase(g: Gender | null) {
-  if (g === "female") return "estoy interesada en";
-  if (g === "male") return "estoy interesado en";
-  return "me interesa";
-}
-
-function buildOnboardingWaUrl(a: Answers) {
-  if (!a.interest || !a.followUp) return buildWhatsAppUrl("Hola Think Deep");
-  const name = a.name.trim() || "…";
+function buildOnboardingMessage(a: Answers) {
+  const name = a.name.trim();
   const interest = interestLabel(a);
+  const interestPhrase = a.gender === "male" ? "Estoy interesado en" : a.gender === "female" ? "Estoy interesada en" : "Me interesa:";
   const detail = followUpLabel(a);
-  const parts = [
-    `Hola Think Deep — soy ${name}`,
-    `${interestedPhrase(a.gender)} ${interest}`,
-    detail && detail !== interest ? `detalle: ${detail}` : null,
-  ].filter(Boolean);
-  return buildWhatsAppUrl(parts.join(". ") + ".");
+  return [
+    name ? `Hola, Think Deep. Soy ${name}.` : "Hola, Think Deep.",
+    interest ? `${interestPhrase} ${interest}` : "",
+    detail && detail !== interest ? `Detalle: ${detail}` : "",
+  ].filter(Boolean).join("\n");
 }
 
 function useInView(active: boolean, key: string | number | boolean) {
@@ -228,15 +219,9 @@ function PanelNav({
   );
 }
 
-/**
- * Panels stack in the page. Down past the unanswered step is blocked;
- * up is always free (hero + answered steps).
- */
 export function OnboardingFlow({ active, onComplete }: Props) {
   const [answers, setAnswers] = useState<Answers>(emptyAnswers);
   const [stackReset, setStackReset] = useState(0);
-  const answersRef = useRef(answers);
-  answersRef.current = answers;
 
   const panel1 = useInView(active, "1");
   const skipDetail = skipsDetailStep(answers);
@@ -285,7 +270,8 @@ export function OnboardingFlow({ active, onComplete }: Props) {
         if (tries < 40) raf = requestAnimationFrame(tick);
         return;
       }
-      window.scrollTo({ top: docTop(panel), behavior: "auto" });
+      window.scrollTo({ top: docTop(panel), behavior: "instant" });
+      panel.querySelector("h2")?.focus({ preventScroll: true });
       prevGate.current = gateStep;
     };
 
@@ -297,96 +283,11 @@ export function OnboardingFlow({ active, onComplete }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- panel refs are stable
   }, [active, gateStep]);
 
-  useEffect(() => {
-    if (!active) return;
-
-    const root = document.documentElement;
-    root.classList.add("is-onboarding");
-
-    const gateTop = () => {
-      const panel = panelFor(gateStep);
-      if (!panel || panel.offsetHeight < 60) return null;
-      return docTop(panel);
-    };
-
-    let lastY = window.scrollY;
-
-    const clampDown = () => {
-      const top = gateTop();
-      if (top == null) return;
-      if (window.scrollY > top + 1) {
-        window.scrollTo({ top, behavior: "auto" });
-      }
-    };
-
-    const magnetDown = () => {
-      const top = gateTop();
-      if (top == null) return;
-      const y = window.scrollY;
-      const ih = window.innerHeight;
-      if (y > top - ih * 0.42 && y < top - 1) {
-        window.scrollTo({ top, behavior: "auto" });
-      }
-    };
-
-    const onScroll = () => {
-      const y = window.scrollY;
-      const goingDown = y > lastY + 0.5;
-      lastY = y;
-      if (goingDown) magnetDown();
-      clampDown();
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      if (e.deltaY <= 0) return;
-      const top = gateTop();
-      if (top == null) return;
-      if (window.scrollY > top - window.innerHeight * 0.42 && window.scrollY < top - 1) {
-        e.preventDefault();
-        window.scrollTo({ top, behavior: "auto" });
-        return;
-      }
-      if (window.scrollY >= top - 1) {
-        e.preventDefault();
-        if (window.scrollY > top + 1) window.scrollTo({ top, behavior: "auto" });
-      }
-    };
-
-    let touchY = 0;
-    const onTouchStart = (e: TouchEvent) => {
-      touchY = e.touches[0]?.clientY ?? 0;
-    };
-    const onTouchMove = (e: TouchEvent) => {
-      const currentY = e.touches[0]?.clientY ?? touchY;
-      const goingDown = currentY < touchY - 4;
-      if (!goingDown) return;
-      const top = gateTop();
-      if (top == null) return;
-      if (window.scrollY >= top - 1) e.preventDefault();
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    window.addEventListener("wheel", onWheel, { passive: false });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
-
-    return () => {
-      root.classList.remove("is-onboarding");
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchmove", onTouchMove);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- panel refs are stable
-  }, [active, gateStep]);
-
   const scrollToStep = (n: 1 | 2 | 3) => {
     const panel = panelFor(n);
     if (!panel) return;
-    window.scrollTo({ top: docTop(panel), behavior: "smooth" });
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: docTop(panel), behavior: reduced ? "instant" : "smooth" });
   };
 
   const scrollToHero = () => {
@@ -426,38 +327,29 @@ export function OnboardingFlow({ active, onComplete }: Props) {
     requestAnimationFrame(() => scrollToStep(2));
   };
 
-  const finishWithWhatsApp = () => {
-    const a = answersRef.current;
-    const url = buildOnboardingWaUrl(a);
-    const videoId = a.leafId
-      ? resolveProcesoVideoId(a.leafId)
-      : resolveProcesoVideoIdFromInterest(a.interest, a.followUp);
+  function viewProcess() {
+    const videoId = answers.leafId
+      ? resolveProcesoVideoId(answers.leafId)
+      : resolveProcesoVideoIdFromInterest(answers.interest, answers.followUp);
     saveHandoff({
-      interest: a.interest,
-      interestLabel: interestLabel(a),
-      followUpLabel: followUpLabel(a),
-      name: a.name.trim(),
-      phone: a.phone.trim(),
-      countryIso: a.countryIso,
-      waUrl: url,
-      leafId: a.leafId,
+      interest: answers.interest,
+      interestLabel: interestLabel(answers),
+      followUpLabel: followUpLabel(answers),
+      name: answers.name.trim(),
+      phone: answers.phone.trim(),
+      countryIso: answers.countryIso,
+      waUrl: buildWhatsAppUrl(buildOnboardingMessage(answers)),
+      leafId: answers.leafId,
       videoId,
-      waOptIn: true,
+      waOptIn: false,
       bridgeDone: true,
     });
-    // Fire-and-forget: /proceso continues even if ManyChat fails.
-    void enqueueManyChatWelcome({
-      name: a.name.trim(),
-      whatsappE164: formatInternational(a.countryIso, a.phone).replace(/\D/g, ""),
-      productLabel: interestLabel(a),
-      videoId,
-      waOptIn: true,
-    });
     onComplete();
-  };
+  }
 
   return (
     <section
+      id="cuestionario"
       className="onboard-focus"
       aria-label="Cuéntanos qué necesitas"
       aria-hidden={!active}
@@ -472,7 +364,7 @@ export function OnboardingFlow({ active, onComplete }: Props) {
         />
         <div className="onboard-panel__inner">
           <PanelMark icon="scan" />
-          <h2 className="onboard-panel__question">¿Qué te interesa?</h2>
+          <h2 className="onboard-panel__question" tabIndex={-1}>¿Qué te interesa?</h2>
           {answers.interest ? (
             <AnsweredChip
               label={interestLabel(answers)}
@@ -537,9 +429,10 @@ export function OnboardingFlow({ active, onComplete }: Props) {
           {answers.interest && !skipsDetailStep(answers) ? (
             <>
               <PanelMark icon="list" />
-              <h2 className="onboard-panel__question">
+              <h2 className="onboard-panel__question" tabIndex={-1}>
                 {ONBOARDING_FOLLOWUPS[answers.interest].question}
               </h2>
+              <AnsweredChip label={interestLabel(answers)} icon={answers.interestIcon} onChange={clearFromInterest} changeLabel="Cambiar opción" />
               {answers.followUp ? (
                 <AnsweredChip
                   label={followUpLabel(answers)}
@@ -591,7 +484,7 @@ export function OnboardingFlow({ active, onComplete }: Props) {
           {answers.followUp ? (
             <>
               <PanelMark icon="chat" />
-              <h2 className="onboard-panel__question">¿Cómo te contactamos?</h2>
+              <h2 className="onboard-panel__question" tabIndex={-1}>¿Cómo te contactamos?</h2>
               <div className="onboard-panel__option" style={{ "--reveal-i": 0 } as CSSProperties}>
                 <ContactStep
                   name={answers.name}
@@ -599,11 +492,9 @@ export function OnboardingFlow({ active, onComplete }: Props) {
                   countryIso={answers.countryIso}
                   gender={answers.gender}
                   onNameChange={(name) => setAnswers((prev) => ({ ...prev, name }))}
-                  onPhoneChange={(phone, countryIso) =>
-                    setAnswers((prev) => ({ ...prev, phone, countryIso }))
-                  }
+                  onPhoneChange={(phone, countryIso) => setAnswers((prev) => ({ ...prev, phone, countryIso }))}
                   onGenderChange={(gender) => setAnswers((prev) => ({ ...prev, gender }))}
-                  onContinue={finishWithWhatsApp}
+                  onContinue={viewProcess}
                 />
               </div>
             </>

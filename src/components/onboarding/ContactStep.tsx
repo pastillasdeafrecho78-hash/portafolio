@@ -229,7 +229,7 @@ export function ContactStep({
   }, [open]);
 
   const canContinue =
-    name.trim().length >= 2 && phone.replace(/\D/g, "").length >= 7 && gender != null;
+    !phone.trim() || phone.replace(/\D/g, "").length >= 7;
 
   const selectCountry = (c: Country) => {
     onPhoneChange(phone, c.iso);
@@ -268,7 +268,7 @@ export function ContactStep({
       />
 
       <label className="onboard-contact__field">
-        <span className="onboard-contact__label">Nombre</span>
+        <span className="onboard-contact__label">Nombre (opcional)</span>
         <input
           className="onboard-contact__input"
           type="text"
@@ -284,7 +284,7 @@ export function ContactStep({
       </label>
 
       <div className="onboard-contact__field">
-        <span className="onboard-contact__label">Teléfono (WhatsApp)</span>
+        <span className="onboard-contact__label">Teléfono (opcional)</span>
         <div className="onboard-phone" ref={wrapRef}>
           <button
             ref={countryBtnRef}
@@ -307,6 +307,7 @@ export function ContactStep({
           <input
             className="onboard-contact__input onboard-phone__input"
             type="tel"
+            aria-label="Teléfono (opcional)"
             name="tel-national"
             id="onboard-contact-tel"
             autoComplete="tel-national"
@@ -357,7 +358,7 @@ export function ContactStep({
       </div>
 
       <div className="onboard-contact__field">
-        <span className="onboard-contact__label">Género</span>
+        <span className="onboard-contact__label">Género (opcional)</span>
         {/* Select nativo para que el navegador pueda autocompletar sex/gender */}
         <select
           name="sex"
@@ -375,7 +376,7 @@ export function ContactStep({
           <option value="male">male</option>
           <option value="female">female</option>
         </select>
-        <div className="onboard-gender" role="group" aria-label="Género">
+        <div className="onboard-gender" role="group" aria-label="Género (opcional)">
           <GenderButton value="male" selected={gender === "male"} onSelect={onGenderChange}>
             <IconMale className="glass-gender__icon" />
             <span>Hombre</span>

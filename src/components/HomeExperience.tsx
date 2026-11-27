@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/sections/Hero";
-import { EnlacesPromo } from "@/components/sections/EnlacesPromo";
 import { OnboardingFlow } from "@/components/onboarding/OnboardingFlow";
 import { STORAGE_ONBOARDING } from "@/lib/constants";
 
@@ -69,10 +68,9 @@ export function HomeExperience() {
 
   return (
     <>
-      <Header />
+      <Header startOnPage />
       <main id="main">
         <Hero onSettled={onSettled} />
-        <EnlacesPromo />
         <OnboardingFlow active={introSettled} onComplete={onComplete} />
       </main>
     </>

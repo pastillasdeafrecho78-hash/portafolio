@@ -342,6 +342,7 @@ export function FamilyInterestPicker({ resetKey = 0, onPick, onOtherSubmit }: Pr
                 className={`family-picker__option ${labelState()}`.trim()}
                 style={{ "--slot-i": slot } as CSSProperties}
                 icon={slotIcons[slot]}
+                disabled={phase !== "idle" && phase !== "children"}
                 onClick={() => onSlotClick(slot)}
               >
                 {slotLabels[slot] ?? ""}
@@ -361,6 +362,7 @@ export function FamilyInterestPicker({ resetKey = 0, onPick, onOtherSubmit }: Pr
           <GlassOption
             className="family-picker__option family-picker__option--hub"
             icon="pen"
+            disabled={phase !== "idle" && phase !== "children"}
             onClick={() => {
               if (phase !== "idle" && phase !== "children") return;
               runOther();

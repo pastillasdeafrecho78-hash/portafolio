@@ -71,12 +71,28 @@ export function procesoVideoSrc(
 ) {
   const base = `/video/proceso/${videoId}`;
   if (variant === "desktop") {
+    if (videoId === "sitio") {
+      return {
+        mp4: "/video/proceso/sitio-effectcraft-full-pc.mp4",
+        webm: `${base}-pc.webm`,
+        poster: "/video/proceso/sitio-effectcraft-full-pc-poster.webp",
+        fallbackMp4: "/video/proceso/sitio-effectcraft-full.mp4",
+        fallbackPoster: "/video/proceso/sitio-effectcraft-full-poster.webp",
+      };
+    }
     return {
       mp4: `${base}-pc.mp4`,
       webm: `${base}-pc.webm`,
       poster: `${base}-pc-poster.webp`,
       fallbackMp4: `${base}.mp4`,
       fallbackPoster: `${base}-poster.webp`,
+    };
+  }
+  if (videoId === "sitio") {
+    return {
+      mp4: "/video/proceso/sitio-effectcraft-full.mp4",
+      webm: `${base}.webm`,
+      poster: "/video/proceso/sitio-effectcraft-full-poster.webp",
     };
   }
   return {

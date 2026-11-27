@@ -1,55 +1,25 @@
 import { SITE, buildWhatsAppUrl, type OnboardingIconKey } from "@/lib/constants";
 
 export const AGENCIA_WHATSAPP_URL = buildWhatsAppUrl(
-  "Hola Think Deep — vi la página de agencia y quiero platicar de un proyecto.",
+  "Hola, vi la página de Think Deep y quiero platicarles de mi proyecto.",
 );
 
 export const AGENCIA = {
   meta: {
     title: `${SITE.name} | Agencia — marketing, tecnología e IA`,
     description:
-      "Marketing, tecnología con IA e infraestructura. Think Deep — México.",
+      "En Think Deep hacemos campañas, sitios web y sistemas para dar seguimiento a clientes. Estamos en Dolores Hidalgo, Guanajuato.",
   },
   hero: {
-    title: "Marketing que convierte. Tecnología que automatiza. IA que acelera.",
-    copy: "Un equipo para generar oportunidades, construir herramientas y automatizar lo repetible.",
+    title: ["Te ayudamos a conseguir clientes", "y darles seguimiento."],
+    copy: "Armamos tus campañas, hacemos la página a la que llegan tus clientes y conectamos el formulario o WhatsApp con tu equipo.",
     primaryCta: "Escribir por WhatsApp",
-    secondaryCta: "Ofertas de código",
+    secondaryCta: "Ver servicios de desarrollo",
     secondaryHref: "/",
-    toasts: [
-      { title: "Nuevo prospecto", meta: "Google Ads · Form", icon: "user" satisfies OnboardingIconKey },
-      { title: "Campaña en revisión", meta: "Meta Ads", icon: "chart" satisfies OnboardingIconKey },
-      { title: "Conversación atendida", meta: "Agente WhatsApp", icon: "messages" satisfies OnboardingIconKey },
-      { title: "Reporte actualizado", meta: "Dashboard en vivo", icon: "dashboard" satisfies OnboardingIconKey },
-    ],
-  },
-  system: {
-    title: "Un sistema conectado de extremo a extremo",
-    copy: "Cada área alimenta a la siguiente.",
-    nodes: [
-      {
-        id: "marketing",
-        label: "Marketing",
-        delivers: "Genera prospectos y demanda",
-        icon: "chart" satisfies OnboardingIconKey,
-      },
-      {
-        id: "tech",
-        label: "Tecnología + IA",
-        delivers: "Convierte leads en procesos",
-        icon: "zap" satisfies OnboardingIconKey,
-      },
-      {
-        id: "infra",
-        label: "Infraestructura",
-        delivers: "Sostiene sitio, correo y datos",
-        icon: "building" satisfies OnboardingIconKey,
-      },
-    ],
   },
   marketing: {
-    title: "Marketing diseñado para generar negocio",
-    copy: "Campañas y páginas orientadas a oportunidades reales, no a métricas de vanidad.",
+    title: "Qué pasa después de publicar un anuncio",
+    copy: "Revisamos cuántas personas te escriben y cuánto cuesta cada solicitud para ajustar las campañas.",
     kpis: [
       { label: "Prospectos", value: "1,284", delta: "+24%", points: [42, 48, 45, 62, 58, 70, 78, 74, 88, 92] },
       { label: "Costo", value: "$48", delta: "−18%", points: [80, 72, 68, 65, 58, 55, 52, 50, 48, 46] },
@@ -61,18 +31,18 @@ export const AGENCIA = {
     ],
   },
   ia: {
-    title: "La IA vive dentro de cada solución",
-    copy: "No es un producto aparte: optimiza, atiende, reporta y vigila.",
+    title: "En qué te puede ayudar la IA",
+    copy: "Puede responder preguntas frecuentes, resumir reportes y avisarte si algo requiere atención.",
     satellites: [
-      { title: "Optimizar", body: "Sugiere; decide el equipo.", icon: "zap" satisfies OnboardingIconKey },
-      { title: "Atender", body: "WhatsApp o inbox con pase humano.", icon: "messages" satisfies OnboardingIconKey },
-      { title: "Reportar", body: "Resúmenes sin armarlos a mano.", icon: "chart" satisfies OnboardingIconKey },
-      { title: "Vigilar", body: "Alertas antes de que duela.", icon: "scan" satisfies OnboardingIconKey },
+      { title: "Optimizar", body: "Sugiere ajustes para que tu equipo los revise.", icon: "zap" satisfies OnboardingIconKey },
+      { title: "Atender", body: "Responde dudas y pasa la conversación a tu equipo cuando hace falta.", icon: "messages" satisfies OnboardingIconKey },
+      { title: "Reportar", body: "Resume los datos de tus campañas.", icon: "chart" satisfies OnboardingIconKey },
+      { title: "Vigilar", body: "Avisa si detecta algo fuera de lo habitual.", icon: "scan" satisfies OnboardingIconKey },
     ],
   },
   agents: {
-    title: "Agentes que trabajan por ti",
-    copy: "Capturan, clasifican, responden y reportan.",
+    title: "Qué pasa cuando alguien llena un formulario",
+    copy: "Guardamos la solicitud, la asignamos y podemos enviar una primera respuesta por WhatsApp.",
     stages: [
       { id: "capturar", label: "Capturar", icon: "user" satisfies OnboardingIconKey },
       { id: "clasificar", label: "Clasificar", icon: "scan" satisfies OnboardingIconKey },
@@ -91,16 +61,16 @@ export const AGENCIA = {
     ],
   },
   tools: {
-    title: "No solo páginas. Herramientas digitales.",
+    title: "Qué podemos construir para tu negocio",
     items: [
-      { id: "landing", title: "Sitios y landings", mock: "landing" as const },
-      { id: "panel", title: "Paneles y MVPs", mock: "panel" as const },
+      { id: "landing", title: "Sitios para campañas", mock: "landing" as const },
+      { id: "panel", title: "Paneles y apps", mock: "panel" as const },
       { id: "integrations", title: "Integraciones", mock: "integrations" as const },
-      { id: "chats", title: "Automatización de chats", mock: "chats" as const },
+      { id: "chats", title: "Chats automáticos", mock: "chats" as const },
     ],
   },
   flow: {
-    title: "Del clic al reporte, sin fricción",
+    title: "Del anuncio al seguimiento",
     ribbon: [
       { id: "ad", label: "Anuncio" },
       { id: "landing", label: "Landing" },
@@ -111,31 +81,31 @@ export const AGENCIA = {
     before: {
       title: "Antes",
       subtitle: "Proceso manual",
-      items: ["Leads en hojas", "Respuestas tardías", "Reportes a mano", "Datos dispersos"],
+      items: ["Solicitudes en hojas de cálculo", "Respuestas tardías", "Reportes a mano", "Datos dispersos"],
     },
     after: {
       title: "Con Think Deep",
-      subtitle: "Automatización con criterio",
-      items: ["Leads enrutados", "Respuesta con contexto", "Reportes automáticos", "Todo medible"],
+      subtitle: "Seguimiento en un solo lugar",
+      items: ["Cada solicitud tiene un responsable", "Tu equipo ve de dónde llegó cada cliente", "Reportes automáticos", "Solicitudes y respuestas en el mismo panel"],
     },
   },
   hosting: {
-    title: "La infraestructura también importa",
-    copy: "Hosting, correo y seguridad administrados.",
+    title: "Hosting y correo para tu negocio",
+    copy: "Nos encargamos del alojamiento de tu sitio, los respaldos y el correo.",
     compare: {
       left: {
         title: "Hosting suelto",
         items: [
-          { ok: false, text: "Tú renuevas SSL" },
-          { ok: false, text: "Backups a tu cargo" },
+          { ok: false, text: "Tú renuevas el certificado del sitio" },
+          { ok: false, text: "Tú haces los respaldos" },
           { ok: false, text: "Soporte genérico" },
         ],
       },
       right: {
         title: "Administrado",
         items: [
-          { ok: true, text: "SSL y correo listos" },
-          { ok: true, text: "Backups y vigilancia" },
+          { ok: true, text: "Certificado y correo configurados" },
+          { ok: true, text: "Respaldos y monitoreo" },
           { ok: true, text: "Asistencia directa" },
         ],
       },
@@ -151,49 +121,38 @@ export const AGENCIA = {
       "Correo sincronizado",
     ],
   },
-  method: {
-    title: "Cómo trabajamos contigo",
-    steps: [
-      { title: "Analizamos", body: "Negocio, mercado y objetivos." },
-      { title: "Estrategia", body: "Plan con métricas claras." },
-      { title: "Implementamos", body: "Campañas y herramientas." },
-      { title: "Automatizamos", body: "Flujos y agentes." },
-      { title: "Medimos", body: "Tableros de lo que importa." },
-      { title: "Optimizamos", body: "Iteración continua." },
-    ],
-  },
   faq: {
     title: "Preguntas frecuentes",
     items: [
       {
-        q: "¿Qué pasa cuando me contacto?",
-        a: "Aclaramos alcance y siguiente paso. También puedes arrancar con una oferta de código en la portada.",
+        q: "¿Qué pasa cuando les escribo?",
+        a: "Te preguntamos qué necesitas y qué tienes montado. Con eso te decimos por dónde podemos empezar.",
       },
       {
         q: "¿Con quién voy a trabajar?",
-        a: `Trabajo dirigido por ${SITE.director}. Comunicación directa.`,
+        a: `Hablas directamente con ${SITE.director}, quien dirige el proyecto.`,
       },
       {
         q: "¿Solo publicidad o también sitio y hosting?",
-        a: "Marketing, tecnología + IA e infraestructura. Empiezas por uno o combinados.",
+        a: "Podemos ayudarte con una campaña, con el sitio o con el hosting y el correo. Depende de lo que ya tengas.",
       },
       {
         q: "¿La IA mueve sola mis presupuestos?",
-        a: "No. Analiza y sugiere; las decisiones las toma el equipo.",
+        a: "No. Puede sugerir cambios. Tu equipo decide si aplica alguno.",
       },
       {
-        q: "¿Cómo sé si genera negocio?",
-        a: "Prospectos, conversaciones y lo que se puede seguir hasta el negocio.",
+        q: "¿Cómo veo qué resultados dio la campaña?",
+        a: "Puedes ver cuántas solicitudes llegaron, cuántas se atendieron y cuáles avanzaron a una venta cuando contamos con ese dato.",
       },
       {
         q: "¿Branding, video o foto?",
-        a: "Nuestro foco es rendimiento, tecnología e infraestructura.",
+        a: "Nos especializamos en campañas, desarrollo web y automatización.",
       },
     ],
   },
   contact: {
     title: "Cuéntanos tu proyecto",
-    copy: "WhatsApp o correo. Siguiente paso claro.",
+    copy: "Dinos qué necesitas y qué tienes montado. Te respondemos por WhatsApp o correo.",
     cta: "Abrir WhatsApp",
   },
 } as const;
