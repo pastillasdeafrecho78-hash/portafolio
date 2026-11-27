@@ -201,6 +201,7 @@ export function CollapsingOptions({
                 className={`onboard-panel__option onboard-q-option${collapsing ? " is-label-hidden" : ""}`}
                 style={{ "--reveal-i": i } as CSSProperties}
                 icon={opt.icon}
+                disabled={phase !== "list"}
                 onClick={() => {
                   if (phase !== "list") return;
                   onPick(opt.id);
@@ -219,6 +220,7 @@ export function CollapsingOptions({
             className="onboard-panel__option onboard-q-option"
             style={{ "--reveal-i": primaryOptions.length } as CSSProperties}
             icon={otherOption.icon ?? "pen"}
+            disabled={phase !== "list"}
             onClick={startOther}
           >
             {otherOption.label}

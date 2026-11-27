@@ -3,36 +3,10 @@
 import { useEffect, useState } from "react";
 import { GlassCTA } from "@/components/effects/GlassCTA";
 import { Header } from "@/components/layout/Header";
-import { OnboardingIcon } from "@/components/onboarding/OnboardingIcons";
 import { ProcesoVideoPlayer } from "@/components/proceso/ProcesoVideoPlayer";
-import { type OnboardingIconKey } from "@/lib/constants";
+import { buildWhatsAppUrl } from "@/lib/constants";
 import { readHandoff, type HandoffPayload } from "@/lib/handoff";
-
-const WORK_LINES = [
-  {
-    icon: "globe" as const,
-    title: "Sitio web",
-    desc: "Presencia clara: secciones, WhatsApp y publicación.",
-  },
-  {
-    icon: "chat" as const,
-    title: "Automatización de chats",
-    desc: "Inbox o WhatsApp que responde o registra sin que estés pegado al chat.",
-  },
-  {
-    icon: "dashboard" as const,
-    title: "Panel o MVP",
-    desc: "Una pantalla con lo esencial: pedidos, usuarios o reportes.",
-  },
-] as const;
-
-function PanelMark({ icon }: { icon: OnboardingIconKey }) {
-  return (
-    <div className="wait-mark" aria-hidden>
-      <OnboardingIcon id={icon} className="wait-mark__svg" />
-    </div>
-  );
-}
+import styles from "./ProcessOverview.module.css";
 
 function PickChip({ label }: { label: string }) {
   return (
@@ -50,6 +24,11 @@ function WaitingBody({ handoff }: { handoff: HandoffPayload }) {
       ? handoff.followUpLabel.trim()
       : null;
 
+  const [message, setMessage] = useState(() => {
+    if (!handoff.waUrl) return "";
+    return new URL(handoff.waUrl, window.location.origin).searchParams.get("text") ?? "";
+  });
+
   return (
     <section className="wait-stage" aria-label="Tu proceso">
       <div className="wait-stage__inner wait-stage__inner--video">
@@ -57,8 +36,9 @@ function WaitingBody({ handoff }: { handoff: HandoffPayload }) {
           {firstName ? `${firstName}, mira el video` : "Mira el video"}
         </h1>
         <p className="wait-stage__lede">
-          Te cuenta cómo lo armamos. En un momento te llega un WhatsApp con este
-          pedido — ahí platicamos las dudas.
+          {handoff.waOptIn
+            ? "Te cuenta cómo lo armamos. En un momento te llega un WhatsApp con este pedido."
+            : "Te cuenta cómo lo armamos. Si quieres platicar del proyecto, puedes abrir tu mensaje en WhatsApp."}
         </p>
 
         {pick ? (
@@ -71,9 +51,19 @@ function WaitingBody({ handoff }: { handoff: HandoffPayload }) {
 
         {handoff.waUrl ? (
           <div className="wait-stage__cta">
-            <GlassCTA href={handoff.waUrl} external>
-              Abrir WhatsApp
-            </GlassCTA>
+            <label className="onboard-contact__field">
+              <span className="onboard-contact__label">Mensaje para WhatsApp</span>
+              <textarea
+                className="onboard-contact__input wait-message"
+                rows={4}
+                maxLength={1400}
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+              />
+            </label>
+            {message.trim() ? (
+              <GlassCTA href={buildWhatsAppUrl(message.trim())} external>Abrir WhatsApp</GlassCTA>
+            ) : null}
           </div>
         ) : null}
       </div>
@@ -81,35 +71,25 @@ function WaitingBody({ handoff }: { handoff: HandoffPayload }) {
   );
 }
 
-function ColdCatalog() {
+function ProcessOverview() {
   return (
-    <section className="wait-stage wait-stage--cold" aria-label="Qué hacemos">
-      <div className="wait-stage__inner">
-        <PanelMark icon="scan" />
-        <h1 className="wait-stage__title">Tres trabajos. Una charla.</h1>
-        <p className="wait-stage__lede">
-          Sitio, chats o panel. Alcance y cómo arrancar lo cerramos cuando ya estamos
-          hablando.
-        </p>
-
-        <ul className="wait-offers">
-          {WORK_LINES.map((line) => (
-            <li key={line.title} className="wait-offers__item">
-              <span className="wait-offers__icon" aria-hidden>
-                <OnboardingIcon id={line.icon} className="wait-offers__svg" />
-              </span>
-              <span className="wait-offers__body">
-                <span className="wait-offers__name">{line.title}</span>
-                <span className="wait-offers__desc">{line.desc}</span>
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="wait-stage__cta">
-          <GlassCTA href="/">Empezar</GlassCTA>
-        </div>
-      </div>
+    <section className={styles.overview} aria-labelledby="proceso-titulo">
+      <h1 id="proceso-titulo">Cómo trabajamos contigo</h1>
+      <ol className={styles.steps}>
+        <li>
+          <h2>Nos cuentas qué necesitas</h2>
+          <p>Platícanos qué quieres resolver y qué tienes hecho.</p>
+        </li>
+        <li>
+          <h2>Acordamos qué vamos a hacer</h2>
+          <p>Definimos qué incluye el proyecto, cuánto cuesta y cuándo puede estar listo.</p>
+        </li>
+        <li>
+          <h2>Revisamos el avance contigo</h2>
+          <p>Te mostramos lo que llevamos para ajustar detalles antes de la entrega.</p>
+        </li>
+      </ol>
+      <GlassCTA href="/#cuestionario">Cuéntanos tu proyecto</GlassCTA>
     </section>
   );
 }
@@ -131,7 +111,7 @@ export function WaitingExperience() {
         {!ready ? null : handoff ? (
           <WaitingBody handoff={handoff} />
         ) : (
-          <ColdCatalog />
+          <ProcessOverview />
         )}
       </main>
     </>

@@ -22,9 +22,7 @@ type Props = {
 };
 
 /**
- * Sticky scroll runway: draw mark + reveal wordmark while you scroll.
- * Freezes at full size (no shrink, no pin-kill jump). Scroll back up anytime
- * to see the same peak logo; questions live in the next section.
+ * Draw the original mark once as the visitor approaches the questions.
  */
 export function Hero({ onSettled, skipMotion = false }: Props) {
   const stageRef = useRef<HTMLElement>(null);
@@ -79,38 +77,21 @@ export function Hero({ onSettled, skipMotion = false }: Props) {
     gsap.set(wordRef.current, { opacity: 0, y: 24 });
     if (hint) gsap.set(hint, { opacity: 1 });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: stage,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.65,
-        // No GSAP pin — CSS sticky handles it, so there's no spacer jump.
-        once: true,
-        onLeave: notifySettled,
-        onUpdate: (self) => {
-          if (hint) {
-            // Hint se va en cuanto empiezas a bajar; el logo toma el protagonismo
-            const fade = Math.max(0, 1 - self.progress / 0.08);
-            gsap.set(hint, {
-              opacity: fade,
-              pointerEvents: fade < 0.05 ? "none" : "auto",
-            });
-          }
-          if (self.progress >= 0.92) notifySettled();
-        },
-      },
-    });
+    const tl = gsap.timeline({ paused: true, onComplete: notifySettled });
+    tl.to(path, { drawSVG: "0% 100%", duration: 0.85, ease: "power1.out" }, 0);
+    tl.to(wordRef.current, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, mobile ? 0.45 : 0.55);
+    if (hint) tl.to(hint, { opacity: 0, duration: 0.2 }, 0);
 
-    tl.to(path, { drawSVG: "0% 100%", duration: 1, ease: "none" }, 0);
-    tl.to(
-      wordRef.current,
-      { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
-      mobile ? 0.45 : 0.55,
-    );
+    const start = () => {
+      if (window.scrollY < 20) return;
+      window.removeEventListener("scroll", start);
+      tl.play();
+    };
+    window.addEventListener("scroll", start, { passive: true });
+    start();
 
     return () => {
-      tl.scrollTrigger?.kill(false);
+      window.removeEventListener("scroll", start);
       tl.kill();
     };
   }, [onSettled, skipMotion]);

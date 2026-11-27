@@ -5,18 +5,16 @@ import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { GlassCTA, GlassSurface } from "@/components/effects/GlassCTA";
-import { HeroToasts } from "@/components/agencia/HeroToasts";
+import { HeroInquiry } from "@/components/agencia/HeroInquiry";
 import { MarketingDashboard } from "@/components/agencia/MarketingDashboard";
 import { CodePanel } from "@/components/agencia/CodePanel";
 import { ServerPanel } from "@/components/agencia/ServerPanel";
 import { AgenciaCompare } from "@/components/agencia/AgenciaCompare";
-import { EcosystemDiagram } from "@/components/agencia/EcosystemDiagram";
 import { IaLayerDiagram } from "@/components/agencia/IaLayerDiagram";
 import { AgentPipeline } from "@/components/agencia/AgentPipeline";
 import { ToolMocks } from "@/components/agencia/ToolMocks";
 import { FlowRibbon } from "@/components/agencia/FlowRibbon";
 import { HostingCompare } from "@/components/agencia/HostingCompare";
-import { MethodPath } from "@/components/agencia/MethodPath";
 import { useAgenciaReveal } from "@/hooks/useAgenciaReveal";
 import { AGENCIA, AGENCIA_WHATSAPP_URL } from "@/lib/agencia";
 import { getGsap } from "@/lib/gsap";
@@ -87,9 +85,7 @@ export function AgenciaPage() {
           <div className="container-page agencia-hero__grid">
             <div ref={heroCopyRef} className="agencia-hero__copy">
               <h1 className="agencia-h1">
-                <span>Marketing que convierte.</span>
-                <span>Tecnología que automatiza.</span>
-                <span>IA que acelera.</span>
+                {a.hero.title.map((line) => <span key={line}>{line}</span>)}
               </h1>
               <p className="agencia-lead">{a.hero.copy}</p>
               <div className="agencia-hero__actions">
@@ -101,17 +97,7 @@ export function AgenciaPage() {
                 </Link>
               </div>
             </div>
-            <HeroToasts items={a.hero.toasts} />
-          </div>
-        </section>
-
-        <section className="agencia-section" id="sistema">
-          <div className="container-page">
-            <header className="agencia-head">
-              <h2 className="agencia-h2">{a.system.title}</h2>
-              <p className="agencia-lead">{a.system.copy}</p>
-            </header>
-            <EcosystemDiagram nodes={a.system.nodes} />
+            <HeroInquiry />
           </div>
         </section>
 
@@ -182,15 +168,6 @@ export function AgenciaPage() {
           </div>
         </section>
 
-        <section className="agencia-section" id="metodo">
-          <div className="container-page">
-            <header className="agencia-head">
-              <h2 className="agencia-h2">{a.method.title}</h2>
-            </header>
-            <MethodPath steps={a.method.steps} />
-          </div>
-        </section>
-
         <section className="agencia-section" id="faq">
           <div className="container-page agencia-faq-wrap">
             <header className="agencia-head">
@@ -240,9 +217,12 @@ export function AgenciaPage() {
                   </div>
                 </dl>
               </div>
-              <GlassCTA href={AGENCIA_WHATSAPP_URL} external>
-                {a.contact.cta}
-              </GlassCTA>
+              <div className="flex flex-col items-start gap-3">
+                <GlassCTA href={AGENCIA_WHATSAPP_URL} external>
+                  {a.contact.cta}
+                </GlassCTA>
+                <Link href="/proceso" className="agencia-link">Ver cómo trabajamos</Link>
+              </div>
             </GlassSurface>
           </div>
         </section>

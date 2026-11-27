@@ -9,6 +9,7 @@ type Props = {
   children: ReactNode;
   onClick: () => void;
   hint?: string;
+  disabled?: boolean;
   icon?: OnboardingIconKey;
   className?: string;
   style?: CSSProperties;
@@ -19,6 +20,7 @@ export function GlassOption({
   children,
   onClick,
   hint,
+  disabled,
   icon,
   className = "",
   style,
@@ -32,6 +34,7 @@ export function GlassOption({
     <button
       ref={ref}
       type="button"
+      disabled={disabled}
       className={`glass-option ${className}`.trim()}
       style={style}
       onClick={onClick}

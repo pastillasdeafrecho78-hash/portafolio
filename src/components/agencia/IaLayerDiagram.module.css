@@ -1,0 +1,17 @@
+.hub {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  width: 3.65rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(218, 184, 82, 0.55);
+  border-radius: 0.9rem;
+  background: linear-gradient(150deg, rgba(218, 184, 82, 0.19), rgba(16, 20, 27, 0.8) 70%);
+  box-shadow: inset 0 1px rgba(255, 236, 165, 0.16);
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 750;
+  line-height: 1;
+}
